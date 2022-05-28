@@ -1,0 +1,11 @@
+*.lock
+*.bin
+*.jar
+/.idea
+/gradlew
+/gradlew.bat
+*.class
+/core/build/
+/.gradle/
+*.log
+*.MF
