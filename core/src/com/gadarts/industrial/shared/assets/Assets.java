@@ -10,14 +10,13 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
-import com.gadarts.industrial.shared.model.pickups.WeaponsDefinitions;
 import com.gadarts.industrial.shared.assets.definitions.*;
+import com.gadarts.industrial.shared.model.pickups.WeaponsDefinitions;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -325,36 +324,35 @@ public final class Assets {
 	 */
 	@Getter
 	public enum Models implements ModelDefinition {
-		SARCOPHAG_1,
-		POTTERY_1,
-		STATUE_1,
-		PILLAR_1,
-		TORCH_1,
 		COLT,
-		CAVE_SUPPORTER_1(),
-		CAVE_SUPPORTER_2(),
-		CAVE_SUPPORTER_3(),
-		CURSOR(0.1F),
-		TORCH,
-		SIGN,
-		CAVE_WALL_SINGLE;
+		WALL_SUPPORTER_1("wall_supporter", "wall_supporter_1_texture"),
+		WALL_SUPPORTER_2("wall_supporter", "wall_supporter_2_texture"),
+		WALL_SUPPORTER_3("wall_supporter", "wall_supporter_3_texture"),
+		CURSOR(0.1F);
 
 		private final String filePath;
 		private final float alpha;
-		private Color skipColor;
+		private final Color skipColor;
+		private final String textureFileName;
 
 		Models( ) {
-			this(1.0f);
+			this(1.0f, null, null, null);
 		}
 
-		Models(final float alpha) {
-			this.filePath = ModelDefinition.FOLDER + PATH_SEPARATOR + name().toLowerCase() + "." + ModelDefinition.FORMAT;
+		Models(final float alpha, String skipColor, String fileName, String textureFileName) {
+			String name = fileName != null ? fileName : name().toLowerCase();
+			this.filePath = FOLDER + PATH_SEPARATOR + name + "." + FORMAT;
+			this.textureFileName = textureFileName;
 			this.alpha = alpha;
+			this.skipColor = Color.valueOf(skipColor);
 		}
 
-		Models(final String skipColor) {
-			this();
-			this.skipColor = Color.valueOf(skipColor);
+		Models(float alpha) {
+			this(alpha, null, null, null);
+		}
+
+		Models(String fileName, String textureFileName) {
+			this(1.0F, null, fileName, textureFileName);
 		}
 
 		@Override
@@ -383,8 +381,7 @@ public final class Assets {
 		public static TextureDefinition[] getAllDefinitionsInSingleArray( ) {
 			ArrayList<TextureDefinition> list = new ArrayList<>();
 			Arrays.stream(values()).forEach(defs -> list.addAll(Arrays
-					.stream(defs.getDefinitions())
-					.collect(Collectors.toList()))
+					.stream(defs.getDefinitions()).toList())
 			);
 			return list.toArray(new TextureDefinition[0]);
 		}
