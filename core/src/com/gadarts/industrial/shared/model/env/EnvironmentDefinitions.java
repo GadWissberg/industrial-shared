@@ -9,23 +9,19 @@ import com.gadarts.industrial.shared.model.map.MapNodesTypes;
 import com.gadarts.industrial.shared.assets.Assets;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Definitions of misc objects.
  */
 @Getter
+@RequiredArgsConstructor
 public enum EnvironmentDefinitions implements ModelElementDefinition {
-	SARCOPHAG_1(Assets.Models.SARCOPHAG_1, 1, 1, "Sarcophag #1", true, new Vector3(-0.4F, 0, 0), MapNodesTypes.PASSABLE_NODE),
-	POTTERY_1(Assets.Models.POTTERY_1, 1, 1, "Pottery #1", true, Vector3.Zero, MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
-	STATUE_1(Assets.Models.STATUE_1, 1, 1, "Statue #1", true, Vector3.Zero, MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
-	PILLAR_1(Assets.Models.PILLAR_1, 1, 1, "Pillar #1", true, Vector3.Zero, MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
-	TORCH_1(Assets.Models.TORCH_1, 1, 1, "Torch #1", false, new Vector3(-0.45F, 1.2F, 0), MapNodesTypes.PASSABLE_NODE, new LightEmission(new Vector3(0.0F, 0.2F, 0F), 1F, 4F, true), new RelativeBillboard(Assets.Atlases.FLAME, 0.1F, new Vector3(0.3F, 0.4F, 0F))),
-	CAVE_SUPPORTER_1(Assets.Models.CAVE_SUPPORTER_1, 1, 1, "Mine Wall Supporter #1", false, new Vector3(0.5f, 0, 0), MapNodesTypes.PASSABLE_NODE),
-	CAVE_SUPPORTER_2(Assets.Models.CAVE_SUPPORTER_2, 1, 1, "Mine Wall Supporter #2", false, new Vector3(0.5f, 0, 0), MapNodesTypes.PASSABLE_NODE),
-	CAVE_SUPPORTER_3(Assets.Models.CAVE_SUPPORTER_3, 1, 1, "Mine Wall Supporter #3", false, new Vector3(0.5f, 0, 0), MapNodesTypes.PASSABLE_NODE),
-	TORCH(Assets.Models.TORCH, 1, 1, "Torch", true, Vector3.Zero, MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
-	SIGN(Assets.Models.SIGN, 1, 1, "Syphilis", true, Vector3.Zero, MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
-	MINE_WALL_3(Assets.Models.CAVE_WALL_SINGLE, 1, 1, "Mine Wall 1x1", new Vector3(0.5f, 0, 0), MapNodesTypes.OBSTACLE_KEY_DIAGONAL_FORBIDDEN, true, true);
+	WALL_SUPPORTER_1(Assets.Models.WALL_SUPPORTER_1, 1, 1, "Wall Supporter 1", new Vector3(-0.5F, 0F, 0.5F)),
+
+	WALL_SUPPORTER_2(Assets.Models.WALL_SUPPORTER_2, 1, 1, "Wall Supporter 2", new Vector3(-0.5F, 0F, 0.5F)),
+
+	WALL_SUPPORTER_3(Assets.Models.WALL_SUPPORTER_3, 1, 1, "Wall Supporter 3", new Vector3(-0.5F, 0F, 0.5F));
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;
@@ -38,70 +34,35 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 	private final String displayName;
 	private final boolean castShadow;
 	private final MapNodesTypes nodeType;
-	private final boolean isWall;
 	private final LightEmission lightEmission;
-	private final boolean renderWhenFrontOnly;
 	private final RelativeBillboard relativeBillboard;
 
-	EnvironmentDefinitions(final Assets.Models model,
-						   final int width,
-						   final int depth,
-						   final String displayName,
-						   final Vector3 offset,
-						   final MapNodesTypes nodeType,
-						   final boolean isWall,
-						   final boolean renderWhenFrontOnly) {
-		this(model,
+	EnvironmentDefinitions(Assets.Models model,
+						   int width,
+						   int depth,
+						   String displayName) {
+		this(
+				model,
+				width,
+				depth,
+				displayName,
+				true,
+				Vector3.Zero,
+				MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED,
+				null,
+				null);
+	}
+
+	EnvironmentDefinitions(Assets.Models model, int width, int depth, String displayName, Vector3 offset) {
+		this(
+				model,
 				width,
 				depth,
 				displayName,
 				true,
 				offset,
-				nodeType,
-				isWall,
+				MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED,
 				null,
-				renderWhenFrontOnly,
-				null);
-	}
-
-	EnvironmentDefinitions(final Assets.Models model,
-						   final int width,
-						   final int depth,
-						   final String displayName,
-						   final boolean castShadow,
-						   final Vector3 offset,
-						   final MapNodesTypes nodeType,
-						   final boolean renderWhenFrontOnly) {
-		this(model,
-				width,
-				depth,
-				displayName,
-				castShadow,
-				offset,
-				nodeType,
-				false,
-				null,
-				renderWhenFrontOnly,
-				null);
-	}
-
-	EnvironmentDefinitions(final Assets.Models model,
-						   final int width,
-						   final int depth,
-						   final String displayName,
-						   final boolean castShadow,
-						   final Vector3 offset,
-						   final MapNodesTypes nodeType) {
-		this(model,
-				width,
-				depth,
-				displayName,
-				castShadow,
-				offset,
-				nodeType,
-				false,
-				null,
-				false,
 				null);
 	}
 
@@ -113,30 +74,6 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 						   final Vector3 offset,
 						   final MapNodesTypes nodeType,
 						   final LightEmission lightEmission,
-						   final RelativeBillboard relativeBillboard) {
-		this(model,
-				width,
-				depth,
-				displayName,
-				castShadow,
-				offset,
-				nodeType,
-				false,
-				lightEmission,
-				false,
-				relativeBillboard);
-	}
-
-	EnvironmentDefinitions(final Assets.Models model,
-						   final int width,
-						   final int depth,
-						   final String displayName,
-						   final boolean castShadow,
-						   final Vector3 offset,
-						   final MapNodesTypes nodeType,
-						   final boolean isWall,
-						   final LightEmission lightEmission,
-						   final boolean renderWhenFrontOnly,
 						   final RelativeBillboard relativeBillboard) {
 		this.model = model;
 		this.width = width;
@@ -145,9 +82,7 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 		this.castShadow = castShadow;
 		this.offset = offset;
 		this.nodeType = nodeType;
-		this.isWall = isWall;
 		this.lightEmission = lightEmission;
-		this.renderWhenFrontOnly = renderWhenFrontOnly;
 		this.relativeBillboard = relativeBillboard;
 	}
 
@@ -156,12 +91,12 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 	}
 
 	@Override
-	public String getDisplayName() {
+	public String getDisplayName( ) {
 		return displayName;
 	}
 
 	@Override
-	public Assets.Models getModelDefinition() {
+	public Assets.Models getModelDefinition( ) {
 		return model;
 	}
 

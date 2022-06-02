@@ -222,7 +222,7 @@ public final class Assets {
 			params.fontFileName = filePath;
 			if (outline) {
 				params.fontParameters.borderWidth = 1f;
-				params.fontParameters.borderColor = new Color(0.5f, 0.1f, 0.1f, 1.0f);
+				params.fontParameters.borderColor = Color.RED;
 			}
 		}
 
@@ -332,27 +332,25 @@ public final class Assets {
 
 		private final String filePath;
 		private final float alpha;
-		private final Color skipColor;
 		private final String textureFileName;
 
 		Models( ) {
-			this(1.0f, null, null, null);
+			this(1.0f, null, null);
 		}
 
-		Models(final float alpha, String skipColor, String fileName, String textureFileName) {
+		Models(final float alpha, String fileName, String textureFileName) {
 			String name = fileName != null ? fileName : name().toLowerCase();
 			this.filePath = FOLDER + PATH_SEPARATOR + name + "." + FORMAT;
 			this.textureFileName = textureFileName;
 			this.alpha = alpha;
-			this.skipColor = Color.valueOf(skipColor);
 		}
 
 		Models(float alpha) {
-			this(alpha, null, null, null);
+			this(alpha, null, null);
 		}
 
 		Models(String fileName, String textureFileName) {
-			this(1.0F, null, fileName, textureFileName);
+			this(1.0F, fileName, textureFileName);
 		}
 
 		@Override

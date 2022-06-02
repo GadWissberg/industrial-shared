@@ -31,6 +31,8 @@ import com.gadarts.industrial.shared.assets.definitions.*;
 import java.util.Arrays;
 import java.util.Optional;
 
+import static com.gadarts.industrial.shared.assets.definitions.ModelDefinition.*;
+
 /**
  * Assets loader and manager.
  */
@@ -82,14 +84,24 @@ public class GameAssetsManager extends AssetManager {
 	}
 
 	private void loadFile(AssetDefinition def, String fileName) {
-		String filePath = assetsLocation + fileName;
-		String path = Gdx.files.getFileHandle(filePath, FileType.Internal).path();
+		String path = Gdx.files.getFileHandle(assetsLocation + fileName, FileType.Internal).path();
 		Class<?> typeClass = def.getTypeClass();
 		if (Optional.ofNullable(def.getParameters()).isPresent()) {
 			String assetManagerKey = def.getAssetManagerKey();
 			load(assetManagerKey != null ? assetManagerKey : path, typeClass, def.getParameters());
 		} else {
 			load(path, typeClass);
+		}
+		loadModelExplicitTexture(def);
+	}
+
+	private void loadModelExplicitTexture(AssetDefinition def) {
+		if (def instanceof ModelDefinition) {
+			ModelDefinition modelDef = (ModelDefinition) def;
+			Optional.ofNullable(modelDef.getTextureFileName()).ifPresent(t -> {
+				String fileName = assetsLocation + FOLDER + "/" + t + ".png";
+				load(fileName, Texture.class);
+			});
 		}
 	}
 
@@ -135,6 +147,10 @@ public class GameAssetsManager extends AssetManager {
 
 	public Model getModel(final ModelDefinition model) {
 		return get(assetsLocation + model.getFilePath(), Model.class);
+	}
+
+	public Texture getModelExplicitTexture(final ModelDefinition model) {
+		return get(assetsLocation + FOLDER + "/" + model.getTextureFileName() + ".png", Texture.class);
 	}
 
 	public Texture getTexture(final TextureDefinition definition) {
