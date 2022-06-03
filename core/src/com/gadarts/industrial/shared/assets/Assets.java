@@ -329,6 +329,7 @@ public final class Assets {
 		WALL_SUPPORTER_2("wall_supporter", "wall_supporter_2_texture"),
 		WALL_SUPPORTER_3("wall_supporter", "wall_supporter_3_texture"),
 		WALL_SUPPORTER_HIGH(),
+		COMPUTER_WAGON(),
 		CURSOR(0.1F);
 
 		private final String filePath;
@@ -417,6 +418,7 @@ public final class Assets {
 		CONCRETE_WALL_6,
 		CONCRETE_WALL_7,
 		CONCRETE_WALL_8,
+		CONCRETE_WALL_9,
 		INDUSTRIAL_WALL_0,
 		INDUSTRIAL_WALL_1,
 		INDUSTRIAL_WALL_2,
@@ -427,6 +429,7 @@ public final class Assets {
 		INDUSTRIAL_WALL_7,
 		INDUSTRIAL_WALL_8,
 		INDUSTRIAL_WALL_9,
+		INDUSTRIAL_WALL_10,
 		BLANK,
 		;
 
