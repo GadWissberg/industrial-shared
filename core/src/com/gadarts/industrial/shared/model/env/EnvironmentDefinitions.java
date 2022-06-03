@@ -17,11 +17,10 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum EnvironmentDefinitions implements ModelElementDefinition {
-	WALL_SUPPORTER_1(Assets.Models.WALL_SUPPORTER_1, 1, 1, "Wall Supporter 1", new Vector3(-0.5F, 0F, 0.5F)),
-
-	WALL_SUPPORTER_2(Assets.Models.WALL_SUPPORTER_2, 1, 1, "Wall Supporter 2", new Vector3(-0.5F, 0F, 0.5F)),
-
-	WALL_SUPPORTER_3(Assets.Models.WALL_SUPPORTER_3, 1, 1, "Wall Supporter 3", new Vector3(-0.5F, 0F, 0.5F));
+	WALL_SUPPORTER_1(Assets.Models.WALL_SUPPORTER_1, 1, 1, "Wall Supporter #1", new Vector3(-0.5F, 0F, 0.5F)),
+	WALL_SUPPORTER_2(Assets.Models.WALL_SUPPORTER_2, 1, 1, "Wall Supporter #2", new Vector3(-0.5F, 0F, 0.5F)),
+	WALL_SUPPORTER_3(Assets.Models.WALL_SUPPORTER_3, 1, 1, "Wall Supporter #3", new Vector3(-0.5F, 0F, 0.5F)),
+	WALL_SUPPORTER_HIGH(Assets.Models.WALL_SUPPORTER_HIGH, 1, 1, "High Wall Supporter", new Vector3(-0.5F, 0F, 0.5F));
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;

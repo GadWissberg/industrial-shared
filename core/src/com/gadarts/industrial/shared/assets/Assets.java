@@ -328,6 +328,7 @@ public final class Assets {
 		WALL_SUPPORTER_1("wall_supporter", "wall_supporter_1_texture"),
 		WALL_SUPPORTER_2("wall_supporter", "wall_supporter_2_texture"),
 		WALL_SUPPORTER_3("wall_supporter", "wall_supporter_3_texture"),
+		WALL_SUPPORTER_HIGH(),
 		CURSOR(0.1F);
 
 		private final String filePath;
@@ -351,6 +352,10 @@ public final class Assets {
 
 		Models(String fileName, String textureFileName) {
 			this(1.0F, fileName, textureFileName);
+		}
+
+		Models(String fileName) {
+			this(fileName, null);
 		}
 
 		@Override
