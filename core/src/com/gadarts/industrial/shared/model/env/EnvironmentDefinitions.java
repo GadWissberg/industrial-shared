@@ -21,7 +21,11 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 	WALL_SUPPORTER_2(Assets.Models.WALL_SUPPORTER_2, 1, 1, "Wall Supporter #2", new Vector3(-0.5F, 0F, 0.5F)),
 	WALL_SUPPORTER_3(Assets.Models.WALL_SUPPORTER_3, 1, 1, "Wall Supporter #3", new Vector3(-0.5F, 0F, 0.5F)),
 	WALL_SUPPORTER_HIGH(Assets.Models.WALL_SUPPORTER_HIGH, 1, 1, "High Wall Supporter", new Vector3(-0.5F, 0F, 0.5F)),
-	COMPUTER_WAGON(Assets.Models.COMPUTER_WAGON, 1, 1, "Computer Wagon");
+	COMPUTER_WAGON(Assets.Models.COMPUTER_WAGON, 1, 1, "Computer Wagon"),
+	CRATE_BIG_0(Assets.Models.CRATE_BIG_0, 1, 1, "Big Crate #1"),
+	CRATE_BIG_1(Assets.Models.CRATE_BIG_1, 1, 1, "Big Crate #2"),
+	CRATE_BIG_2(Assets.Models.CRATE_BIG_2, 1, 1, "Big Crate #3"),
+	CRATE_SMALL(Assets.Models.CRATE_SMALL, 1, 1, "Small Crate");
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;

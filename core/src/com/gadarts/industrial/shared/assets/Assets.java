@@ -330,6 +330,10 @@ public final class Assets {
 		WALL_SUPPORTER_3("wall_supporter", "wall_supporter_3_texture"),
 		WALL_SUPPORTER_HIGH(),
 		COMPUTER_WAGON(),
+		CRATE_BIG_0("crate_big", "crate_big_texture_0"),
+		CRATE_BIG_1("crate_big", "crate_big_texture_1"),
+		CRATE_BIG_2("crate_big", "crate_big_texture_2"),
+		CRATE_SMALL(),
 		CURSOR(0.1F);
 
 		private final String filePath;
