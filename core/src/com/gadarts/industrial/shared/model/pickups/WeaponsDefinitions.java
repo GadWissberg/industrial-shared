@@ -35,10 +35,10 @@ public enum WeaponsDefinitions implements ItemDefinition {
 			1);
 
 	@Getter(AccessLevel.NONE)
-	private final int width;
+	private final int symbolWidth;
 
 	@Getter(AccessLevel.NONE)
-	private final int height;
+	private final int symbolHeight;
 
 	@Getter(AccessLevel.NONE)
 	private final Assets.UiTextures image;
@@ -56,8 +56,8 @@ public enum WeaponsDefinitions implements ItemDefinition {
 	private final boolean noisy;
 	private final boolean canBeSeenOnTheMap;
 
-	WeaponsDefinitions(int width,
-					   int height,
+	WeaponsDefinitions(int symbolWidth,
+					   int symbolHeight,
 					   int hitFrameIndex,
 					   Assets.UiTextures image,
 					   Assets.Sounds attackSound,
@@ -66,8 +66,8 @@ public enum WeaponsDefinitions implements ItemDefinition {
 					   String displayName,
 					   boolean noisy,
 					   boolean canBeSeenOnTheMap) {
-		this(width,
-				height,
+		this(symbolWidth,
+				symbolHeight,
 				hitFrameIndex,
 				image,
 				attackSound,
@@ -81,8 +81,8 @@ public enum WeaponsDefinitions implements ItemDefinition {
 				canBeSeenOnTheMap);
 	}
 
-	WeaponsDefinitions(final int width,
-					   final int height,
+	WeaponsDefinitions(final int symbolWidth,
+					   final int symbolHeight,
 					   final int hitFrameIndex,
 					   final Assets.UiTextures image,
 					   final Assets.Sounds attackSound,
@@ -91,8 +91,8 @@ public enum WeaponsDefinitions implements ItemDefinition {
 					   final Assets.Models model,
 					   final boolean hitScan,
 					   final int damage) {
-		this(width,
-				height,
+		this(symbolWidth,
+				symbolHeight,
 				hitFrameIndex,
 				image,
 				attackSound,
@@ -106,8 +106,8 @@ public enum WeaponsDefinitions implements ItemDefinition {
 				true);
 	}
 
-	WeaponsDefinitions(final int width,
-					   final int height,
+	WeaponsDefinitions(final int symbolWidth,
+					   final int symbolHeight,
 					   final int hitFrameIndex,
 					   final Assets.UiTextures image,
 					   final Assets.Sounds attackSound,
@@ -119,8 +119,8 @@ public enum WeaponsDefinitions implements ItemDefinition {
 					   final int damage,
 					   final boolean noisy,
 					   final boolean canBeSeenOnTheMap) {
-		this.width = width;
-		this.height = height;
+		this.symbolWidth = symbolWidth;
+		this.symbolHeight = symbolHeight;
 		this.hitFrameIndex = hitFrameIndex;
 		this.image = image;
 		this.attackSound = attackSound;
@@ -136,17 +136,21 @@ public enum WeaponsDefinitions implements ItemDefinition {
 
 	private int[] flipMatrixVertically(final int[] mask) {
 		int[] flipped = new int[mask.length];
-		for (int row = 0; row < height; row++) {
-			for (int col = 0; col < width; col++) {
-				flipped[row * width + col] = mask[((height - 1 - row) * width) + col];
+		for (int row = 0; row < symbolHeight; row++) {
+			for (int col = 0; col < symbolWidth; col++) {
+				flipped[row * symbolWidth + col] = mask[((symbolHeight - 1 - row) * symbolWidth) + col];
 			}
 		}
 		return flipped;
 	}
 
+	public int getSymbolWidth( ) {
+		return symbolWidth;
+	}
+
 	@Override
-	public int getWidth( ) {
-		return width;
+	public int getDepth( ) {
+		return 1;
 	}
 
 	@Override
@@ -154,9 +158,8 @@ public enum WeaponsDefinitions implements ItemDefinition {
 		return mask;
 	}
 
-	@Override
-	public int getHeight( ) {
-		return height;
+	public int getSymbolHeight( ) {
+		return symbolHeight;
 	}
 
 	@Override
@@ -184,5 +187,10 @@ public enum WeaponsDefinitions implements ItemDefinition {
 	@Override
 	public Assets.Models getModelDefinition( ) {
 		return modelDef;
+	}
+
+	@Override
+	public int getWidth( ) {
+		return 1;
 	}
 }

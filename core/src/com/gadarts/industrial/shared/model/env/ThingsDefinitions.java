@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor
-public enum EnvironmentDefinitions implements ModelElementDefinition {
+public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	WALL_SUPPORTER_1(Assets.Models.WALL_SUPPORTER_1, 1, 1, "Wall Supporter #1", new Vector3(-0.5F, 0F, 0.5F)),
 	WALL_SUPPORTER_2(Assets.Models.WALL_SUPPORTER_2, 1, 1, "Wall Supporter #2", new Vector3(-0.5F, 0F, 0.5F)),
 	WALL_SUPPORTER_3(Assets.Models.WALL_SUPPORTER_3, 1, 1, "Wall Supporter #3", new Vector3(-0.5F, 0F, 0.5F)),
@@ -41,10 +41,10 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 	private final LightEmission lightEmission;
 	private final RelativeBillboard relativeBillboard;
 
-	EnvironmentDefinitions(Assets.Models model,
-						   int width,
-						   int depth,
-						   String displayName) {
+	ThingsDefinitions(Assets.Models model,
+					  int width,
+					  int depth,
+					  String displayName) {
 		this(
 				model,
 				width,
@@ -57,7 +57,7 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 				null);
 	}
 
-	EnvironmentDefinitions(Assets.Models model, int width, int depth, String displayName, Vector3 offset) {
+	ThingsDefinitions(Assets.Models model, int width, int depth, String displayName, Vector3 offset) {
 		this(
 				model,
 				width,
@@ -70,15 +70,15 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 				null);
 	}
 
-	EnvironmentDefinitions(final Assets.Models model,
-						   final int width,
-						   final int depth,
-						   final String displayName,
-						   final boolean castShadow,
-						   final Vector3 offset,
-						   final MapNodesTypes nodeType,
-						   final LightEmission lightEmission,
-						   final RelativeBillboard relativeBillboard) {
+	ThingsDefinitions(final Assets.Models model,
+					  final int width,
+					  final int depth,
+					  final String displayName,
+					  final boolean castShadow,
+					  final Vector3 offset,
+					  final MapNodesTypes nodeType,
+					  final LightEmission lightEmission,
+					  final RelativeBillboard relativeBillboard) {
 		this.model = model;
 		this.width = width;
 		this.depth = depth;
@@ -111,7 +111,7 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 	 * @param modelInstance   The model of the misc object.
 	 * @param facingDirection The facing direction of the misc object.
 	 */
-	public static void handleEvenSize(final EnvironmentDefinitions definition,
+	public static void handleEvenSize(final ThingsDefinitions definition,
 									  final ModelInstance modelInstance,
 									  final Direction facingDirection) {
 		boolean handleEvenSize = facingDirection == Direction.EAST || facingDirection == Direction.NORTH;
@@ -121,5 +121,10 @@ public enum EnvironmentDefinitions implements ModelElementDefinition {
 		if (definition.getDepth() % 2 == 0) {
 			modelInstance.transform.translate(0, 0, 0.5f * (handleEvenSize ? -1 : 1));
 		}
+	}
+
+	@Override
+	public EnvironmentObjectType getEnvironmentObjectType( ) {
+		return EnvironmentObjectType.THING;
 	}
 }
