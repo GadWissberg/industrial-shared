@@ -45,7 +45,7 @@ public enum DoorsDefinitions implements EnvironmentObjectDefinition {
 
 	@Override
 	public Vector3 getOffset(Vector3 output) {
-		return output;
+		return output.setZero();
 	}
 
 	@Override

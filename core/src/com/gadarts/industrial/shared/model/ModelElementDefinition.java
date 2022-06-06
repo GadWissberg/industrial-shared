@@ -11,6 +11,6 @@ public interface ModelElementDefinition extends ElementDefinition {
 	int getDepth( );
 
 	default Vector3 getOffset(Vector3 output) {
-		return output;
+		return output.setZero();
 	}
 }
