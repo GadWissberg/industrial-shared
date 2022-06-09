@@ -2,6 +2,8 @@ package com.gadarts.industrial.shared.model.env;
 
 import com.badlogic.gdx.math.Vector3;
 import com.gadarts.industrial.shared.assets.Assets;
+import com.gadarts.industrial.shared.assets.Assets.Models;
+import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
 import com.gadarts.industrial.shared.model.map.MapNodesTypes;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -15,12 +17,11 @@ import static com.gadarts.industrial.shared.model.env.EnvironmentObjectType.DOOR
 @Getter
 @RequiredArgsConstructor
 public enum DoorsDefinitions implements EnvironmentObjectDefinition {
-	INDUSTRIAL_DOOR(Assets.Models.INDUSTRY_DOOR_0, Assets.Models.DOOR_FRAME_WARNING, "Industrial Door");
+	INDUSTRIAL_DOOR(Models.INDUSTRY_DOOR_0, Models.DOOR_FRAME_WARNING, "Industrial Door");
 
 
-	private final Assets.Models modelDefinition;
-	@Getter(AccessLevel.NONE)
-	private final Assets.Models frameModelDefinition;
+	private final Models modelDefinition;
+	private final Models frameModelDefinition;
 	private final String displayName;
 
 	@Override
@@ -29,7 +30,7 @@ public enum DoorsDefinitions implements EnvironmentObjectDefinition {
 	}
 
 	@Override
-	public Assets.Models getModelDefinition( ) {
+	public Models getModelDefinition( ) {
 		return modelDefinition;
 	}
 
@@ -51,6 +52,11 @@ public enum DoorsDefinitions implements EnvironmentObjectDefinition {
 	@Override
 	public EnvironmentObjectType getEnvironmentObjectType( ) {
 		return DOOR;
+	}
+
+	@Override
+	public ModelDefinition getAppendixModelDefinition( ) {
+		return frameModelDefinition;
 	}
 
 	@Override

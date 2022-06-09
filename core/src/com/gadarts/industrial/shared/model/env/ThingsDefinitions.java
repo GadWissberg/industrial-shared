@@ -2,6 +2,7 @@ package com.gadarts.industrial.shared.model.env;
 
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
+import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
 import com.gadarts.industrial.shared.model.ModelElementDefinition;
 import com.gadarts.industrial.shared.model.RelativeBillboard;
 import com.gadarts.industrial.shared.model.characters.Direction;
@@ -126,5 +127,10 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	@Override
 	public EnvironmentObjectType getEnvironmentObjectType( ) {
 		return EnvironmentObjectType.THING;
+	}
+
+	@Override
+	public ModelDefinition getAppendixModelDefinition( ) {
+		return null;
 	}
 }
