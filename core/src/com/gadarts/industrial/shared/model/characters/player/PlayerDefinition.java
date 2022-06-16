@@ -48,6 +48,6 @@ public class PlayerDefinition implements CharacterDefinition {
 
 	@Override
 	public Assets.Atlases getAtlasDefinition() {
-		return Assets.Atlases.PLAYER_KNIFE;
+		return Assets.Atlases.PLAYER_HAMMER;
 	}
 }

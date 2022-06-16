@@ -56,7 +56,7 @@ public final class Assets {
 	@Getter
 	public enum Atlases implements AtlasDefinition {
 		PLAYER_GENERIC,
-		PLAYER_KNIFE(WeaponsDefinitions.KNIFE),
+		PLAYER_HAMMER(WeaponsDefinitions.HAMMER),
 		PLAYER_COLT(WeaponsDefinitions.COLT),
 		SCORPION,
 		ANUBIS,
@@ -479,7 +479,7 @@ public final class Assets {
 		BUTTON_CLOSE_DOWN(null, "buttons"),
 		BUTTON_CLOSE_HOVER(null, "buttons"),
 		NINEPATCHES("ninepatches.9"),
-		WEAPON_KNIFE(null, "weapons"),
+		WEAPON_HAMMER(null, "weapons"),
 		WEAPON_COLT(null, "weapons"),
 		PLAYER_LAYOUT,
 		SKILL_FLOWER_CENTER(null, "skill_flower"),

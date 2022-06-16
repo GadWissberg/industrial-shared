@@ -9,16 +9,16 @@ import lombok.Getter;
  */
 @Getter
 public enum WeaponsDefinitions implements ItemDefinition {
-	KNIFE(1, 2,
+	HAMMER(1, 2,
 			4,
-			Assets.UiTextures.WEAPON_KNIFE,
+			Assets.UiTextures.WEAPON_HAMMER,
 			Assets.Sounds.ATTACK_KNIFE,
 			new int[]{
 					1,
 					1,
 			},
 			true,
-			"Knife",
+			"Hammer",
 			false,
 			false),
 	COLT(2, 2,
