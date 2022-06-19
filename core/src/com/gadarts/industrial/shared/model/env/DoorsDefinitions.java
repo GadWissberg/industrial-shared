@@ -61,6 +61,6 @@ public enum DoorsDefinitions implements EnvironmentObjectDefinition {
 
 	@Override
 	public MapNodesTypes getNodeType( ) {
-		return MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED;
+		return MapNodesTypes.PASSABLE_NODE;
 	}
 }
