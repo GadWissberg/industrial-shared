@@ -18,7 +18,12 @@ public final class GeneralUtils {
 	private static final Plane groundPlane = new Plane(new Vector3(0, 1, 0), 0);
 
 	public static Vector3 defineRotationPoint(final Vector3 output, final Camera camera) {
+		return defineRotationPoint(output, camera, 0F);
+	}
+
+	public static Vector3 defineRotationPoint(Vector3 output, Camera camera, float planeHeight) {
 		Ray ray = camera.getPickRay(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f);
+		groundPlane.d = planeHeight;
 		Intersector.intersectRayPlane(ray, groundPlane, output);
 		return output;
 	}
