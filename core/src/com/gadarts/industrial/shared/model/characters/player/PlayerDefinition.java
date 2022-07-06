@@ -32,11 +32,6 @@ public class PlayerDefinition implements CharacterDefinition {
 	}
 
 	@Override
-	public int getMeleeHitFrameIndex() {
-		return 4;
-	}
-
-	@Override
 	public int getPrimaryAttackHitFrameIndex() {
 		return 4;
 	}

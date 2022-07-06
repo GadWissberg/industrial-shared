@@ -10,8 +10,6 @@ public interface CharacterDefinition extends ElementDefinition {
 
 	String name();
 
-	int getMeleeHitFrameIndex();
-
 	int getPrimaryAttackHitFrameIndex();
 
 	Assets.Atlases getAtlasDefinition();

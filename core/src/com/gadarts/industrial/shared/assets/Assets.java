@@ -59,7 +59,7 @@ public final class Assets {
 		PLAYER_HAMMER(WeaponsDefinitions.HAMMER),
 		PLAYER_COLT(WeaponsDefinitions.COLT),
 		SCORPION,
-		ANUBIS,
+		GUARD_BOT,
 		FLAME;
 
 		private final String filePath;

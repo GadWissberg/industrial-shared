@@ -8,7 +8,6 @@ import lombok.Getter;
 public enum SpriteType {
 	IDLE(0.3f, Animation.PlayMode.LOOP_PINGPONG),
 	RUN(0.06f),
-	ATTACK(0.06f, Animation.PlayMode.NORMAL),
 	ATTACK_PRIMARY(0.06f, Animation.PlayMode.NORMAL),
 	PAIN(0.1F, Animation.PlayMode.NORMAL),
 	PICKUP(0.1f, Animation.PlayMode.NORMAL, false, true),

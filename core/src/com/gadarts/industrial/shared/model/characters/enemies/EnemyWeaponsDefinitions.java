@@ -7,15 +7,15 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum EnemyWeaponsDefinitions {
-	ENERGY_BALL(
+	RAPID_LASER_CANNON(
 			0.1F,
-			new Integer[]{1, 1, 1, 2, 2},
+			2,
 			Assets.ParticleEffects.ENERGY_BALL_EXPLOSION,
 			Assets.Sounds.ATTACK_ENERGY_BALL,
 			Assets.Sounds.SMALL_EXP);
 
 	private final float frameDuration;
-	private final Integer[] damagePoints;
+	private final Integer damagePoints;
 	private final Assets.ParticleEffects particleEffect;
 	private final Assets.Sounds engageSound;
 	private final Assets.Sounds impactSound;
