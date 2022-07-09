@@ -336,7 +336,8 @@ public final class Assets {
 		CRATE_SMALL(),
 		INDUSTRY_DOOR_0(),
 		DOOR_FRAME_WARNING(),
-		CURSOR(0.1F);
+		CURSOR(0.1F),
+		LASER_BULLET;
 
 		private final String filePath;
 		private final float alpha;
@@ -492,8 +493,9 @@ public final class Assets {
 		SKILL_FLOWER_6(null, "skill_flower"),
 		SKILL_FLOWER_7(null, "skill_flower"),
 		SKILL_FLOWER_8(null, "skill_flower"),
+		ICON_IDLE(null, "skill_flower"),
 		ICON_LOOKING_FOR(null, "skill_flower"),
-		ICON_SPOTTED(null, "skill_flower");
+		ICON_ATTACK(null, "skill_flower");
 
 		public static final String SUB_FOLDER_NAME = "ui";
 		private final String specialFileName;
