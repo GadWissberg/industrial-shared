@@ -12,6 +12,6 @@ public interface ItemDefinition extends ModelElementDefinition {
 
 	int getId( );
 
-	Assets.UiTextures getImage( );
+	Assets.UiTextures getSymbol( );
 
 }

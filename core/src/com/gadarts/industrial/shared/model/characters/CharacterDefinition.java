@@ -2,15 +2,16 @@ package com.gadarts.industrial.shared.model.characters;
 
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.model.ElementDefinition;
+import com.gadarts.industrial.shared.model.characters.enemies.WeaponsDefinitions;
 
 public interface CharacterDefinition extends ElementDefinition {
-	CharacterTypes getCharacterType();
+	CharacterTypes getCharacterType( );
 
-	boolean isSingleDeathAnimation();
+	boolean isSingleDeathAnimation( );
 
-	String name();
+	String name( );
 
-	int getPrimaryAttackHitFrameIndex();
+	int getPrimaryAttackHitFrameIndex( );
 
-	Assets.Atlases getAtlasDefinition();
+	Assets.Atlases getAtlasDefinition( );
 }

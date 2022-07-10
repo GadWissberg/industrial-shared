@@ -19,7 +19,7 @@ public enum Enemies implements CharacterDefinition {
 			Accuracy.MED,
 			Range.HIGH,
 			4,
-			EnemyWeaponsDefinitions.RAPID_LASER_CANNON,
+			WeaponsDefinitions.RAPID_LASER_CANNON,
 			4,
 			false,
 			1.5F,
@@ -37,7 +37,7 @@ public enum Enemies implements CharacterDefinition {
 	private final Accuracy accuracy;
 	private final Range range;
 	private final Integer engine;
-	private final EnemyWeaponsDefinitions primaryAttack;
+	private final WeaponsDefinitions primaryAttack;
 	private final int primaryAttackHitFrameIndex;
 	private final boolean singleDeathAnimation;
 	private final float height;

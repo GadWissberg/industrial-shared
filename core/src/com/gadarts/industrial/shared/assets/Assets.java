@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.gadarts.industrial.shared.assets.definitions.*;
-import com.gadarts.industrial.shared.model.pickups.WeaponsDefinitions;
+import com.gadarts.industrial.shared.model.pickups.PlayerWeaponsDefinitions;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -56,25 +56,25 @@ public final class Assets {
 	@Getter
 	public enum Atlases implements AtlasDefinition {
 		PLAYER_GENERIC,
-		PLAYER_HAMMER(WeaponsDefinitions.HAMMER),
-		PLAYER_COLT(WeaponsDefinitions.COLT),
+		PLAYER_HAMMER(PlayerWeaponsDefinitions.HAMMER),
+		PLAYER_COLT(PlayerWeaponsDefinitions.COLT),
 		SCORPION,
 		GUARD_BOT,
 		FLAME;
 
 		private final String filePath;
-		private final WeaponsDefinitions relatedWeapon;
+		private final PlayerWeaponsDefinitions relatedWeapon;
 
 		Atlases( ) {
 			this(null);
 		}
 
-		Atlases(final WeaponsDefinitions relatedWeapon) {
+		Atlases(final PlayerWeaponsDefinitions relatedWeapon) {
 			this.filePath = AtlasDefinition.FOLDER + PATH_SEPARATOR + name().toLowerCase() + "." + AtlasDefinition.FORMAT;
 			this.relatedWeapon = relatedWeapon;
 		}
 
-		public static Atlases findByRelatedWeapon(final WeaponsDefinitions definition) {
+		public static Atlases findByRelatedWeapon(final PlayerWeaponsDefinitions definition) {
 			Atlases[] atlases = values();
 			Atlases result = null;
 			for (Atlases atlas : atlases) {

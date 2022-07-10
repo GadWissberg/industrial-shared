@@ -3,6 +3,7 @@ package com.gadarts.industrial.shared.model.characters.player;
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.model.characters.CharacterDefinition;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
+import com.gadarts.industrial.shared.model.characters.enemies.WeaponsDefinitions;
 
 public enum NPCs implements CharacterDefinition {
 	;
