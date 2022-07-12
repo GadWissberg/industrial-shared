@@ -20,7 +20,7 @@ public enum Enemies implements CharacterDefinition {
 			Range.HIGH,
 			4,
 			WeaponsDefinitions.RAPID_LASER_CANNON,
-			4,
+			3,
 			false,
 			1.5F,
 			Assets.Sounds.ENEMY_AWAKE,
