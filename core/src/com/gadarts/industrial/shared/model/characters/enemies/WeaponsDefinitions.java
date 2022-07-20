@@ -20,7 +20,7 @@ public enum WeaponsDefinitions {
 			Assets.ParticleEffects.ENERGY_BALL_EXPLOSION,
 			Assets.Sounds.ATTACK_ENERGY_BALL,
 			Assets.Sounds.SMALL_EXP,
-			5, 7),
+			1),
 	HAMMER(
 			0.1F,
 			2,
@@ -87,5 +87,14 @@ public enum WeaponsDefinitions {
 				minNumberOfBullets, maxNumberOfBullets,
 				melee,
 				0);
+	}
+
+	WeaponsDefinitions(float frameDuration,
+					   int damage,
+					   Assets.ParticleEffects particleEffect,
+					   Assets.Sounds engageSound,
+					   Assets.Sounds impactSound,
+					   int numberOfBullets) {
+		this(frameDuration, damage, particleEffect, engageSound, impactSound, numberOfBullets, numberOfBullets, false, 0);
 	}
 }

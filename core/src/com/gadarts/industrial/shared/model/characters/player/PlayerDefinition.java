@@ -34,7 +34,7 @@ public class PlayerDefinition implements CharacterDefinition {
 
 	@Override
 	public int getPrimaryAttackHitFrameIndex() {
-		return 4;
+		return -1;
 	}
 
 	@Override

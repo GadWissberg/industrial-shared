@@ -3,8 +3,10 @@ package com.gadarts.industrial.shared.model.characters;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
+@RequiredArgsConstructor
 public enum SpriteType {
 	IDLE(0.3f, Animation.PlayMode.LOOP_PINGPONG),
 	RUN(0.06f),
@@ -20,35 +22,37 @@ public enum SpriteType {
 	private final boolean singleAnimation;
 	private final boolean addReverse;
 	private final boolean death;
+	private final String regionName;
 
 	SpriteType(final float animationDuration) {
 		this(animationDuration, Animation.PlayMode.LOOP);
 	}
 
 	SpriteType(final float animationDuration, final Animation.PlayMode playMode) {
-		this(animationDuration, playMode, false, false, false);
+		this(animationDuration, playMode, false, false, false, null);
 	}
 
 	SpriteType(final float animationDuration,
 			   final Animation.PlayMode playMode,
 			   final boolean singleAnimation,
 			   final boolean addReverse) {
-		this(animationDuration, playMode, singleAnimation, addReverse, false);
+		this(animationDuration, playMode, singleAnimation, addReverse, false, null);
 	}
 
-	SpriteType(final float animationDuration,
-			   final Animation.PlayMode playMode,
-			   final boolean singleAnimation,
-			   final boolean addReverse,
-			   final boolean death) {
-		this.animationDuration = animationDuration;
-		this.playMode = playMode;
-		this.singleAnimation = singleAnimation;
-		this.addReverse = addReverse;
-		this.death = death;
+
+	SpriteType(float animationDuration, Animation.PlayMode playMode, String regionName) {
+		this(animationDuration, playMode, false, false, false, regionName);
 	}
 
-	public static SpriteType randomLightDeath() {
+	SpriteType(float animationDuration,
+			   Animation.PlayMode playMode,
+			   boolean singleAnimation,
+			   boolean addReverse,
+			   boolean death) {
+		this(animationDuration, playMode, singleAnimation, addReverse, death, null);
+	}
+
+	public static SpriteType randomLightDeath( ) {
 		int random = MathUtils.random(3);
 		if (random == 0) {
 			return LIGHT_DEATH_1;

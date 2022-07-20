@@ -25,7 +25,7 @@ public enum PlayerWeaponsDefinitions implements ItemDefinition {
 			false,
 			WeaponsDefinitions.HAMMER),
 	COLT(2, 2,
-			2,
+			3,
 			Assets.UiTextures.WEAPON_COLT,
 			new int[]{
 					1, 1,
