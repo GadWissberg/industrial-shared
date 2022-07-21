@@ -337,7 +337,8 @@ public final class Assets {
 		INDUSTRY_DOOR_0(),
 		DOOR_FRAME_WARNING(),
 		CURSOR(0.1F),
-		LASER_BULLET;
+		LASER_BULLET,
+		GUN_BULLET;
 
 		private final String filePath;
 		private final float alpha;
