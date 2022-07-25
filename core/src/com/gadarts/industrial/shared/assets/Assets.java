@@ -338,7 +338,8 @@ public final class Assets {
 		DOOR_FRAME_WARNING(),
 		CURSOR(0.1F),
 		LASER_BULLET,
-		GUN_BULLET;
+		GUN_BULLET,
+		GUN_BULLET_JACKET;
 
 		private final String filePath;
 		private final float alpha;
