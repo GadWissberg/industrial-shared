@@ -26,7 +26,8 @@ public enum WeaponsDefinitions {
 			Assets.Sounds.SMALL_EXP,
 			1, Assets.Models.GUN_BULLET,
 			0.7F,
-			true),
+			true,
+			Assets.Models.GUN_BULLET_JACKET),
 	HAMMER(
 			0.1F,
 			2,
@@ -48,6 +49,7 @@ public enum WeaponsDefinitions {
 	private final float bulletSpeed;
 	private final boolean emitsLight;
 	private final boolean lightOnCreation;
+	private final Assets.Models bulletJacket;
 
 	WeaponsDefinitions(float frameDuration,
 					   int damage,
@@ -70,7 +72,8 @@ public enum WeaponsDefinitions {
 				modelDefinition,
 				bulletSpeed,
 				emitsLight,
-				false);
+				false,
+				null);
 	}
 
 	WeaponsDefinitions(float frameDuration,
@@ -91,7 +94,8 @@ public enum WeaponsDefinitions {
 				null,
 				0,
 				false,
-				false);
+				false,
+				null);
 	}
 
 	WeaponsDefinitions(float frameDuration,
@@ -102,7 +106,8 @@ public enum WeaponsDefinitions {
 					   int numberOfBullets,
 					   Assets.Models modelDefinition,
 					   float bulletSpeed,
-					   boolean lightOnCreation) {
+					   boolean lightOnCreation,
+					   Assets.Models bulletJacket) {
 		this(frameDuration,
 				damage,
 				particleEffect,
@@ -115,6 +120,7 @@ public enum WeaponsDefinitions {
 				modelDefinition,
 				bulletSpeed,
 				false,
-				lightOnCreation);
+				lightOnCreation,
+				bulletJacket);
 	}
 }
