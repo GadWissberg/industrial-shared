@@ -21,7 +21,7 @@ public enum WeaponsDefinitions {
 	COLT(
 			0.1F,
 			2,
-			Assets.ParticleEffects.ENERGY_BALL_EXPLOSION,
+			Assets.ParticleEffects.BULLET_RICOCHET,
 			Assets.Sounds.ATTACK_ENERGY_BALL,
 			Assets.Sounds.SMALL_EXP,
 			1, Assets.Models.GUN_BULLET,
@@ -38,7 +38,7 @@ public enum WeaponsDefinitions {
 
 	private final float frameDuration;
 	private final Integer damage;
-	private final Assets.ParticleEffects particleEffect;
+	private final Assets.ParticleEffects particleEffectOnDestroy;
 	private final Assets.Sounds engageSound;
 	private final Assets.Sounds impactSound;
 	private final int minNumberOfBullets;
@@ -53,7 +53,7 @@ public enum WeaponsDefinitions {
 
 	WeaponsDefinitions(float frameDuration,
 					   int damage,
-					   Assets.ParticleEffects particleEffect,
+					   Assets.ParticleEffects particleEffectOnDestroy,
 					   Assets.Sounds engageSound,
 					   Assets.Sounds impactSound,
 					   int minNumberOfBullets, int maxNumberOfBullets,
@@ -63,7 +63,7 @@ public enum WeaponsDefinitions {
 					   boolean emitsLight) {
 		this(frameDuration,
 				damage,
-				particleEffect,
+				particleEffectOnDestroy,
 				engageSound,
 				impactSound,
 				minNumberOfBullets, maxNumberOfBullets,
@@ -78,14 +78,14 @@ public enum WeaponsDefinitions {
 
 	WeaponsDefinitions(float frameDuration,
 					   int damage,
-					   Assets.ParticleEffects particleEffect,
+					   Assets.ParticleEffects particleEffectOnDestroy,
 					   Assets.Sounds engageSound,
 					   Assets.Sounds impactSound,
 					   int minNumberOfBullets, int maxNumberOfBullets,
 					   boolean melee) {
 		this(frameDuration,
 				damage,
-				particleEffect,
+				particleEffectOnDestroy,
 				engageSound,
 				impactSound,
 				minNumberOfBullets, maxNumberOfBullets,
@@ -100,7 +100,7 @@ public enum WeaponsDefinitions {
 
 	WeaponsDefinitions(float frameDuration,
 					   int damage,
-					   Assets.ParticleEffects particleEffect,
+					   Assets.ParticleEffects particleEffectOnDestroy,
 					   Assets.Sounds engageSound,
 					   Assets.Sounds impactSound,
 					   int numberOfBullets,
@@ -110,7 +110,7 @@ public enum WeaponsDefinitions {
 					   Assets.Models bulletJacket) {
 		this(frameDuration,
 				damage,
-				particleEffect,
+				particleEffectOnDestroy,
 				engageSound,
 				impactSound,
 				numberOfBullets,

@@ -21,6 +21,7 @@ import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
 import com.badlogic.gdx.graphics.g3d.particles.batches.ParticleBatch;
 import com.badlogic.gdx.utils.Array;
+import com.gadarts.industrial.shared.assets.Assets.AssetsTypes;
 import com.gadarts.industrial.shared.assets.definitions.AtlasDefinition;
 import com.gadarts.industrial.shared.assets.definitions.FontDefinition;
 import com.gadarts.industrial.shared.assets.definitions.ParticleDefinition;
@@ -53,7 +54,7 @@ public class GameAssetsManager extends AssetManager {
 	}
 
 	public void loadParticleEffects(ParticleBatch<?> pointSpriteParticleBatch) {
-		Arrays.stream(Assets.AssetsTypes.PARTICLES.getAssetDefinitions())
+		Arrays.stream(AssetsTypes.PARTICLES.getAssetDefinitions())
 				.forEach(def -> loadFileWithManualParameters(
 						def,
 						def.getFilePath(),
@@ -61,11 +62,16 @@ public class GameAssetsManager extends AssetManager {
 		finishLoading();
 	}
 
+	public void unloadParticleEffects( ) {
+		Arrays.stream(AssetsTypes.PARTICLES.getAssetDefinitions()).forEach(def -> unloadFileWithManualParameters(def));
+		finishLoading();
+	}
+
 	/**
 	 * Loads all defined assets and inflating animations.
 	 */
-	public void loadGameFiles(final Assets.AssetsTypes... assetsTypesToExclude) {
-		Arrays.stream(Assets.AssetsTypes.values())
+	public void loadGameFiles(final AssetsTypes... assetsTypesToExclude) {
+		Arrays.stream(AssetsTypes.values())
 				.filter(type -> Arrays.stream(assetsTypesToExclude).noneMatch(toExclude -> toExclude == type))
 				.filter(type -> !type.isManualLoad())
 				.forEach(type -> Arrays.stream(type.getAssetDefinitions()).forEach(def -> {
@@ -113,6 +119,13 @@ public class GameAssetsManager extends AssetManager {
 		Class<?> typeClass = def.getTypeClass();
 		String assetManagerKey = def.getAssetManagerKey();
 		load(assetManagerKey != null ? assetManagerKey : path, typeClass, parameters);
+	}
+
+	private void unloadFileWithManualParameters(AssetDefinition def) {
+		String filePath = assetsLocation + def.getFilePath();
+		String path = Gdx.files.getFileHandle(filePath, FileType.Internal).path();
+		String assetManagerKey = def.getAssetManagerKey();
+		unload(assetManagerKey != null ? assetManagerKey : path);
 	}
 
 	/**
