@@ -28,7 +28,8 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds.ATTACK_FIST,
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
-			Assets.Sounds.STEP);
+			Assets.Sounds.STEP,
+			Assets.ParticleEffects.SMALL_EXP);
 
 	private final String displayName;
 	private final Assets.Atlases atlasDefinition;
@@ -47,6 +48,7 @@ public enum Enemies implements CharacterDefinition {
 	private final Assets.Sounds painSound;
 	private final Assets.Sounds deathSound;
 	private final Assets.Sounds stepSound;
+	private final Assets.ParticleEffects explosionEffectOnDestroy;
 
 
 	@Override

@@ -10,7 +10,7 @@ public enum WeaponsDefinitions {
 	RAPID_LASER_CANNON(
 			0.1F,
 			2,
-			Assets.ParticleEffects.ENERGY_BALL_EXPLOSION,
+			Assets.ParticleEffects.SMALL_EXP,
 			Assets.Sounds.ATTACK_ENERGY_BALL,
 			Assets.Sounds.SMALL_EXP,
 			5, 7,
@@ -31,7 +31,7 @@ public enum WeaponsDefinitions {
 	HAMMER(
 			0.1F,
 			2,
-			Assets.ParticleEffects.ENERGY_BALL_EXPLOSION,
+			Assets.ParticleEffects.SMALL_EXP,
 			Assets.Sounds.ATTACK_ENERGY_BALL,
 			Assets.Sounds.SMALL_EXP,
 			1, 7, false);
