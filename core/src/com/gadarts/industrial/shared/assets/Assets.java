@@ -163,7 +163,7 @@ public final class Assets {
 
 	@Getter
 	public enum ParticleEffects implements ParticleDefinition {
-		BLOOD_SPLATTER, SMALL_EXP, ENERGY_BALL_TRAIL, BULLET_RICOCHET;
+		BLOOD_SPLATTER, SMALL_EXP, ENERGY_BALL_TRAIL, BULLET_RICOCHET, SMOKE, LASER_EXP;
 
 		private final String filePath;
 
@@ -339,7 +339,8 @@ public final class Assets {
 		CURSOR(0.1F),
 		LASER_BULLET,
 		GUN_BULLET,
-		GUN_BULLET_JACKET;
+		GUN_BULLET_JACKET,
+		METAL_PART;
 
 		private final String filePath;
 		private final float alpha;

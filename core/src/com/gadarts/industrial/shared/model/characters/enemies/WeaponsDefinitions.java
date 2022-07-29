@@ -10,7 +10,7 @@ public enum WeaponsDefinitions {
 	RAPID_LASER_CANNON(
 			0.1F,
 			2,
-			Assets.ParticleEffects.SMALL_EXP,
+			Assets.ParticleEffects.LASER_EXP,
 			Assets.Sounds.ATTACK_ENERGY_BALL,
 			Assets.Sounds.SMALL_EXP,
 			5, 7,
