@@ -12,18 +12,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum PlayerWeaponsDefinitions implements ItemDefinition {
-	HAMMER(1, 2,
-			4,
-			Assets.UiTextures.WEAPON_HAMMER,
-			new int[]{
-					1,
-					1,
-			},
-			true,
-			"Hammer",
-			false,
-			false,
-			WeaponsDefinitions.HAMMER),
 	COLT(2, 2,
 			3,
 			Assets.UiTextures.WEAPON_COLT,

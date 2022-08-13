@@ -7,6 +7,10 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum WeaponsDefinitions {
+	CUTTER(
+			0.1F,
+			2,
+			1),
 	RAPID_LASER_CANNON(
 			0.1F,
 			2,
@@ -27,14 +31,7 @@ public enum WeaponsDefinitions {
 			1, Assets.Models.GUN_BULLET,
 			0.7F,
 			true,
-			Assets.Models.GUN_BULLET_JACKET),
-	HAMMER(
-			0.1F,
-			2,
-			Assets.ParticleEffects.SMALL_EXP,
-			Assets.Sounds.ATTACK_ENERGY_BALL,
-			Assets.Sounds.SMALL_EXP,
-			1, 7, false);
+			Assets.Models.GUN_BULLET_JACKET);
 
 	private final float frameDuration;
 	private final Integer damage;
@@ -43,7 +40,6 @@ public enum WeaponsDefinitions {
 	private final Assets.Sounds impactSound;
 	private final int minNumberOfBullets;
 	private final int maxNumberOfBullets;
-	private final boolean melee;
 	private final int engineConsumption;
 	private final Assets.Models modelDefinition;
 	private final float bulletSpeed;
@@ -53,47 +49,38 @@ public enum WeaponsDefinitions {
 
 	WeaponsDefinitions(float frameDuration,
 					   int damage,
-					   Assets.ParticleEffects particleEffectOnDestroy,
-					   Assets.Sounds engageSound,
-					   Assets.Sounds impactSound,
-					   int minNumberOfBullets, int maxNumberOfBullets,
-					   int engineConsumption,
-					   Assets.Models modelDefinition,
-					   float bulletSpeed,
-					   boolean emitsLight) {
+					   int engineConsumption) {
+		this(
+				frameDuration,
+				damage,
+				null, null, null,
+				0, 0,
+				engineConsumption,
+				null, 0,
+				false);
+	}
+
+	WeaponsDefinitions(
+			float frameDuration,
+			int damage,
+			Assets.ParticleEffects particleEffectOnDestroy,
+			Assets.Sounds engageSound,
+			Assets.Sounds impactSound,
+			int minNumberOfBullets, int maxNumberOfBullets,
+			int engineConsumption,
+			Assets.Models modelDefinition,
+			float bulletSpeed,
+			boolean emitsLight) {
 		this(frameDuration,
 				damage,
 				particleEffectOnDestroy,
 				engageSound,
 				impactSound,
 				minNumberOfBullets, maxNumberOfBullets,
-				false,
 				engineConsumption,
 				modelDefinition,
 				bulletSpeed,
 				emitsLight,
-				false,
-				null);
-	}
-
-	WeaponsDefinitions(float frameDuration,
-					   int damage,
-					   Assets.ParticleEffects particleEffectOnDestroy,
-					   Assets.Sounds engageSound,
-					   Assets.Sounds impactSound,
-					   int minNumberOfBullets, int maxNumberOfBullets,
-					   boolean melee) {
-		this(frameDuration,
-				damage,
-				particleEffectOnDestroy,
-				engageSound,
-				impactSound,
-				minNumberOfBullets, maxNumberOfBullets,
-				melee,
-				0,
-				null,
-				0,
-				false,
 				false,
 				null);
 	}
@@ -115,7 +102,6 @@ public enum WeaponsDefinitions {
 				impactSound,
 				numberOfBullets,
 				numberOfBullets,
-				false,
 				0,
 				modelDefinition,
 				bulletSpeed,
