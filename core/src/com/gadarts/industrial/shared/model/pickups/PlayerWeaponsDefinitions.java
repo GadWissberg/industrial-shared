@@ -21,7 +21,7 @@ public enum PlayerWeaponsDefinitions implements ItemDefinition {
 			},
 			"Colt M1911",
 			Assets.Models.COLT,
-			WeaponsDefinitions.COLT);
+			WeaponsDefinitions.GLOCK);
 
 	@Getter(AccessLevel.NONE)
 	private final int symbolWidth;

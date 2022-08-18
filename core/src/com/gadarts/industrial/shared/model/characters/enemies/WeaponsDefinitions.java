@@ -10,7 +10,7 @@ public enum WeaponsDefinitions {
 	CUTTER(
 			0.1F,
 			2,
-			1),
+			1, true),
 	RAPID_LASER_CANNON(
 			0.1F,
 			2,
@@ -22,9 +22,9 @@ public enum WeaponsDefinitions {
 			Assets.Models.LASER_BULLET,
 			0.2F,
 			true),
-	COLT(
+	GLOCK(
 			0.1F,
-			2,
+			1,
 			Assets.ParticleEffects.BULLET_RICOCHET,
 			Assets.Sounds.ATTACK_ENERGY_BALL,
 			Assets.Sounds.SMALL_EXP,
@@ -46,10 +46,12 @@ public enum WeaponsDefinitions {
 	private final boolean emitsLight;
 	private final boolean lightOnCreation;
 	private final Assets.Models bulletJacket;
+	private final boolean melee;
 
 	WeaponsDefinitions(float frameDuration,
 					   int damage,
-					   int engineConsumption) {
+					   int engineConsumption,
+					   boolean melee) {
 		this(
 				frameDuration,
 				damage,
@@ -57,7 +59,7 @@ public enum WeaponsDefinitions {
 				0, 0,
 				engineConsumption,
 				null, 0,
-				false);
+				false, false, null, melee);
 	}
 
 	WeaponsDefinitions(
@@ -82,7 +84,8 @@ public enum WeaponsDefinitions {
 				bulletSpeed,
 				emitsLight,
 				false,
-				null);
+				null,
+				false);
 	}
 
 	WeaponsDefinitions(float frameDuration,
@@ -107,6 +110,7 @@ public enum WeaponsDefinitions {
 				bulletSpeed,
 				false,
 				lightOnCreation,
-				bulletJacket);
+				bulletJacket,
+				false);
 	}
 }
