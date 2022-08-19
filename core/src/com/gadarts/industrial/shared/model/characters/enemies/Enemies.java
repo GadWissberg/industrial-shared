@@ -4,7 +4,6 @@ import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.model.characters.CharacterDefinition;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
-import com.gadarts.industrial.shared.model.characters.attributes.Agility;
 import com.gadarts.industrial.shared.model.characters.attributes.Range;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 public enum Enemies implements CharacterDefinition {
 	MAINT_BOT("Maintenance Bot",
 			Assets.Atlases.MAINT_BOT,
-			Agility.LOW,
+			0.4F,
 			2,
 			Accuracy.NONE,
 			Range.NONE,
@@ -32,7 +31,7 @@ public enum Enemies implements CharacterDefinition {
 			Assets.ParticleEffects.SMALL_EXP),
 	GUARD_BOT("Guard Bot",
 			Assets.Atlases.GUARD_BOT,
-			Agility.MED,
+			1F,
 			4,
 			Accuracy.MED,
 			Range.HIGH,
@@ -51,7 +50,7 @@ public enum Enemies implements CharacterDefinition {
 
 	private final String displayName;
 	private final Assets.Atlases atlasDefinition;
-	private final Agility agility;
+	private final float agility;
 	private final Integer health;
 	private final Accuracy accuracy;
 	private final Range range;
