@@ -10,7 +10,9 @@ public enum WeaponsDefinitions {
 	CUTTER(
 			0.1F,
 			2,
-			1, true),
+			1,
+			true,
+			0.4F),
 	RAPID_LASER_CANNON(
 			0.1F,
 			2,
@@ -47,11 +49,13 @@ public enum WeaponsDefinitions {
 	private final boolean lightOnCreation;
 	private final Assets.Models bulletJacket;
 	private final boolean melee;
+	private final float duration;
 
 	WeaponsDefinitions(float frameDuration,
 					   int damage,
 					   int engineConsumption,
-					   boolean melee) {
+					   boolean melee,
+					   float duration) {
 		this(
 				frameDuration,
 				damage,
@@ -59,7 +63,9 @@ public enum WeaponsDefinitions {
 				0, 0,
 				engineConsumption,
 				null, 0,
-				false, false, null, melee);
+				false, false, null,
+				melee,
+				duration);
 	}
 
 	WeaponsDefinitions(
@@ -85,7 +91,8 @@ public enum WeaponsDefinitions {
 				emitsLight,
 				false,
 				null,
-				false);
+				false,
+				1F);
 	}
 
 	WeaponsDefinitions(float frameDuration,
@@ -111,6 +118,7 @@ public enum WeaponsDefinitions {
 				false,
 				lightOnCreation,
 				bulletJacket,
-				false);
+				false,
+				1F);
 	}
 }

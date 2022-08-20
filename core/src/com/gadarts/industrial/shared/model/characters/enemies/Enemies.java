@@ -4,7 +4,7 @@ import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.model.characters.CharacterDefinition;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
-import com.gadarts.industrial.shared.model.characters.attributes.Range;
+import com.gadarts.industrial.shared.model.characters.attributes.Sight;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +16,7 @@ public enum Enemies implements CharacterDefinition {
 			0.4F,
 			2,
 			Accuracy.NONE,
-			Range.NONE,
+			Sight.LOW,
 			2,
 			WeaponsDefinitions.CUTTER,
 			4,
@@ -34,7 +34,7 @@ public enum Enemies implements CharacterDefinition {
 			1F,
 			4,
 			Accuracy.MED,
-			Range.HIGH,
+			Sight.HIGH,
 			4,
 			WeaponsDefinitions.RAPID_LASER_CANNON,
 			3,
@@ -53,7 +53,7 @@ public enum Enemies implements CharacterDefinition {
 	private final float agility;
 	private final Integer health;
 	private final Accuracy accuracy;
-	private final Range range;
+	private final Sight sight;
 	private final Integer engine;
 	private final WeaponsDefinitions primaryAttack;
 	private final int primaryAttackHitFrameIndex;
