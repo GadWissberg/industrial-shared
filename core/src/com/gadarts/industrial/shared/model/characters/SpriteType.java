@@ -17,7 +17,7 @@ public enum SpriteType {
 
 	private final float frameDuration;
 	private final Animation.PlayMode playMode;
-	private final boolean singleAnimation;
+	private final boolean singleDirection;
 	private final boolean addReverse;
 	private final boolean death;
 	private final String regionName;
@@ -37,18 +37,18 @@ public enum SpriteType {
 
 	SpriteType(final float frameDuration,
 			   final Animation.PlayMode playMode,
-			   final boolean singleAnimation,
+			   final boolean singleDirection,
 			   final boolean addReverse) {
-		this(frameDuration, playMode, singleAnimation, addReverse, false, null, 1);
+		this(frameDuration, playMode, singleDirection, addReverse, false, null, 1);
 	}
 
 	SpriteType(float frameDuration,
 			   Animation.PlayMode playMode,
-			   boolean singleAnimation,
+			   boolean singleDirection,
 			   boolean addReverse,
 			   boolean death,
 			   int variations) {
-		this(frameDuration, playMode, singleAnimation, addReverse, death, null, variations);
+		this(frameDuration, playMode, singleDirection, addReverse, death, null, variations);
 	}
 
 	public static int randomLightDeath( ) {
