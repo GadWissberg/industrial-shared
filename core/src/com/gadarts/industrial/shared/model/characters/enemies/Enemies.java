@@ -16,7 +16,7 @@ public enum Enemies implements CharacterDefinition {
 			0.4F,
 			2,
 			Accuracy.NONE,
-			Sight.LOW,
+			Sight.HIGH,
 			2,
 			WeaponsDefinitions.CUTTER,
 			4,
@@ -28,7 +28,8 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
 			Assets.Sounds.STEP,
-			Assets.ParticleEffects.SMALL_EXP),
+			Assets.ParticleEffects.SMALL_EXP,
+			0.45F),
 	GUARD_BOT("Guard Bot",
 			Assets.Atlases.GUARD_BOT,
 			1F,
@@ -46,7 +47,8 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
 			Assets.Sounds.STEP,
-			Assets.ParticleEffects.SMALL_EXP);
+			Assets.ParticleEffects.SMALL_EXP,
+			0.2F);
 
 	private final String displayName;
 	private final Assets.Atlases atlasDefinition;
@@ -66,6 +68,7 @@ public enum Enemies implements CharacterDefinition {
 	private final Assets.Sounds deathSound;
 	private final Assets.Sounds stepSound;
 	private final Assets.ParticleEffects explosionEffectOnDestroy;
+	private final float shadowRadius;
 
 
 	@Override
@@ -92,5 +95,10 @@ public enum Enemies implements CharacterDefinition {
 	@Override
 	public Assets.Atlases getAtlasDefinition( ) {
 		return atlasDefinition;
+	}
+
+	@Override
+	public float getShadowRadius( ) {
+		return shadowRadius;
 	}
 }
