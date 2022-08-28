@@ -20,7 +20,6 @@ public enum Enemies implements CharacterDefinition {
 			2,
 			WeaponsDefinitions.CUTTER,
 			4,
-			false,
 			1,
 			Assets.Sounds.ENEMY_AWAKE,
 			Assets.Sounds.ENEMY_ROAM,
@@ -39,7 +38,6 @@ public enum Enemies implements CharacterDefinition {
 			4,
 			WeaponsDefinitions.RAPID_LASER_CANNON,
 			3,
-			false,
 			1.5F,
 			Assets.Sounds.ENEMY_AWAKE,
 			Assets.Sounds.ENEMY_ROAM,
@@ -48,7 +46,24 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds.ENEMY_DEATH,
 			Assets.Sounds.STEP,
 			Assets.ParticleEffects.SMALL_EXP,
-			0.2F);
+			0.2F),
+	TERRORIST_GLOCK("Terrorist - Glock",
+			Assets.Atlases.TERRORIST_GLOCK,
+			0.5F,
+			3,
+			Accuracy.MED,
+			Sight.HIGH,
+			WeaponsDefinitions.GLOCK,
+			3,
+			1.5F,
+			Assets.Sounds.ENEMY_AWAKE,
+			Assets.Sounds.ENEMY_ROAM,
+			Assets.Sounds.ATTACK_FIST,
+			Assets.Sounds.ENEMY_PAIN,
+			Assets.Sounds.ENEMY_DEATH,
+			Assets.Sounds.STEP,
+			0.2F,
+			true);
 
 	private final String displayName;
 	private final Assets.Atlases atlasDefinition;
@@ -69,7 +84,87 @@ public enum Enemies implements CharacterDefinition {
 	private final Assets.Sounds stepSound;
 	private final Assets.ParticleEffects explosionEffectOnDestroy;
 	private final float shadowRadius;
+	private final boolean human;
 
+	Enemies(String displayName,
+			Assets.Atlases atlasDefinition,
+			float agility,
+			Integer health,
+			Accuracy accuracy,
+			Sight sight,
+			int engine,
+			WeaponsDefinitions primaryAttack,
+			int primaryAttackHitFrameIndex,
+			float height,
+			Assets.Sounds awakeSound,
+			Assets.Sounds roamSound,
+			Assets.Sounds attackSound,
+			Assets.Sounds painSound,
+			Assets.Sounds deathSound,
+			Assets.Sounds stepSound,
+			Assets.ParticleEffects explosionEffectOnDestroy,
+			float shadowRadius) {
+		this(
+				displayName,
+				atlasDefinition,
+				agility,
+				health,
+				accuracy,
+				sight,
+				engine,
+				primaryAttack,
+				primaryAttackHitFrameIndex,
+				false,
+				height,
+				awakeSound,
+				roamSound,
+				attackSound,
+				painSound,
+				deathSound,
+				stepSound, explosionEffectOnDestroy,
+				shadowRadius,
+				false);
+	}
+
+	Enemies(String displayName,
+			Assets.Atlases atlasDefinition,
+			float agility,
+			Integer health,
+			Accuracy accuracy,
+			Sight sight,
+			WeaponsDefinitions primaryAttack,
+			int primaryAttackHitFrameIndex,
+			float height,
+			Assets.Sounds awakeSound,
+			Assets.Sounds roamSound,
+			Assets.Sounds attackSound,
+			Assets.Sounds painSound,
+			Assets.Sounds deathSound,
+			Assets.Sounds stepSound,
+			float shadowRadius,
+			boolean human) {
+		this(
+				displayName,
+				atlasDefinition,
+				agility,
+				health,
+				accuracy,
+				sight,
+				0,
+				primaryAttack,
+				primaryAttackHitFrameIndex,
+				false,
+				height,
+				awakeSound,
+				roamSound,
+				attackSound,
+				painSound,
+				deathSound,
+				stepSound,
+				null,
+				shadowRadius,
+				human);
+	}
 
 	@Override
 	public String toString( ) {

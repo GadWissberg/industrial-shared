@@ -57,8 +57,9 @@ public final class Assets {
 	public enum Atlases implements AtlasDefinition {
 		PLAYER_GENERIC,
 		PLAYER_COLT(PlayerWeaponsDefinitions.COLT),
+		MAINT_BOT,
 		GUARD_BOT,
-		MAINT_BOT;
+		TERRORIST_GLOCK;
 
 		private final String filePath;
 		private final PlayerWeaponsDefinitions relatedWeapon;

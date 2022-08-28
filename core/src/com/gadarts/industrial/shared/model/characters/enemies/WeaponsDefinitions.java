@@ -31,7 +31,7 @@ public enum WeaponsDefinitions {
 			Assets.Sounds.ATTACK_ENERGY_BALL,
 			Assets.Sounds.SMALL_EXP,
 			1, Assets.Models.GUN_BULLET,
-			0.7F,
+			0.6F,
 			true,
 			Assets.Models.GUN_BULLET_JACKET);
 
