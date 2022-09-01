@@ -22,5 +22,9 @@ public interface EnvironmentObjectDefinition extends ModelElementDefinition {
 		return true;
 	}
 
+	default float getHeight( ) {
+		return 0;
+	}
+
 	MapNodesTypes getNodeType( );
 }

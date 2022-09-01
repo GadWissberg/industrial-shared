@@ -56,6 +56,7 @@ public final class Assets {
 	@Getter
 	public enum Atlases implements AtlasDefinition {
 		PLAYER_GENERIC,
+		PLAYER_MELEE,
 		PLAYER_COLT(PlayerWeaponsDefinitions.COLT),
 		MAINT_BOT,
 		GUARD_BOT,

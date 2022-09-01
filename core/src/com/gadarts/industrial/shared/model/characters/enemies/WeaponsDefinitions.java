@@ -7,6 +7,11 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum WeaponsDefinitions {
+	PUNCH(
+			0.1F,
+			1,
+			true,
+			0.4F),
 	CUTTER(
 			0.1F,
 			2,
@@ -50,6 +55,20 @@ public enum WeaponsDefinitions {
 	private final Assets.Models bulletJacket;
 	private final boolean melee;
 	private final float duration;
+
+	WeaponsDefinitions(float frameDuration,
+					   int damage,
+					   boolean melee,
+					   float duration) {
+		this(
+				frameDuration,
+				damage,
+				null, null, null,
+				0, 0, 0,
+				null, 0, false, false, null,
+				melee,
+				duration);
+	}
 
 	WeaponsDefinitions(float frameDuration,
 					   int damage,
