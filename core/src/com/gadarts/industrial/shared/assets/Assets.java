@@ -57,34 +57,15 @@ public final class Assets {
 	public enum Atlases implements AtlasDefinition {
 		PLAYER_GENERIC,
 		PLAYER_MELEE,
-		PLAYER_COLT(PlayerWeaponsDefinitions.COLT),
+		PLAYER_COLT,
 		MAINT_BOT,
 		GUARD_BOT,
 		TERRORIST_GLOCK;
 
 		private final String filePath;
-		private final PlayerWeaponsDefinitions relatedWeapon;
 
 		Atlases( ) {
-			this(null);
-		}
-
-		Atlases(final PlayerWeaponsDefinitions relatedWeapon) {
 			this.filePath = AtlasDefinition.FOLDER + PATH_SEPARATOR + name().toLowerCase() + "." + AtlasDefinition.FORMAT;
-			this.relatedWeapon = relatedWeapon;
-		}
-
-		public static Atlases findByRelatedWeapon(final PlayerWeaponsDefinitions definition) {
-			Atlases[] atlases = values();
-			Atlases result = null;
-			for (Atlases atlas : atlases) {
-				if (atlas.getRelatedWeapon() == definition) {
-					result = atlas;
-					break;
-				}
-
-			}
-			return result;
 		}
 
 		@Override

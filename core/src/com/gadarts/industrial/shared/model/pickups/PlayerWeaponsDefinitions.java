@@ -12,7 +12,12 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum PlayerWeaponsDefinitions implements ItemDefinition {
-	COLT(2, 2,
+	PUNCH(3,
+			true,
+			false,
+			WeaponsDefinitions.PUNCH,
+			Assets.Atlases.PLAYER_MELEE),
+	GLOCK(2, 2,
 			3,
 			Assets.UiTextures.WEAPON_COLT,
 			new int[]{
@@ -21,7 +26,8 @@ public enum PlayerWeaponsDefinitions implements ItemDefinition {
 			},
 			"Colt M1911",
 			Assets.Models.COLT,
-			WeaponsDefinitions.GLOCK);
+			WeaponsDefinitions.GLOCK,
+			Assets.Atlases.PLAYER_COLT);
 
 	@Getter(AccessLevel.NONE)
 	private final int symbolWidth;
@@ -35,30 +41,23 @@ public enum PlayerWeaponsDefinitions implements ItemDefinition {
 	private final boolean melee;
 	private final String displayName;
 	private final Assets.Models modelDef;
-	private final boolean noisy;
 	private final boolean canBeSeenOnTheMap;
 	private final WeaponsDefinitions weaponsDefinition;
+	private final Assets.Atlases relatedAtlas;
 
-	PlayerWeaponsDefinitions(int symbolWidth,
-							 int symbolHeight,
-							 int hitFrameIndex,
-							 Assets.UiTextures symbol,
-							 int[] mask,
+	PlayerWeaponsDefinitions(int hitFrameIndex,
 							 boolean melee,
-							 String displayName,
-							 boolean noisy,
 							 boolean canBeSeenOnTheMap,
-							 WeaponsDefinitions weaponDefinition) {
-		this(symbolWidth, symbolHeight,
+							 WeaponsDefinitions weaponsDefinition,
+							 Assets.Atlases relatedAtlas) {
+		this(0, 0,
 				hitFrameIndex,
-				symbol,
-				mask,
+				null, null,
 				melee,
-				displayName,
-				null,
-				noisy,
+				null, null,
 				canBeSeenOnTheMap,
-				weaponDefinition);
+				weaponsDefinition,
+				relatedAtlas);
 	}
 
 	PlayerWeaponsDefinitions(int symbolWidth, int symbolHeight,
@@ -67,7 +66,8 @@ public enum PlayerWeaponsDefinitions implements ItemDefinition {
 							 int[] mask,
 							 String displayName,
 							 Assets.Models modelDef,
-							 WeaponsDefinitions weaponsDefinition) {
+							 WeaponsDefinitions weaponsDefinition,
+							 Assets.Atlases relatedAtlas) {
 		this(symbolWidth, symbolHeight,
 				hitFrameIndex,
 				symbol,
@@ -76,8 +76,8 @@ public enum PlayerWeaponsDefinitions implements ItemDefinition {
 				displayName,
 				modelDef,
 				true,
-				true,
-				weaponsDefinition);
+				weaponsDefinition,
+				relatedAtlas);
 	}
 
 	private int[] flipMatrixVertically(final int[] mask) {
