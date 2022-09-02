@@ -25,7 +25,7 @@ public enum PlayerWeaponsDefinitions implements ItemDefinition {
 					1, 0
 			},
 			"Colt M1911",
-			Assets.Models.COLT,
+			Assets.Models.GLOCK,
 			WeaponsDefinitions.GLOCK,
 			Assets.Atlases.PLAYER_COLT);
 

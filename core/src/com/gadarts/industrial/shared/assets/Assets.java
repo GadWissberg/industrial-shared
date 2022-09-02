@@ -305,7 +305,7 @@ public final class Assets {
 	 */
 	@Getter
 	public enum Models implements ModelDefinition {
-		COLT,
+		GLOCK,
 		WALL_SUPPORTER_1("wall_supporter", "wall_supporter_1_texture"),
 		WALL_SUPPORTER_2("wall_supporter", "wall_supporter_2_texture"),
 		WALL_SUPPORTER_3("wall_supporter", "wall_supporter_3_texture"),
