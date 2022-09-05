@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 public enum SpriteType {
 	IDLE(0.15f, Animation.PlayMode.NORMAL, 2),
 	RUN(0.06f),
-	ATTACK_PRIMARY(0.06f, Animation.PlayMode.NORMAL),
+	ATTACK_PRIMARY(0.06f, Animation.PlayMode.NORMAL, false),
 	PAIN(0.1F, Animation.PlayMode.NORMAL, false, true),
 	PICKUP(0.1f, Animation.PlayMode.NORMAL, false, true),
 	LIGHT_DEATH(0.06f, Animation.PlayMode.NORMAL, true, false, true, 3);
@@ -22,24 +22,48 @@ public enum SpriteType {
 	private final boolean death;
 	private final String regionName;
 	private final int variations;
+	private final boolean commandDoneOnReverseEnd;
 
 	SpriteType(final float frameDuration) {
 		this(frameDuration, Animation.PlayMode.LOOP, 1);
 	}
 
-	SpriteType(float frameDuration, Animation.PlayMode playMode) {
-		this(frameDuration, playMode, false, false, false, null, 1);
+	SpriteType(float frameDuration, Animation.PlayMode playMode, boolean commandDoneOnReverseEnd) {
+		this(
+				frameDuration,
+				playMode,
+				false,
+				false,
+				false,
+				null,
+				1,
+				commandDoneOnReverseEnd);
 	}
 
 	SpriteType(final float frameDuration, final Animation.PlayMode playMode, int variations) {
-		this(frameDuration, playMode, false, false, false, null, variations);
+		this(
+				frameDuration,
+				playMode,
+				false,
+				false,
+				false,
+				null,
+				variations,
+				true);
 	}
 
 	SpriteType(final float frameDuration,
 			   final Animation.PlayMode playMode,
 			   final boolean singleDirection,
 			   final boolean addReverse) {
-		this(frameDuration, playMode, singleDirection, addReverse, false, null, 1);
+		this(frameDuration,
+				playMode,
+				singleDirection,
+				addReverse,
+				false,
+				null,
+				1,
+				true);
 	}
 
 	SpriteType(float frameDuration,
@@ -48,7 +72,15 @@ public enum SpriteType {
 			   boolean addReverse,
 			   boolean death,
 			   int variations) {
-		this(frameDuration, playMode, singleDirection, addReverse, death, null, variations);
+		this(
+				frameDuration,
+				playMode,
+				singleDirection,
+				addReverse,
+				death,
+				null,
+				variations,
+				true);
 	}
 
 	public static int randomLightDeath( ) {

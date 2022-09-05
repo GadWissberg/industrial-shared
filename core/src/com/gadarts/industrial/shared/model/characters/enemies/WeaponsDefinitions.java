@@ -11,7 +11,7 @@ public enum WeaponsDefinitions {
 			0.1F,
 			1,
 			true,
-			0.4F),
+			1.0F),
 	CUTTER(
 			0.1F,
 			2,
