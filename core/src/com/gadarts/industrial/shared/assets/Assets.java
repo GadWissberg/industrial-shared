@@ -315,6 +315,8 @@ public final class Assets {
 		CRATE_BIG_0("crate_big", "crate_big_texture_0"),
 		CRATE_BIG_1("crate_big", "crate_big_texture_1"),
 		CRATE_BIG_2("crate_big", "crate_big_texture_2"),
+		OFFICE_DESK,
+		OFFICE_DESK_DRAWERS,
 		CRATE_SMALL(),
 		INDUSTRY_DOOR_0(),
 		DOOR_FRAME_WARNING(),

@@ -26,7 +26,9 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	CRATE_BIG_0(Models.CRATE_BIG_0, 1, 1, "Big Crate #1", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_FORBIDDEN, 0.9F),
 	CRATE_BIG_1(Models.CRATE_BIG_1, 1, 1, "Big Crate #2", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_FORBIDDEN, 0.9F),
 	CRATE_BIG_2(Models.CRATE_BIG_2, 1, 1, "Big Crate #3", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_FORBIDDEN, 0.9F),
-	CRATE_SMALL(Models.CRATE_SMALL, 1, 1, "Small Crate", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED);
+	CRATE_SMALL(Models.CRATE_SMALL, 1, 1, "Small Crate", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
+	OFFICE_DESK(Models.OFFICE_DESK, 1, 1, "Office Desk", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
+	OFFICE_DESK_DRAWERS(Models.OFFICE_DESK_DRAWERS, 1, 1, "Office Desk with Drawers", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED);
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;
