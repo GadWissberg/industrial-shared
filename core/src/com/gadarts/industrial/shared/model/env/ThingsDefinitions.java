@@ -30,7 +30,9 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	OFFICE_DESK(Models.OFFICE_DESK, 1, 1, "Office Desk #1", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
 	OFFICE_DESK_DRAWERS(Models.OFFICE_DESK_DRAWERS, 1, 1, "Office Desk #2", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
 	OFFICE_DESK_LIGHT(Models.OFFICE_DESK_LIGHT, 1, 1, "Office Desk #3", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
-	RUINS(Models.RUINS_0, 1, 1, "Ruins #1", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_FORBIDDEN);
+	RUINS_0(Models.RUINS_0, 1, 1, "Ruins #1", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_FORBIDDEN),
+	RUINS_1(Models.RUINS_1, 1, 1, "Ruins #2", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_FORBIDDEN),
+	MONITOR(new Vector3(-0.2F, 0F, 0F), Models.MONITOR, 1, 1, "PC Monitor", MapNodesTypes.PASSABLE_NODE);
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;
