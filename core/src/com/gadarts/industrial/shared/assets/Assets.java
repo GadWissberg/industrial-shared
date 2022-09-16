@@ -321,6 +321,8 @@ public final class Assets {
 		RUINS_0,
 		RUINS_1,
 		MONITOR,
+		KEYBOARD,
+		PC,
 		CRATE_SMALL(),
 		INDUSTRY_DOOR_0(),
 		DOOR_FRAME_WARNING(),
