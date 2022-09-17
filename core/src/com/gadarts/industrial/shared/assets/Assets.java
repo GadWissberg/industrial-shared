@@ -433,6 +433,11 @@ public final class Assets {
 		INDUSTRIAL_WALL_10,
 		BROKEN_WALL_0,
 		BOARD_WALL_0,
+		BOARD_WALL_1,
+		BOARD_WALL_2,
+		BOARD_WALL_3,
+		BOARD_WALL_4,
+		BOARD_WALL_5,
 		BLANK,
 		;
 
