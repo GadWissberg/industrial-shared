@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.gadarts.industrial.shared.assets.definitions.*;
-import com.gadarts.industrial.shared.model.pickups.PlayerWeaponsDefinitions;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -323,9 +322,11 @@ public final class Assets {
 		MONITOR,
 		KEYBOARD,
 		PC,
-		CRATE_SMALL(),
-		INDUSTRY_DOOR_0(),
-		DOOR_FRAME_WARNING(),
+		CRATE_SMALL,
+		AUTO_DOOR_0,
+		INDUSTRIAL_DOOR,
+		DOOR_FRAME_WARNING,
+		INDUSTRIAL_DOOR_FRAME,
 		CURSOR(0.1F),
 		LASER_BULLET,
 		GUN_BULLET,
