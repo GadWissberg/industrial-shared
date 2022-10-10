@@ -1,5 +1,6 @@
 package com.gadarts.industrial.shared.model.env;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
 import com.gadarts.industrial.shared.assets.Assets.Models;
@@ -7,7 +8,6 @@ import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
 import com.gadarts.industrial.shared.model.RelativeBillboard;
 import com.gadarts.industrial.shared.model.characters.Direction;
 import com.gadarts.industrial.shared.model.map.MapNodesTypes;
-import com.gadarts.industrial.shared.assets.Assets;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +34,8 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	RUINS_1(Models.RUINS_1, 1, 1, "Ruins #2", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_FORBIDDEN),
 	MONITOR(new Vector3(-0.2F, 0F, 0F), Models.MONITOR, 1, 1, "PC Monitor", MapNodesTypes.PASSABLE_NODE),
 	KEYBOARD(new Vector3(0.2F, 0F, 0F), Models.KEYBOARD, 1, 1, "Keyboard", MapNodesTypes.PASSABLE_NODE),
-	PC(Models.PC, 1, 1, "PC", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED);
+	PC(Models.PC, 1, 1, "PC", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
+	EXIT_SIGN(new Vector3(-0.5F, 2F, 0F), Models.EXIT_SIGN, 1, 1, "Exit", MapNodesTypes.PASSABLE_NODE, new LightEmission(new Vector3(-0.4F, 2F, 0F), 1F, 1F, false, Color.RED));
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;
@@ -104,18 +105,23 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 				0F);
 	}
 
-	public Vector3 getOffset(final Vector3 output) {
-		return output.set(offset);
-	}
-
-	@Override
-	public String getDisplayName( ) {
-		return displayName;
-	}
-
-	@Override
-	public Models getModelDefinition( ) {
-		return model;
+	ThingsDefinitions(Vector3 offset,
+					  Models model,
+					  int width, int depth,
+					  String displayName,
+					  MapNodesTypes nodeType,
+					  LightEmission lightEmission) {
+		this(
+				offset,
+				model,
+				width,
+				depth,
+				displayName,
+				true,
+				nodeType,
+				lightEmission,
+				null,
+				0F);
 	}
 
 	/**
@@ -135,6 +141,20 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 		if (definition.getDepth() % 2 == 0) {
 			modelInstance.transform.translate(0, 0, 0.5f * (handleEvenSize ? -1 : 1));
 		}
+	}
+
+	public Vector3 getOffset(final Vector3 output) {
+		return output.set(offset);
+	}
+
+	@Override
+	public String getDisplayName( ) {
+		return displayName;
+	}
+
+	@Override
+	public Models getModelDefinition( ) {
+		return model;
 	}
 
 	@Override

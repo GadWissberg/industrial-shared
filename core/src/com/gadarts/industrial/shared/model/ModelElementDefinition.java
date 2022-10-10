@@ -6,9 +6,13 @@ import com.gadarts.industrial.shared.assets.Assets;
 public interface ModelElementDefinition extends ElementDefinition {
 	Assets.Models getModelDefinition( );
 
-	int getWidth( );
+	default int getWidth( ) {
+		return 1;
+	}
 
-	int getDepth( );
+	default int getDepth( ) {
+		return 1;
+	}
 
 	default Vector3 getOffset(Vector3 output) {
 		return output.setZero();

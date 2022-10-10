@@ -111,8 +111,8 @@ public final class Assets {
 	 */
 	@Getter
 	public enum Shaders implements ShaderDefinition {
-		VERTEX,
-		FRAGMENT,
+		MODEL_VERTEX,
+		MODEL_FRAGMENT,
 		DECAL_VERTEX,
 		DECAL_FRAGMENT,
 		DECAL_OUTLINE_FRAGMENT,
@@ -332,8 +332,8 @@ public final class Assets {
 		LASER_BULLET,
 		GUN_BULLET,
 		GUN_BULLET_JACKET,
-		METAL_PART;
-
+		METAL_PART,
+		EXIT_SIGN;
 		private final String filePath;
 		private final float alpha;
 		private final String textureFileName;
@@ -476,6 +476,7 @@ public final class Assets {
 	public enum UiTextures implements TextureDefinition {
 		PATH_ARROW,
 		BULB,
+		TRIGGER,
 		BUTTON_STORAGE(null, "buttons"),
 		BUTTON_STORAGE_DOWN(null, "buttons"),
 		BUTTON_STORAGE_HOVER(null, "buttons"),
