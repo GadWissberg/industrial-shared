@@ -25,8 +25,8 @@ public enum Direction {
 		directionVector = new Vector2(x, z);
 		float angleDeg = directionVector.angleDeg();
 		Vector2 auxVector = new Vector2();
-		bottomBound = auxVector.set(1, 0).setAngleDeg(angleDeg - DIR_ANGLE_SIZE / 2).angleDeg();
-		upperBound = angleDeg + DIR_ANGLE_SIZE / 2;
+		bottomBound = auxVector.set(1, 0).setAngleDeg(angleDeg - DIR_ANGLE_SIZE / 2F).angleDeg();
+		upperBound = angleDeg + DIR_ANGLE_SIZE / 2F;
 		this.mask = mask;
 	}
 
