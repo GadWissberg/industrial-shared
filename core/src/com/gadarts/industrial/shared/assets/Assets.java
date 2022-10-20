@@ -499,7 +499,8 @@ public final class Assets {
 		SKILL_FLOWER_8(null, "skill_flower"),
 		ICON_IDLE(null, "skill_flower"),
 		ICON_LOOKING_FOR(null, "skill_flower"),
-		ICON_ATTACK(null, "skill_flower");
+		ICON_ATTACK(null, "skill_flower"),
+		LOGO(null);
 
 		public static final String SUB_FOLDER_NAME = "ui";
 		private final String specialFileName;
