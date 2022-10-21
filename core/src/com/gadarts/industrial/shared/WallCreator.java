@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.gadarts.industrial.shared.assets.GameAssetsManager;
 import com.gadarts.industrial.shared.model.Coords;
 import com.gadarts.industrial.shared.model.map.MapNodeData;
+import com.gadarts.industrial.shared.model.map.NodeWalls;
 import com.gadarts.industrial.shared.model.map.Wall;
 import com.gadarts.industrial.shared.assets.Assets;
 import lombok.Getter;
@@ -22,6 +23,7 @@ import java.util.Optional;
  * A tool to generate walls for nodes.
  */
 public class WallCreator implements Disposable {
+	public static final int WORLD_UNIT_SIZE = 32;
 	private static final Vector3 auxVector3_1 = new Vector3();
 	private static final Vector3 auxVector3_2 = new Vector3();
 	private final GameAssetsManager assetsManager;
@@ -152,10 +154,12 @@ public class WallCreator implements Disposable {
 													  final float vScale,
 													  final float hOffset,
 													  final float vOffset) {
-		Wall wallBetween = Optional.ofNullable(southernN.getWalls().getNorthWall()).orElse(northernN.getWalls().getSouthWall());
+		NodeWalls southernWalls = southernN.getWalls();
+		Wall wallBetween = Optional.ofNullable(southernWalls.getNorthWall()).orElse(northernN.getWalls().getSouthWall());
 		ModelInstance modelInstance = wallBetween.getModelInstance();
 		TextureAttribute textureAtt = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
-		textureAtt.scaleV = adjustWallBetweenTwoNodes(southernN, northernN, wallBetween);
+		int textureHeight = textureAtt.textureDescription.texture.getHeight() / WORLD_UNIT_SIZE;
+		textureAtt.scaleV = adjustWallBetweenTwoNodes(southernN, northernN, wallBetween, textureHeight);
 		textureAtt.scaleV = vScale != 0 ? vScale : textureAtt.scaleV;
 		textureAtt.offsetU = hOffset;
 		textureAtt.offsetV = vOffset;
@@ -167,7 +171,7 @@ public class WallCreator implements Disposable {
 	}
 
 	/**
-	 * Adjusts the wall's attributes between a eastern and western node.
+	 * Adjusts the wall's attributes between an eastern and western node.
 	 *
 	 * @param eastNode
 	 * @param westNode
@@ -195,7 +199,8 @@ public class WallCreator implements Disposable {
 		Wall wallBetween = Optional.ofNullable(eastNode.getWalls().getWestWall()).orElse(westNode.getWalls().getEastWall());
 		ModelInstance modelInstance = wallBetween.getModelInstance();
 		TextureAttribute textureAtt = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
-		textureAtt.scaleV = adjustWallBetweenTwoNodes(eastNode, westNode, wallBetween);
+		int textureHeight = textureAtt.textureDescription.texture.getHeight() / WORLD_UNIT_SIZE;
+		textureAtt.scaleV = adjustWallBetweenTwoNodes(eastNode, westNode, wallBetween, textureHeight);
 		textureAtt.scaleV = vScale != 0 ? vScale : textureAtt.scaleV;
 		textureAtt.offsetU = hOffset;
 		textureAtt.offsetV = vOffset;
@@ -214,7 +219,7 @@ public class WallCreator implements Disposable {
 
 	private static float adjustWallBetweenTwoNodes(final MapNodeData eastOrSouthNode,
 												   final MapNodeData westOrNorthNode,
-												   final Wall wallBetween) {
+												   final Wall wallBetween, int textureHeight) {
 		Vector3 wallBetweenThemPos = wallBetween.getModelInstance().transform.getTranslation(auxVector3_1);
 		float eastOrSouthHeight = eastOrSouthNode.getHeight();
 		float westOrNorthHeight = westOrNorthNode.getHeight();
@@ -222,7 +227,7 @@ public class WallCreator implements Disposable {
 		float y = Math.min(eastOrSouthHeight, westOrNorthHeight) + (eastOrSouthHeight > westOrNorthHeight ? 0 : sizeHeight);
 		wallBetween.getModelInstance().transform.setToTranslationAndScaling(wallBetweenThemPos.x, y, wallBetweenThemPos.z,
 				1, sizeHeight, 1);
-		return sizeHeight;
+		return sizeHeight / textureHeight;
 	}
 
 	private void createWallModel( ) {
