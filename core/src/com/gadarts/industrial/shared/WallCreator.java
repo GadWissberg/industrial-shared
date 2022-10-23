@@ -9,125 +9,58 @@ import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
+import com.gadarts.industrial.shared.assets.Assets.SurfaceTextures;
 import com.gadarts.industrial.shared.assets.GameAssetsManager;
 import com.gadarts.industrial.shared.model.Coords;
 import com.gadarts.industrial.shared.model.map.MapNodeData;
 import com.gadarts.industrial.shared.model.map.NodeWalls;
 import com.gadarts.industrial.shared.model.map.Wall;
-import com.gadarts.industrial.shared.assets.Assets;
 import lombok.Getter;
 
 import java.util.Optional;
+
+import static com.gadarts.industrial.shared.assets.Assets.SurfaceTextures.MISSING;
 
 /**
  * A tool to generate walls for nodes.
  */
 public class WallCreator implements Disposable {
-	public static final int WORLD_UNIT_SIZE = 32;
+	public static final int WORLD_UNIT_SIZE = 64;
 	private static final Vector3 auxVector3_1 = new Vector3();
 	private static final Vector3 auxVector3_2 = new Vector3();
 	private final GameAssetsManager assetsManager;
 
 	@Getter
-	private Model wallModel;
+	private Model eastWallModel, southWallModel, northWallModel, westWallModel;
 
 	public WallCreator(final GameAssetsManager assetsManager) {
 		this.assetsManager = assetsManager;
-		createWallModel();
+		createWestWallModel();
+		createSouthWallModel();
+		createNorthWallModel();
+		createEastWallModel();
 	}
 
+
 	/**
-	 * Creates a western wall model for a given node.
+	 * Creates a wall model instance for a given node.
 	 *
 	 * @param n             The target node.
 	 * @param wallModel     The wall model used for creating the model instance.
 	 * @param assetsManager Used to get the texture.
 	 * @param definition    The texture definition for the wall.
 	 */
-	public static Wall createWestWall(final MapNodeData n,
-									  final Model wallModel,
-									  final GameAssetsManager assetsManager,
-									  final Assets.SurfaceTextures definition) {
-		Wall westWall = createWall(wallModel, assetsManager, definition);
-		ModelInstance modelInstance = westWall.getModelInstance();
-		Coords coords = n.getCoords();
-		modelInstance.transform.setToTranslation(coords.getCol(), 0, coords.getRow());
-		return westWall;
-	}
-
-	/**
-	 * Creates a southern wall model for a given node.
-	 *
-	 * @param n             The target node.
-	 * @param wallModel     The wall model used for creating the model instance.
-	 * @param assetsManager Used to get the texture.
-	 * @param definition    The texture definition for the wall.
-	 */
-	public static Wall createSouthWall(final MapNodeData n,
-									   final Model wallModel,
-									   final GameAssetsManager assetsManager,
-									   final Assets.SurfaceTextures definition) {
-		Wall southWall = createWall(wallModel, assetsManager, definition);
-		ModelInstance modelInstance = southWall.getModelInstance();
-		Coords coords = n.getCoords();
-		modelInstance.transform.setToTranslation(coords.getCol(), 0, coords.getRow() + 1);
-		modelInstance.transform.rotate(Vector3.X, 90);
-		return southWall;
-	}
-
-	/**
-	 * Creates an eastern wall model for a given node.
-	 *
-	 * @param n             The target node.
-	 * @param wallModel     The wall model used for creating the model instance.
-	 * @param assetsManager Used to get the texture.
-	 * @param definition    The texture definition for the wall.
-	 */
-	public static Wall createEastWall(final MapNodeData n,
-									  final Model wallModel,
-									  final GameAssetsManager assetsManager,
-									  final Assets.SurfaceTextures definition) {
-		Wall eastWall = createWall(wallModel, assetsManager, definition);
-		ModelInstance modelInstance = eastWall.getModelInstance();
-		Coords coords = n.getCoords();
-		modelInstance.transform.setToTranslation(coords.getCol() + 1F, 0, coords.getRow());
-		return eastWall;
-	}
-
-	/**
-	 * Creates a northern wall model for a given node.
-	 *
-	 * @param n             The target node.
-	 * @param wallModel     The wall model used for creating the model instance.
-	 * @param assetsManager Used to get the texture.
-	 * @param definition    The texture definition for the wall.
-	 */
-	public static Wall createNorthWall(final MapNodeData n,
-									   final Model wallModel,
-									   final GameAssetsManager assetsManager,
-									   final Assets.SurfaceTextures definition) {
-		Wall northWall = createWall(wallModel, assetsManager, definition);
-		ModelInstance modelInstance = northWall.getModelInstance();
+	public static Wall createWall(final MapNodeData n,
+								  final Model wallModel,
+								  final GameAssetsManager assetsManager,
+								  final SurfaceTextures definition) {
+		ModelInstance modelInstance = new ModelInstance(wallModel);
+		TextureAttribute textureAttr = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
+		textureAttr.textureDescription.texture = assetsManager.getTexture(definition);
+		Wall northWall = new Wall(modelInstance, definition);
 		Coords coords = n.getCoords();
 		modelInstance.transform.setToTranslation(coords.getCol(), 0, coords.getRow());
 		return northWall;
-	}
-
-	/**
-	 * Creates a wall model.
-	 *
-	 * @param wallModel     The wall model used for creating the model instance.
-	 * @param assetsManager Used to get the texture.
-	 * @param definition    The texture definition for the wall.
-	 * @return The new wall.
-	 */
-	public static Wall createWall(final Model wallModel,
-								  final GameAssetsManager assetsManager,
-								  final Assets.SurfaceTextures definition) {
-		ModelInstance modelInstance = new ModelInstance(wallModel);
-		TextureAttribute textureAttribute = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
-		textureAttribute.textureDescription.texture = assetsManager.getTexture(definition);
-		return new Wall(modelInstance, definition);
 	}
 
 	/**
@@ -190,7 +123,6 @@ public class WallCreator implements Disposable {
 	 * @param hOffset
 	 * @param vOffset
 	 */
-	@SuppressWarnings("JavaDoc")
 	public static void adjustWallBetweenEastAndWest(final MapNodeData eastNode,
 													final MapNodeData westNode,
 													final float vScale,
@@ -203,18 +135,10 @@ public class WallCreator implements Disposable {
 		textureAtt.scaleV = adjustWallBetweenTwoNodes(eastNode, westNode, wallBetween, textureHeight);
 		textureAtt.scaleV = vScale != 0 ? vScale : textureAtt.scaleV;
 		textureAtt.offsetU = hOffset;
-		textureAtt.offsetV = vOffset;
-		boolean eastHigherThanWest = eastNode.getHeight() > westNode.getHeight();
+		textureAtt.offsetV = (1F - textureAtt.scaleV) + vOffset;
 		modelInstance.transform.getTranslation(auxVector3_1).z = eastNode.getCoords().getRow();
 		modelInstance.transform.getScale(auxVector3_2);
 		modelInstance.transform.setToTranslationAndScaling(auxVector3_1, auxVector3_2);
-		modelInstance.transform.rotate(Vector3.Y, (eastHigherThanWest ? -1 : 1) * 90F);
-		modelInstance.transform.rotate(Vector3.X, 90F);
-		if (eastHigherThanWest) {
-			modelInstance.transform.translate(0F, 0F, -1F);
-		} else {
-			modelInstance.transform.translate(-1F, 0F, 0F);
-		}
 	}
 
 	private static float adjustWallBetweenTwoNodes(final MapNodeData eastOrSouthNode,
@@ -224,20 +148,76 @@ public class WallCreator implements Disposable {
 		float eastOrSouthHeight = eastOrSouthNode.getHeight();
 		float westOrNorthHeight = westOrNorthNode.getHeight();
 		float sizeHeight = Math.abs(westOrNorthHeight - eastOrSouthHeight);
-		float y = Math.min(eastOrSouthHeight, westOrNorthHeight) + (eastOrSouthHeight > westOrNorthHeight ? 0 : sizeHeight);
+		float y = Math.min(eastOrSouthHeight, westOrNorthHeight) + (eastOrSouthHeight > westOrNorthHeight ? sizeHeight : 0);
 		wallBetween.getModelInstance().transform.setToTranslationAndScaling(wallBetweenThemPos.x, y, wallBetweenThemPos.z,
 				1, sizeHeight, 1);
 		return sizeHeight / textureHeight;
 	}
 
-	private void createWallModel( ) {
+	private static void adjustWallTextureAndPosition(Wall wall,
+													 float wallNodeHeight,
+													 MapNodeData neighborNode) {
+		ModelInstance modelInstance = wall.getModelInstance();
+		float neighborHeight = neighborNode.getHeight();
+		float sizeHeight = Math.abs(wallNodeHeight - neighborHeight);
+		adjustWallTexture(modelInstance, sizeHeight);
+		float minHeight = Math.min(wallNodeHeight, neighborHeight);
+		Coords neighborNodeCoords = neighborNode.getCoords();
+		Vector3 position = auxVector3_1.set(neighborNodeCoords.getCol(), minHeight, neighborNodeCoords.getRow());
+		modelInstance.transform.setToTranslationAndScaling(position, auxVector3_2.set(1, sizeHeight, 1));
+	}
+
+	private static void adjustWallTexture(ModelInstance modelInstance, float sizeHeight) {
+		TextureAttribute textureAtt = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
+		int textureHeight = textureAtt.textureDescription.texture.getHeight() / WORLD_UNIT_SIZE;
+		textureAtt.scaleV = sizeHeight / textureHeight;
+		textureAtt.offsetV = (1F - textureAtt.scaleV);
+	}
+
+	private void createWestWallModel( ) {
 		ModelBuilder modelBuilder = new ModelBuilder();
-		wallModel = modelBuilder.createRect(
+		westWallModel = modelBuilder.createRect(
 				0, 0, 1,
-				1, 0, 1,
-				1, 0, 0,
 				0, 0, 0,
 				0, 1, 0,
+				0, 1, 1,
+				1, 0, 0,
+				new Material(TextureAttribute.createDiffuse((Texture) null)),
+				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
+	}
+
+	private void createSouthWallModel( ) {
+		ModelBuilder modelBuilder = new ModelBuilder();
+		southWallModel = modelBuilder.createRect(
+				1, 0, 1,
+				0, 0, 1,
+				0, 1, 1,
+				1, 1, 1,
+				0, 0, -1,
+				new Material(TextureAttribute.createDiffuse((Texture) null)),
+				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
+	}
+
+	private void createEastWallModel( ) {
+		ModelBuilder modelBuilder = new ModelBuilder();
+		eastWallModel = modelBuilder.createRect(
+				1, 0, 0,
+				1, 0, 1,
+				1, 1, 1,
+				1, 1, 0,
+				-1, 0, 0,
+				new Material(TextureAttribute.createDiffuse((Texture) null)),
+				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
+	}
+
+	private void createNorthWallModel( ) {
+		ModelBuilder modelBuilder = new ModelBuilder();
+		northWallModel = modelBuilder.createRect(
+				0, 0, 0,
+				1, 0, 0,
+				1, 1, 0,
+				0, 1, 0,
+				0, 0, 1,
 				new Material(TextureAttribute.createDiffuse((Texture) null)),
 				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
 	}
@@ -252,10 +232,11 @@ public class WallCreator implements Disposable {
 	public void adjustNorthWall(final MapNodeData southernNode,
 								final MapNodeData northernNode) {
 		if (northernNode.getHeight() != southernNode.getHeight()) {
-			if (northernNode.getWalls().getSouthWall() == null && southernNode.getWalls().getNorthWall() == null) {
-				southernNode.getWalls().setNorthWall(createNorthWall(southernNode, wallModel, assetsManager, Assets.SurfaceTextures.MISSING));
+			NodeWalls southernNodeWalls = southernNode.getWalls();
+			if (southernNodeWalls.getNorthWall() == null) {
+				southernNodeWalls.setNorthWall(createWall(southernNode, northWallModel, assetsManager, MISSING));
 			}
-			adjustWallBetweenNorthAndSouth(southernNode, northernNode);
+			adjustWallTextureAndPosition(southernNodeWalls.getNorthWall(), northernNode.getHeight(), southernNode);
 		} else {
 			clearWallBetweenNorthAndSouthNodes(northernNode, southernNode);
 		}
@@ -264,17 +245,17 @@ public class WallCreator implements Disposable {
 	/**
 	 * Creates a wall between the two nodes if missing and adjusts it.
 	 *
-	 * @param northernNode
 	 * @param southernNode
+	 * @param northernNode
 	 */
-	@SuppressWarnings("JavaDoc")
-	public void adjustSouthWall(final MapNodeData northernNode,
-								final MapNodeData southernNode) {
+	public void adjustSouthWall(final MapNodeData southernNode,
+								final MapNodeData northernNode) {
 		if (northernNode.getHeight() != southernNode.getHeight()) {
-			if (southernNode.getWalls().getNorthWall() == null && northernNode.getWalls().getSouthWall() == null) {
-				northernNode.getWalls().setSouthWall(createSouthWall(northernNode, wallModel, assetsManager, Assets.SurfaceTextures.MISSING));
+			NodeWalls northernNodeWalls = northernNode.getWalls();
+			if (northernNodeWalls.getSouthWall() == null) {
+				northernNodeWalls.setSouthWall(createWall(northernNode, southWallModel, assetsManager, MISSING));
 			}
-			adjustWallBetweenNorthAndSouth(southernNode, northernNode, 0, 0, 0);
+			adjustWallTextureAndPosition(northernNodeWalls.getSouthWall(), southernNode.getHeight(), northernNode);
 		} else {
 			clearWallBetweenNorthAndSouthNodes(northernNode, southernNode);
 		}
@@ -286,14 +267,33 @@ public class WallCreator implements Disposable {
 	 * @param westernNode
 	 * @param easternNode
 	 */
-	@SuppressWarnings("JavaDoc")
+	public void adjustWestWall(final MapNodeData westernNode,
+							   final MapNodeData easternNode) {
+		if (easternNode.getHeight() != westernNode.getHeight()) {
+			NodeWalls easternNodeWalls = easternNode.getWalls();
+			if (easternNodeWalls.getWestWall() == null) {
+				easternNodeWalls.setWestWall(createWall(easternNode, westWallModel, assetsManager, MISSING));
+			}
+			adjustWallTextureAndPosition(easternNodeWalls.getWestWall(), westernNode.getHeight(), easternNode);
+		} else {
+			clearWallBetweenWestAndEastNodes(westernNode, easternNode);
+		}
+	}
+
+	/**
+	 * Creates a wall between the two nodes if missing and adjusts it.
+	 *
+	 * @param westernNode
+	 * @param easternNode
+	 */
 	public void adjustEastWall(final MapNodeData westernNode,
 							   final MapNodeData easternNode) {
 		if (easternNode.getHeight() != westernNode.getHeight()) {
-			if (westernNode.getWalls().getEastWall() == null && easternNode.getWalls().getWestWall() == null) {
-				westernNode.getWalls().setEastWall(createEastWall(westernNode, wallModel, assetsManager, Assets.SurfaceTextures.MISSING));
+			NodeWalls westernNodeWalls = westernNode.getWalls();
+			if (westernNodeWalls.getEastWall() == null) {
+				westernNodeWalls.setEastWall(createWall(westernNode, eastWallModel, assetsManager, MISSING));
 			}
-			adjustWallBetweenEastAndWest(easternNode, westernNode, 0, 0, 0);
+			adjustWallTextureAndPosition(westernNodeWalls.getEastWall(), easternNode.getHeight(), westernNode);
 		} else {
 			clearWallBetweenWestAndEastNodes(westernNode, easternNode);
 		}
@@ -309,26 +309,11 @@ public class WallCreator implements Disposable {
 		northernNode.getWalls().setSouthWall(null);
 	}
 
-	/**
-	 * Creates a wall between the two nodes if missing and adjusts it.
-	 *
-	 * @param easternNode
-	 * @param westernNode
-	 */
-	@SuppressWarnings("JavaDoc")
-	public void adjustWestWall(final MapNodeData easternNode, final MapNodeData westernNode) {
-		if (easternNode.getHeight() != westernNode.getHeight()) {
-			if (westernNode.getWalls().getEastWall() == null && easternNode.getWalls().getWestWall() == null) {
-				easternNode.getWalls().setWestWall(createWestWall(easternNode, wallModel, assetsManager, Assets.SurfaceTextures.MISSING));
-			}
-			adjustWallBetweenEastAndWest(easternNode, westernNode, 0, 0, 0);
-		} else {
-			clearWallBetweenWestAndEastNodes(westernNode, easternNode);
-		}
-	}
-
 	@Override
 	public void dispose( ) {
-		wallModel.dispose();
+		eastWallModel.dispose();
+		westWallModel.dispose();
+		northWallModel.dispose();
+		southWallModel.dispose();
 	}
 }
