@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
 import com.gadarts.industrial.shared.assets.Assets.SurfaceTextures;
@@ -104,17 +105,6 @@ public class WallCreator implements Disposable {
 	}
 
 	/**
-	 * Adjusts the wall's attributes between an eastern and western node.
-	 *
-	 * @param eastNode
-	 * @param westNode
-	 */
-	public static void adjustWallBetweenEastAndWest(final MapNodeData eastNode,
-													final MapNodeData westNode) {
-		adjustWallBetweenEastAndWest(eastNode, westNode, 0, 0, 0);
-	}
-
-	/**
 	 * Adjusts the wall's attributes between a eastern and western node.
 	 *
 	 * @param eastNode
@@ -160,18 +150,19 @@ public class WallCreator implements Disposable {
 		ModelInstance modelInstance = wall.getModelInstance();
 		float neighborHeight = neighborNode.getHeight();
 		float sizeHeight = Math.abs(wallNodeHeight - neighborHeight);
-		adjustWallTexture(modelInstance, sizeHeight);
 		float minHeight = Math.min(wallNodeHeight, neighborHeight);
+		adjustWallTexture(modelInstance, sizeHeight, minHeight);
 		Coords neighborNodeCoords = neighborNode.getCoords();
 		Vector3 position = auxVector3_1.set(neighborNodeCoords.getCol(), minHeight, neighborNodeCoords.getRow());
 		modelInstance.transform.setToTranslationAndScaling(position, auxVector3_2.set(1, sizeHeight, 1));
 	}
 
-	private static void adjustWallTexture(ModelInstance modelInstance, float sizeHeight) {
+	public static void adjustWallTexture(ModelInstance modelInstance, float sizeHeight, float y) {
 		TextureAttribute textureAtt = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
 		int textureHeight = textureAtt.textureDescription.texture.getHeight() / WORLD_UNIT_SIZE;
 		textureAtt.scaleV = sizeHeight / textureHeight;
 		textureAtt.offsetV = (1F - textureAtt.scaleV);
+		textureAtt.offsetV -= y - (MathUtils.floor(y));
 	}
 
 	private void createWestWallModel( ) {
