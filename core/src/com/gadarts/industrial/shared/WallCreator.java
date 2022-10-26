@@ -64,86 +64,6 @@ public class WallCreator implements Disposable {
 		return northWall;
 	}
 
-	/**
-	 * Adjusts the wall's attributes between a northern and southern node.
-	 *
-	 * @param southernN
-	 * @param northernN
-	 */
-	@SuppressWarnings("JavaDoc")
-	public static void adjustWallBetweenNorthAndSouth(final MapNodeData southernN,
-													  final MapNodeData northernN) {
-		adjustWallBetweenNorthAndSouth(southernN, northernN, 0, 0, 0);
-	}
-
-	/**
-	 * Adjusts the wall's attributes between a northern and southern node.
-	 *
-	 * @param southernN
-	 * @param northernN
-	 */
-	@SuppressWarnings("JavaDoc")
-	public static void adjustWallBetweenNorthAndSouth(final MapNodeData southernN,
-													  final MapNodeData northernN,
-													  final float vScale,
-													  final float hOffset,
-													  final float vOffset) {
-		NodeWalls southernWalls = southernN.getWalls();
-		Wall wallBetween = Optional.ofNullable(southernWalls.getNorthWall()).orElse(northernN.getWalls().getSouthWall());
-		ModelInstance modelInstance = wallBetween.getModelInstance();
-		TextureAttribute textureAtt = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
-		int textureHeight = textureAtt.textureDescription.texture.getHeight() / WORLD_UNIT_SIZE;
-		textureAtt.scaleV = adjustWallBetweenTwoNodes(southernN, northernN, wallBetween, textureHeight);
-		textureAtt.scaleV = vScale != 0 ? vScale : textureAtt.scaleV;
-		textureAtt.offsetU = hOffset;
-		textureAtt.offsetV = vOffset;
-		if (southernN.getHeight() > northernN.getHeight()) {
-			textureAtt.scaleV *= -1;
-			textureAtt.scaleU *= -1;
-		}
-		modelInstance.transform.rotate(Vector3.X, (southernN.getHeight() > northernN.getHeight() ? -1 : 1) * 90F);
-	}
-
-	/**
-	 * Adjusts the wall's attributes between a eastern and western node.
-	 *
-	 * @param eastNode
-	 * @param westNode
-	 * @param vScale
-	 * @param hOffset
-	 * @param vOffset
-	 */
-	public static void adjustWallBetweenEastAndWest(final MapNodeData eastNode,
-													final MapNodeData westNode,
-													final float vScale,
-													final float hOffset,
-													final float vOffset) {
-		Wall wallBetween = Optional.ofNullable(eastNode.getWalls().getWestWall()).orElse(westNode.getWalls().getEastWall());
-		ModelInstance modelInstance = wallBetween.getModelInstance();
-		TextureAttribute textureAtt = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
-		int textureHeight = textureAtt.textureDescription.texture.getHeight() / WORLD_UNIT_SIZE;
-		textureAtt.scaleV = adjustWallBetweenTwoNodes(eastNode, westNode, wallBetween, textureHeight);
-		textureAtt.scaleV = vScale != 0 ? vScale : textureAtt.scaleV;
-		textureAtt.offsetU = hOffset;
-		textureAtt.offsetV = (1F - textureAtt.scaleV) + vOffset;
-		modelInstance.transform.getTranslation(auxVector3_1).z = eastNode.getCoords().getRow();
-		modelInstance.transform.getScale(auxVector3_2);
-		modelInstance.transform.setToTranslationAndScaling(auxVector3_1, auxVector3_2);
-	}
-
-	private static float adjustWallBetweenTwoNodes(final MapNodeData eastOrSouthNode,
-												   final MapNodeData westOrNorthNode,
-												   final Wall wallBetween, int textureHeight) {
-		Vector3 wallBetweenThemPos = wallBetween.getModelInstance().transform.getTranslation(auxVector3_1);
-		float eastOrSouthHeight = eastOrSouthNode.getHeight();
-		float westOrNorthHeight = westOrNorthNode.getHeight();
-		float sizeHeight = Math.abs(westOrNorthHeight - eastOrSouthHeight);
-		float y = Math.min(eastOrSouthHeight, westOrNorthHeight) + (eastOrSouthHeight > westOrNorthHeight ? sizeHeight : 0);
-		wallBetween.getModelInstance().transform.setToTranslationAndScaling(wallBetweenThemPos.x, y, wallBetweenThemPos.z,
-				1, sizeHeight, 1);
-		return sizeHeight / textureHeight;
-	}
-
 	private static void adjustWallTextureAndPosition(Wall wall,
 													 float wallNodeHeight,
 													 MapNodeData neighborNode) {
@@ -151,18 +71,17 @@ public class WallCreator implements Disposable {
 		float neighborHeight = neighborNode.getHeight();
 		float sizeHeight = Math.abs(wallNodeHeight - neighborHeight);
 		float minHeight = Math.min(wallNodeHeight, neighborHeight);
-		adjustWallTexture(modelInstance, sizeHeight, minHeight);
+		adjustWallTexture(modelInstance, sizeHeight);
 		Coords neighborNodeCoords = neighborNode.getCoords();
 		Vector3 position = auxVector3_1.set(neighborNodeCoords.getCol(), minHeight, neighborNodeCoords.getRow());
 		modelInstance.transform.setToTranslationAndScaling(position, auxVector3_2.set(1, sizeHeight, 1));
 	}
 
-	public static void adjustWallTexture(ModelInstance modelInstance, float sizeHeight, float y) {
+	public static void adjustWallTexture(ModelInstance modelInstance, float sizeHeight) {
 		TextureAttribute textureAtt = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
 		int textureHeight = textureAtt.textureDescription.texture.getHeight() / WORLD_UNIT_SIZE;
 		textureAtt.scaleV = sizeHeight / textureHeight;
 		textureAtt.offsetV = (1F - textureAtt.scaleV);
-		textureAtt.offsetV -= y - (MathUtils.floor(y));
 	}
 
 	private void createWestWallModel( ) {
