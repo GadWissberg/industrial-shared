@@ -2,7 +2,6 @@ package com.gadarts.industrial.shared.assets;
 
 public final class MapJsonKeys {
 	public static final String TARGET = "target";
-	public static final String TILES = "tiles";
 	public static final String WIDTH = "width";
 	public static final String DEPTH = "depth";
 	public static final String HEIGHT = "height";
