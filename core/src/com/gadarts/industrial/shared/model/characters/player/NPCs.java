@@ -31,4 +31,9 @@ public enum NPCs implements CharacterDefinition {
 	public Assets.Atlases getAtlasDefinition( ) {
 		return null;
 	}
+
+	@Override
+	public float getHeight( ) {
+		return 1.5F;
+	}
 }

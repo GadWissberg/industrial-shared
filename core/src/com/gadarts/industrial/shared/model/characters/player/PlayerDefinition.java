@@ -46,4 +46,9 @@ public class PlayerDefinition implements CharacterDefinition {
 	public Assets.Atlases getAtlasDefinition( ) {
 		return Assets.Atlases.PLAYER_COLT;
 	}
+
+	@Override
+	public float getHeight( ) {
+		return 1.5F;
+	}
 }

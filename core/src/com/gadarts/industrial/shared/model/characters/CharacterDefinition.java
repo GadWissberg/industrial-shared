@@ -17,4 +17,10 @@ public interface CharacterDefinition extends ElementDefinition {
 	default float getShadowRadius( ) {
 		return 0.2F;
 	}
+
+	float getHeight( );
+
+	default float getBulletCreationHeight( ) {
+		return getHeight() / 2F;
+	}
 }
