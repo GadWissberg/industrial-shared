@@ -333,7 +333,9 @@ public final class Assets {
 		GUN_BULLET,
 		GUN_BULLET_JACKET,
 		METAL_PART,
-		EXIT_SIGN;
+		EXIT_SIGN,
+		EDGE_SAFETY_0("edge_safety", "edge_safety_texture_0"),
+		EDGE_SAFETY_1("edge_safety", "edge_safety_texture_1");
 		private final String filePath;
 		private final float alpha;
 		private final String textureFileName;

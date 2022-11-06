@@ -35,7 +35,9 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	MONITOR(new Vector3(-0.2F, 0F, 0F), Models.MONITOR, 1, 1, "PC Monitor", MapNodesTypes.PASSABLE_NODE),
 	KEYBOARD(new Vector3(0.2F, 0F, 0F), Models.KEYBOARD, 1, 1, "Keyboard", MapNodesTypes.PASSABLE_NODE),
 	PC(Models.PC, 1, 1, "PC", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
-	EXIT_SIGN(new Vector3(-0.5F, 2F, 0F), Models.EXIT_SIGN, 1, 1, "Exit", MapNodesTypes.PASSABLE_NODE, new LightEmission(new Vector3(-0.4F, 2F, 0F), 1F, 1F, false, Color.RED));
+	EXIT_SIGN(new Vector3(-0.5F, 2F, 0F), Models.EXIT_SIGN, 1, 1, "Exit", MapNodesTypes.PASSABLE_NODE, new LightEmission(new Vector3(-0.4F, 2F, 0F), 1F, 1F, false, Color.RED)),
+	EDGE_SAFETY_0(new Vector3(0.4F, 0F, 0F), Models.EDGE_SAFETY_0, 1, 1, "Edge Safety", MapNodesTypes.PASSABLE_NODE),
+	EDGE_SAFETY_1(new Vector3(0.4F, 0F, 0F), Models.EDGE_SAFETY_1, 1, 1, "Warning Edge Safety", MapNodesTypes.PASSABLE_NODE);
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;
