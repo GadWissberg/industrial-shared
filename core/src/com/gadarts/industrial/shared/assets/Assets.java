@@ -335,7 +335,10 @@ public final class Assets {
 		METAL_PART,
 		EXIT_SIGN,
 		EDGE_SAFETY_0("edge_safety", "edge_safety_texture_0"),
-		EDGE_SAFETY_1("edge_safety", "edge_safety_texture_1");
+		EDGE_SAFETY_1("edge_safety", "edge_safety_texture_1"),
+		EDGE_SAFETY_BROKEN,
+		ELECTRIC_BOX_0("electric_box", "electric_box_0"),
+		ELECTRIC_BOX_1("electric_box", "electric_box_1");
 		private final String filePath;
 		private final float alpha;
 		private final String textureFileName;
