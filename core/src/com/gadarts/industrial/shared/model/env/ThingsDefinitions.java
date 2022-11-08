@@ -39,8 +39,10 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	EDGE_SAFETY_0(new Vector3(0.4F, 0F, 0F), Models.EDGE_SAFETY_0, 1, 1, "Edge Safety", MapNodesTypes.PASSABLE_NODE),
 	EDGE_SAFETY_1(new Vector3(0.4F, 0F, 0F), Models.EDGE_SAFETY_1, 1, 1, "Warning Edge Safety", MapNodesTypes.PASSABLE_NODE),
 	EDGE_SAFETY_BROKEN(new Vector3(0.4F, 0F, 0F), Models.EDGE_SAFETY_BROKEN, 1, 1, "Broken Edge Safety", MapNodesTypes.PASSABLE_NODE),
-	ELECTRIC_BOX_0(new Vector3(-0.45F, 0F, 0F), Models.ELECTRIC_BOX_0, 1, 1, "Electric Box", MapNodesTypes.PASSABLE_NODE),
-	ELECTRIC_BOX_1(new Vector3(-0.45F, 0F, 0F), Models.ELECTRIC_BOX_1, 1, 1, "Electric Box", MapNodesTypes.PASSABLE_NODE);
+	ELECTRIC_BOX_0(new Vector3(-0.45F, 0F, 0F), Models.ELECTRIC_BOX_0, 1, 1, "Electric Box #1", MapNodesTypes.PASSABLE_NODE),
+	ELECTRIC_BOX_1(new Vector3(-0.45F, 0F, 0F), Models.ELECTRIC_BOX_1, 1, 1, "Electric Box #2", MapNodesTypes.PASSABLE_NODE),
+	SMALL_ELECTRIC_BOX_0(new Vector3(-0.4F, 0F, 0F), Models.SMALL_ELECTRIC_BOX_0, 1, 1, "Small Electric Box #1", MapNodesTypes.PASSABLE_NODE),
+	SMALL_ELECTRIC_BOX_1(new Vector3(-0.4F, 0F, 0F), Models.SMALL_ELECTRIC_BOX_1, 1, 1, "Small Electric Box #2", MapNodesTypes.PASSABLE_NODE);
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;
