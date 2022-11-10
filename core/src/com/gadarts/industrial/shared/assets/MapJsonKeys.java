@@ -25,4 +25,6 @@ public final class MapJsonKeys {
 	public static final String WALLS = "walls";
 	public static final String NODES = "nodes";
 	public static final String NODES_DATA = "nodes_data";
+	public static final String RADIUS = "radius";
+	public static final String INTENSITY = "intensity";
 }
