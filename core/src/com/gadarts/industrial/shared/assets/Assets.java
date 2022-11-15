@@ -340,7 +340,11 @@ public final class Assets {
 		ELECTRIC_BOX_0("electric_box", "electric_box_0"),
 		ELECTRIC_BOX_1("electric_box", "electric_box_1"),
 		SMALL_ELECTRIC_BOX_0("small_electric_box", "small_closet_0"),
-		SMALL_ELECTRIC_BOX_1("small_electric_box", "small_closet_1");
+		SMALL_ELECTRIC_BOX_1("small_electric_box", "small_closet_1"),
+		ELECTRIC_CLOSET_0("electric_closet", "big_electric_box_0"),
+		ELECTRIC_CLOSET_1("electric_closet", "big_electric_box_1"),
+		OFFICE_CHAIR_0("office_chair", "office_chair_0"),
+		OFFICE_CHAIR_1("office_chair", "office_chair_1");
 		private final String filePath;
 		private final float alpha;
 		private final String textureFileName;
