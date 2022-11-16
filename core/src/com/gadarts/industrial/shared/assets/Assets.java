@@ -326,6 +326,7 @@ public final class Assets {
 		AUTO_DOOR_0,
 		INDUSTRIAL_DOOR_0("industrial_door", "industrial_door_0"),
 		INDUSTRIAL_DOOR_1("industrial_door", "industrial_door_1"),
+		INDUSTRIAL_DOOR_2("industrial_door", "industrial_door_2"),
 		DOOR_FRAME_WARNING,
 		INDUSTRIAL_DOOR_FRAME,
 		CURSOR(0.1F),
@@ -452,6 +453,15 @@ public final class Assets {
 		BOARD_WALL_3,
 		BOARD_WALL_4,
 		BOARD_WALL_5,
+		MARBLE_WALL_0,
+		MARBLE_WALL_1,
+		MARBLE_WALL_2,
+		MARBLE_WALL_3,
+		MARBLE_WALL_4,
+		MARBLE_WALL_5,
+		MARBLE_WALL_6,
+		MARBLE_WALL_7,
+		MARBLE_FLOOR_0,
 		BLANK,
 		;
 

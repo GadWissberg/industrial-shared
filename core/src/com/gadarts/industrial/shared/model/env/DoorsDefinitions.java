@@ -17,7 +17,8 @@ import static com.gadarts.industrial.shared.model.env.EnvironmentObjectType.DOOR
 public enum DoorsDefinitions implements EnvironmentObjectDefinition {
 	AUTO_DOOR(Models.AUTO_DOOR_0, Models.DOOR_FRAME_WARNING, "Auto Door", DoorTypes.SLIDE),
 	INDUSTRIAL_DOOR_0(Models.INDUSTRIAL_DOOR_0, Models.INDUSTRIAL_DOOR_FRAME, "Door", DoorTypes.ROTATE, new Vector3(0F, 0F, 0.5F)),
-	INDUSTRIAL_DOOR_1(Models.INDUSTRIAL_DOOR_1, Models.INDUSTRIAL_DOOR_FRAME, "Door with Vent", DoorTypes.ROTATE, new Vector3(0F, 0F, 0.5F));
+	INDUSTRIAL_DOOR_1(Models.INDUSTRIAL_DOOR_1, Models.INDUSTRIAL_DOOR_FRAME, "Door with Vent", DoorTypes.ROTATE, new Vector3(0F, 0F, 0.5F)),
+	INDUSTRIAL_DOOR_2(Models.INDUSTRIAL_DOOR_2, Models.INDUSTRIAL_DOOR_FRAME, "WC Door", DoorTypes.ROTATE, new Vector3(0F, 0F, 0.5F));
 
 
 	private final Models doorModelDefinition;
