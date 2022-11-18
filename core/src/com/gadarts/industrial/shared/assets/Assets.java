@@ -348,7 +348,8 @@ public final class Assets {
 		ELECTRIC_CLOSET_0("electric_closet", "big_electric_box_0"),
 		ELECTRIC_CLOSET_1("electric_closet", "big_electric_box_1"),
 		OFFICE_CHAIR_0("office_chair", "office_chair_0"),
-		OFFICE_CHAIR_1("office_chair", "office_chair_1");
+		OFFICE_CHAIR_1("office_chair", "office_chair_1"),
+		TOILET;
 		private final String filePath;
 		private final float alpha;
 		private final String textureFileName;
@@ -464,7 +465,14 @@ public final class Assets {
 		MARBLE_WALL_5,
 		MARBLE_WALL_6,
 		MARBLE_WALL_7,
+		MARBLE_WALL_8,
+		MARBLE_WALL_9,
 		MARBLE_FLOOR_0,
+		MARBLE_FLOOR_1,
+		MARBLE_FLOOR_2,
+		MARBLE_FLOOR_3,
+		MARBLE_FLOOR_4,
+		MARBLE_FLOOR_5,
 		BLANK,
 		;
 

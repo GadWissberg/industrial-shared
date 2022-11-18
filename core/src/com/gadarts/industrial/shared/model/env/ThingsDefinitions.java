@@ -49,7 +49,8 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	OFFICE_CHAIR_1(Models.OFFICE_CHAIR_1, 1, 1, "Office Chair #2", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
 	SINK_0(new Vector3(-0.5F, 0.7F, 0F), Models.SINK_0, 1, 1, "Sink #1", MapNodesTypes.PASSABLE_NODE),
 	SINK_1(new Vector3(-0.5F, 0.7F, 0F), Models.SINK_1, 1, 1, "Sink #2", MapNodesTypes.PASSABLE_NODE),
-	TRASH_CAN(Models.TRASH_CAN, 1, 1, "Trash-Can", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED);
+	TRASH_CAN(Models.TRASH_CAN, 1, 1, "Trash-Can", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED),
+	TOILET(Models.TOILET, 1, 1, "Toilet", MapNodesTypes.OBSTACLE_KEY_DIAGONAL_ALLOWED);
 
 	@Getter(AccessLevel.NONE)
 	private final Vector3 offset;
