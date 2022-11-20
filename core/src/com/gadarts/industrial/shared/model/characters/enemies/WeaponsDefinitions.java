@@ -1,5 +1,6 @@
 package com.gadarts.industrial.shared.model.characters.enemies;
 
+import com.badlogic.gdx.graphics.Color;
 import com.gadarts.industrial.shared.assets.Assets;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public enum WeaponsDefinitions {
 			4,
 			Assets.Models.LASER_BULLET,
 			0.2F,
-			true),
+			Color.RED),
 	GLOCK(
 			0.1F,
 			1,
@@ -50,7 +51,7 @@ public enum WeaponsDefinitions {
 	private final int engineConsumption;
 	private final Assets.Models modelDefinition;
 	private final float bulletSpeed;
-	private final boolean emitsLight;
+	private final Color lightColor;
 	private final boolean lightOnCreation;
 	private final Assets.Models bulletJacket;
 	private final boolean melee;
@@ -65,7 +66,7 @@ public enum WeaponsDefinitions {
 				damage,
 				null, null, null,
 				0, 0, 0,
-				null, 0, false, false, null,
+				null, 0, null, false, null,
 				melee,
 				duration);
 	}
@@ -82,7 +83,7 @@ public enum WeaponsDefinitions {
 				0, 0,
 				engineConsumption,
 				null, 0,
-				false, false, null,
+				null, false, null,
 				melee,
 				duration);
 	}
@@ -97,7 +98,7 @@ public enum WeaponsDefinitions {
 			int engineConsumption,
 			Assets.Models modelDefinition,
 			float bulletSpeed,
-			boolean emitsLight) {
+			Color lightColor) {
 		this(frameDuration,
 				damage,
 				particleEffectOnDestroy,
@@ -107,7 +108,7 @@ public enum WeaponsDefinitions {
 				engineConsumption,
 				modelDefinition,
 				bulletSpeed,
-				emitsLight,
+				lightColor,
 				false,
 				null,
 				false,
@@ -134,7 +135,7 @@ public enum WeaponsDefinitions {
 				0,
 				modelDefinition,
 				bulletSpeed,
-				false,
+				null,
 				lightOnCreation,
 				bulletJacket,
 				false,
