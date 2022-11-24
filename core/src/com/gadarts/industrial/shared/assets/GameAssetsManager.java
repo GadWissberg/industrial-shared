@@ -85,6 +85,12 @@ public class GameAssetsManager extends AssetManager {
 		finishLoading();
 	}
 
+	@Override
+	public void dispose( ) {
+		unloadParticleEffects();
+		super.dispose();
+	}
+
 	private void loadFile(AssetDefinition def) {
 		loadFile(def, def.getFilePath());
 	}
