@@ -39,6 +39,7 @@ import static com.gadarts.industrial.shared.assets.definitions.ModelDefinition.*
  */
 public class GameAssetsManager extends AssetManager {
 	private final String assetsLocation;
+	private boolean loadedParticleEffects;
 
 	public GameAssetsManager( ) {
 		this("");
@@ -60,11 +61,15 @@ public class GameAssetsManager extends AssetManager {
 						def.getFilePath(),
 						new ParticleEffectLoader.ParticleEffectLoadParameter(Array.with(pointSpriteParticleBatch))));
 		finishLoading();
+		loadedParticleEffects = true;
 	}
 
 	public void unloadParticleEffects( ) {
+		if (!loadedParticleEffects) return;
+
 		Arrays.stream(AssetsTypes.PARTICLES.getAssetDefinitions()).forEach(def -> unloadFileWithManualParameters(def));
 		finishLoading();
+		loadedParticleEffects = false;
 	}
 
 	/**
