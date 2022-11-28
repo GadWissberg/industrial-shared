@@ -228,7 +228,7 @@ public final class Assets {
 	 */
 	@Getter
 	public enum Sounds implements SoundDefinition {
-		STEP("step_1", "step_2", "step_3"),
+		STEP("step_0", "step_1", "step_2", "step_3"),
 		ENEMY_ROAM("enemy_roam_1", "enemy_roam_2", "enemy_roam_3"),
 		ENEMY_AWAKE("enemy_awake_1", "enemy_awake_2", "enemy_awake_3"),
 		ENEMY_PAIN("enemy_pain_1", "enemy_pain_2", "enemy_pain_3"),
@@ -241,7 +241,6 @@ public final class Assets {
 		SCORPION_PAIN,
 		SCORPION_DEATH("scorpion_death_1", "scorpion_death_2"),
 		SCORPION_ROAM,
-		LIGHT_STEP("light_step_1", "light_step_2", "light_step_3"),
 		ATTACK_COLT,
 		ATTACK_KNIFE,
 		PICKUP,
