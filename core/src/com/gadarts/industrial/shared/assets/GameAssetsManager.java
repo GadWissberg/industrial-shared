@@ -22,17 +22,13 @@ import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
 import com.badlogic.gdx.graphics.g3d.particles.batches.ParticleBatch;
 import com.badlogic.gdx.utils.Array;
 import com.gadarts.industrial.shared.assets.Assets.AssetsTypes;
-import com.gadarts.industrial.shared.assets.definitions.AtlasDefinition;
-import com.gadarts.industrial.shared.assets.definitions.FontDefinition;
-import com.gadarts.industrial.shared.assets.definitions.ParticleDefinition;
-import com.gadarts.industrial.shared.assets.definitions.TextureDefinition;
-import com.gadarts.industrial.shared.assets.loaders.ShaderLoader;
 import com.gadarts.industrial.shared.assets.definitions.*;
+import com.gadarts.industrial.shared.assets.loaders.ShaderLoader;
 
 import java.util.Arrays;
 import java.util.Optional;
 
-import static com.gadarts.industrial.shared.assets.definitions.ModelDefinition.*;
+import static com.gadarts.industrial.shared.assets.definitions.ModelDefinition.FOLDER;
 
 /**
  * Assets loader and manager.
