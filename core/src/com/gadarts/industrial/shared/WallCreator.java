@@ -61,72 +61,11 @@ public class WallCreator implements Disposable {
 		return northWall;
 	}
 
-	private static void adjustWallTextureAndPosition(Wall wall,
-													 float wallNodeHeight,
-													 MapNodeData neighborNode) {
-		ModelInstance modelInstance = wall.getModelInstance();
-		float neighborHeight = neighborNode.getHeight();
-		float sizeHeight = Math.abs(wallNodeHeight - neighborHeight);
-		float minHeight = Math.min(wallNodeHeight, neighborHeight);
-		adjustWallTexture(modelInstance, sizeHeight);
-		Coords neighborNodeCoords = neighborNode.getCoords();
-		Vector3 position = auxVector3_1.set(neighborNodeCoords.getCol(), minHeight, neighborNodeCoords.getRow());
-		modelInstance.transform.setToTranslationAndScaling(position, auxVector3_2.set(1, sizeHeight, 1));
-	}
-
 	public static void adjustWallTexture(ModelInstance modelInstance, float sizeHeight) {
 		TextureAttribute textureAtt = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);
 		int textureHeight = textureAtt.textureDescription.texture.getHeight() / WORLD_UNIT_SIZE;
 		textureAtt.scaleV = sizeHeight / textureHeight;
 		textureAtt.offsetV = (1F - textureAtt.scaleV);
-	}
-
-	private void createWestWallModel( ) {
-		ModelBuilder modelBuilder = new ModelBuilder();
-		westWallModel = modelBuilder.createRect(
-				0, 0, 1,
-				0, 0, 0,
-				0, 1, 0,
-				0, 1, 1,
-				1, 0, 0,
-				new Material(TextureAttribute.createDiffuse((Texture) null)),
-				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
-	}
-
-	private void createSouthWallModel( ) {
-		ModelBuilder modelBuilder = new ModelBuilder();
-		southWallModel = modelBuilder.createRect(
-				1, 0, 1,
-				0, 0, 1,
-				0, 1, 1,
-				1, 1, 1,
-				0, 0, -1,
-				new Material(TextureAttribute.createDiffuse((Texture) null)),
-				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
-	}
-
-	private void createEastWallModel( ) {
-		ModelBuilder modelBuilder = new ModelBuilder();
-		eastWallModel = modelBuilder.createRect(
-				1, 0, 0,
-				1, 0, 1,
-				1, 1, 1,
-				1, 1, 0,
-				-1, 0, 0,
-				new Material(TextureAttribute.createDiffuse((Texture) null)),
-				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
-	}
-
-	private void createNorthWallModel( ) {
-		ModelBuilder modelBuilder = new ModelBuilder();
-		northWallModel = modelBuilder.createRect(
-				0, 0, 0,
-				1, 0, 0,
-				1, 1, 0,
-				0, 1, 0,
-				0, 0, 1,
-				new Material(TextureAttribute.createDiffuse((Texture) null)),
-				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
 	}
 
 	/**
@@ -206,6 +145,75 @@ public class WallCreator implements Disposable {
 		}
 	}
 
+	@Override
+	public void dispose( ) {
+		eastWallModel.dispose();
+		westWallModel.dispose();
+		northWallModel.dispose();
+		southWallModel.dispose();
+	}
+
+	private static void adjustWallTextureAndPosition(Wall wall,
+													 float wallNodeHeight,
+													 MapNodeData neighborNode) {
+		ModelInstance modelInstance = wall.getModelInstance();
+		float neighborHeight = neighborNode.getHeight();
+		float sizeHeight = Math.abs(wallNodeHeight - neighborHeight);
+		float minHeight = Math.min(wallNodeHeight, neighborHeight);
+		adjustWallTexture(modelInstance, sizeHeight);
+		Coords neighborNodeCoords = neighborNode.getCoords();
+		Vector3 position = auxVector3_1.set(neighborNodeCoords.getCol(), minHeight, neighborNodeCoords.getRow());
+		modelInstance.transform.setToTranslationAndScaling(position, auxVector3_2.set(1, sizeHeight, 1));
+	}
+
+	private void createWestWallModel( ) {
+		ModelBuilder modelBuilder = new ModelBuilder();
+		westWallModel = modelBuilder.createRect(
+				0, 0, 1,
+				0, 0, 0,
+				0, 1, 0,
+				0, 1, 1,
+				1, 0, 0,
+				new Material(TextureAttribute.createDiffuse((Texture) null)),
+				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
+	}
+
+	private void createSouthWallModel( ) {
+		ModelBuilder modelBuilder = new ModelBuilder();
+		southWallModel = modelBuilder.createRect(
+				1, 0, 1,
+				0, 0, 1,
+				0, 1, 1,
+				1, 1, 1,
+				0, 0, -1,
+				new Material(TextureAttribute.createDiffuse((Texture) null)),
+				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
+	}
+
+	private void createEastWallModel( ) {
+		ModelBuilder modelBuilder = new ModelBuilder();
+		eastWallModel = modelBuilder.createRect(
+				1, 0, 0,
+				1, 0, 1,
+				1, 1, 1,
+				1, 1, 0,
+				-1, 0, 0,
+				new Material(TextureAttribute.createDiffuse((Texture) null)),
+				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
+	}
+
+	private void createNorthWallModel( ) {
+		ModelBuilder modelBuilder = new ModelBuilder();
+		northWallModel = modelBuilder.createRect(
+				0, 0, 0,
+				1, 0, 0,
+				1, 1, 0,
+				0, 1, 0,
+				0, 0, 1,
+				new Material(TextureAttribute.createDiffuse((Texture) null)),
+				Usage.Position | Usage.Normal | Usage.TextureCoordinates);
+	}
+
 	private void clearWallBetweenWestAndEastNodes(MapNodeData westernNode, MapNodeData easternNode) {
 		easternNode.getWalls().setWestWall(null);
 		westernNode.getWalls().setEastWall(null);
@@ -214,13 +222,5 @@ public class WallCreator implements Disposable {
 	private void clearWallBetweenNorthAndSouthNodes(MapNodeData northernNode, MapNodeData southernNode) {
 		southernNode.getWalls().setNorthWall(null);
 		northernNode.getWalls().setSouthWall(null);
-	}
-
-	@Override
-	public void dispose( ) {
-		eastWallModel.dispose();
-		westWallModel.dispose();
-		northWallModel.dispose();
-		southWallModel.dispose();
 	}
 }
