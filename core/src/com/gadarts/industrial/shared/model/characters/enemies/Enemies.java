@@ -26,7 +26,7 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds.ATTACK_FIST,
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
-			Assets.Sounds.STEP,
+			Assets.Sounds.STEP_CONCRETE,
 			Assets.ParticleEffects.SMALL_EXP,
 			0.45F),
 	GUARD_BOT("Guard Bot",
@@ -44,7 +44,7 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds.ATTACK_FIST,
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
-			Assets.Sounds.STEP,
+			Assets.Sounds.STEP_CONCRETE,
 			Assets.ParticleEffects.SMALL_EXP,
 			0.2F,
 			1F),
@@ -62,7 +62,7 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds.ATTACK_FIST,
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
-			Assets.Sounds.STEP,
+			Assets.Sounds.STEP_CONCRETE,
 			0.2F,
 			true);
 

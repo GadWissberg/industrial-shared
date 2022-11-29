@@ -153,7 +153,7 @@ public final class Assets {
 		}
 
 		@Override
-		public AssetLoaderParameters getParameters( ) {
+		public AssetLoaderParameters<ParticleEffect> getParameters( ) {
 			return null;
 		}
 
@@ -228,7 +228,8 @@ public final class Assets {
 	 */
 	@Getter
 	public enum Sounds implements SoundDefinition {
-		STEP("step_0", "step_1", "step_2", "step_3"),
+		STEP_CONCRETE("step_0", "step_1", "step_2", "step_3"),
+		STEP_METAL("step_metal_0", "step_metal_1", "step_metal_2", "step_metal_3"),
 		ENEMY_ROAM("enemy_roam_1", "enemy_roam_2", "enemy_roam_3"),
 		ENEMY_AWAKE("enemy_awake_1", "enemy_awake_2", "enemy_awake_3"),
 		ENEMY_PAIN("enemy_pain_1", "enemy_pain_2", "enemy_pain_3"),
@@ -412,6 +413,7 @@ public final class Assets {
 	 * Image files of surfaces.
 	 */
 	@Getter
+	@RequiredArgsConstructor
 	public enum SurfaceTextures implements TextureDefinition {
 		MISSING,
 		INDUSTRIAL_FLOOR_0,
@@ -421,9 +423,9 @@ public final class Assets {
 		INDUSTRIAL_FLOOR_4,
 		INDUSTRIAL_FLOOR_5,
 		INDUSTRIAL_FLOOR_6,
-		METALLIC_FLOOR_0,
-		METALLIC_FLOOR_1,
-		METALLIC_FLOOR_2,
+		METALLIC_FLOOR_0(SurfaceType.METAL),
+		METALLIC_FLOOR_1(SurfaceType.METAL),
+		METALLIC_FLOOR_2(SurfaceType.METAL),
 		CONCRETE_WALL_SQUARE_0,
 		CONCRETE_WALL_DARKNESS,
 		CONCRETE_WALL_HIGH,
@@ -475,15 +477,21 @@ public final class Assets {
 		BLANK,
 		;
 
+		private final SurfaceType surfaceType;
 		private final Texture.TextureWrap textureWrap;
 
 		SurfaceTextures(final Texture.TextureWrap textureWrap) {
-			this.textureWrap = textureWrap;
+			this(SurfaceType.CONCRETE, textureWrap);
 		}
 
 		SurfaceTextures( ) {
 			this(Texture.TextureWrap.Repeat);
 		}
+
+		SurfaceTextures(SurfaceType surfaceType) {
+			this(surfaceType, Texture.TextureWrap.Repeat);
+		}
+
 
 		@Override
 		public String getSubFolderName( ) {
