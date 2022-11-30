@@ -234,15 +234,15 @@ public final class Assets {
 		ENEMY_AWAKE("enemy_awake_1", "enemy_awake_2", "enemy_awake_3"),
 		ENEMY_PAIN("enemy_pain_1", "enemy_pain_2", "enemy_pain_3"),
 		ENEMY_DEATH("enemy_death_1", "enemy_death_2", "enemy_death_3"),
-		ATTACK_FIST,
-		ATTACK_ENERGY_BALL,
+		WEAPON_FIST,
 		SMALL_EXP,
 		SCORPION_ATTACK,
 		SCORPION_AWAKE("scorpion_awake_1", "scorpion_awake_2"),
 		SCORPION_PAIN,
 		SCORPION_DEATH("scorpion_death_1", "scorpion_death_2"),
 		SCORPION_ROAM,
-		ATTACK_COLT,
+		WEAPON_RAPID_LASER_CANNON(false),
+		WEAPON_GLOCK,
 		ATTACK_KNIFE,
 		PICKUP,
 		PLAYER_PAIN,
@@ -250,10 +250,8 @@ public final class Assets {
 		UI_CLICK(false),
 		UI_ITEM_SELECT(false),
 		UI_ITEM_PLACED(false),
-		AMB_WIND(false, true),
-		AMB_CHAINS(true, false, "amb_chains_1", "amb_chains_2", "amb_chains_3"),
-		AMB_LAUGH(true, false, "amb_laugh_1"),
-		AMB_SIGH(true, false, "amb_sigh_1", "amb_sigh_2");
+		DOOR_OPEN("door_open_0", "door_open_1"),
+		DOOR_CLOSED;
 
 		private final String filePath;
 		private final boolean randomPitch;

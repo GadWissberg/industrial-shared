@@ -1,6 +1,7 @@
 package com.gadarts.industrial.shared.model.characters;
 
 import com.gadarts.industrial.shared.assets.Assets;
+import com.gadarts.industrial.shared.assets.definitions.SoundDefinition;
 import com.gadarts.industrial.shared.model.ElementDefinition;
 
 public interface CharacterDefinition extends ElementDefinition {
@@ -23,4 +24,6 @@ public interface CharacterDefinition extends ElementDefinition {
 	default float getBulletCreationHeight( ) {
 		return getHeight() / 2F;
 	}
+
+	Assets.Sounds getMeleeSound( );
 }

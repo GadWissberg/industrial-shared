@@ -36,4 +36,9 @@ public enum NPCs implements CharacterDefinition {
 	public float getHeight( ) {
 		return 1.5F;
 	}
+
+	@Override
+	public Assets.Sounds getMeleeSound( ) {
+		return null;
+	}
 }

@@ -23,7 +23,7 @@ public enum Enemies implements CharacterDefinition {
 			1,
 			Assets.Sounds.ENEMY_AWAKE,
 			Assets.Sounds.ENEMY_ROAM,
-			Assets.Sounds.ATTACK_FIST,
+			Assets.Sounds.WEAPON_FIST,
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
 			Assets.Sounds.STEP_CONCRETE,
@@ -41,7 +41,7 @@ public enum Enemies implements CharacterDefinition {
 			1.5F,
 			Assets.Sounds.ENEMY_AWAKE,
 			Assets.Sounds.ENEMY_ROAM,
-			Assets.Sounds.ATTACK_FIST,
+			Assets.Sounds.WEAPON_FIST,
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
 			Assets.Sounds.STEP_CONCRETE,
@@ -59,7 +59,7 @@ public enum Enemies implements CharacterDefinition {
 			1.5F,
 			Assets.Sounds.ENEMY_AWAKE,
 			Assets.Sounds.ENEMY_ROAM,
-			Assets.Sounds.ATTACK_FIST,
+			Assets.Sounds.WEAPON_FIST,
 			Assets.Sounds.ENEMY_PAIN,
 			Assets.Sounds.ENEMY_DEATH,
 			Assets.Sounds.STEP_CONCRETE,
@@ -79,7 +79,7 @@ public enum Enemies implements CharacterDefinition {
 	private final float height;
 	private final Assets.Sounds awakeSound;
 	private final Assets.Sounds roamSound;
-	private final Assets.Sounds attackSound;
+	private final Assets.Sounds meleeSound;
 	private final Assets.Sounds painSound;
 	private final Assets.Sounds deathSound;
 	private final Assets.Sounds stepSound;
@@ -100,7 +100,7 @@ public enum Enemies implements CharacterDefinition {
 			float height,
 			Assets.Sounds awakeSound,
 			Assets.Sounds roamSound,
-			Assets.Sounds attackSound,
+			Assets.Sounds meleeSound,
 			Assets.Sounds painSound,
 			Assets.Sounds deathSound,
 			Assets.Sounds stepSound,
@@ -121,7 +121,7 @@ public enum Enemies implements CharacterDefinition {
 				height,
 				awakeSound,
 				roamSound,
-				attackSound,
+				meleeSound,
 				painSound,
 				deathSound,
 				stepSound, explosionEffectOnDestroy,
@@ -141,7 +141,7 @@ public enum Enemies implements CharacterDefinition {
 			float height,
 			Assets.Sounds awakeSound,
 			Assets.Sounds roamSound,
-			Assets.Sounds attackSound,
+			Assets.Sounds meleeSound,
 			Assets.Sounds painSound,
 			Assets.Sounds deathSound,
 			Assets.Sounds stepSound,
@@ -161,7 +161,7 @@ public enum Enemies implements CharacterDefinition {
 				height,
 				awakeSound,
 				roamSound,
-				attackSound,
+				meleeSound,
 				painSound,
 				deathSound,
 				stepSound,
@@ -183,7 +183,7 @@ public enum Enemies implements CharacterDefinition {
 			float height,
 			Assets.Sounds awakeSound,
 			Assets.Sounds roamSound,
-			Assets.Sounds attackSound,
+			Assets.Sounds meleeSound,
 			Assets.Sounds painSound,
 			Assets.Sounds deathSound,
 			Assets.Sounds stepSound,
@@ -201,7 +201,7 @@ public enum Enemies implements CharacterDefinition {
 				height,
 				awakeSound,
 				roamSound,
-				attackSound,
+				meleeSound,
 				painSound,
 				deathSound,
 				stepSound,
