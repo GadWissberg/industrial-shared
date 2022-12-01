@@ -231,7 +231,7 @@ public final class Assets {
 		STEP_CONCRETE("step_0", "step_1", "step_2", "step_3"),
 		STEP_METAL("step_metal_0", "step_metal_1", "step_metal_2", "step_metal_3"),
 		ENEMY_ROAM("enemy_roam_1", "enemy_roam_2", "enemy_roam_3"),
-		ENEMY_AWAKE("enemy_awake_1", "enemy_awake_2", "enemy_awake_3"),
+		GUARD_BOT_AWAKE("guard_bot_awake_0", "guard_bot_awake_1", "guard_bot_awake_2"),
 		ENEMY_PAIN("enemy_pain_1", "enemy_pain_2", "enemy_pain_3"),
 		ENEMY_DEATH("enemy_death_1", "enemy_death_2", "enemy_death_3"),
 		WEAPON_FIST,
