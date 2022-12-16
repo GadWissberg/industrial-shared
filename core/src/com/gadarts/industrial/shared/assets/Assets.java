@@ -243,15 +243,16 @@ public final class Assets {
 		SCORPION_ROAM,
 		WEAPON_RAPID_LASER_CANNON(false),
 		WEAPON_GLOCK,
-		ATTACK_KNIFE,
 		PICKUP,
-		PLAYER_PAIN,
+		PLAYER_PAIN("player_pain_0", "player_pain_1", "player_pain_2"),
 		PLAYER_DEATH,
 		UI_CLICK(false),
 		UI_ITEM_SELECT(false),
 		UI_ITEM_PLACED(false),
 		DOOR_OPEN("door_open_0", "door_open_1"),
-		DOOR_CLOSED;
+		DOOR_CLOSED,
+		AUTO_DOOR_OPEN(false),
+		AUTO_DOOR_CLOSE(false);
 
 		private final String filePath;
 		private final boolean randomPitch;
