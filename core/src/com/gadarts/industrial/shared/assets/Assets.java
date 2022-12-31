@@ -236,6 +236,7 @@ public final class Assets {
 		GUARD_BOT_DEATH("guard_bot_death_0", "guard_bot_death_1", "guard_bot_death_2"),
 		WEAPON_FIST,
 		SMALL_EXP,
+		WEAPON_CUTTER(true),
 		WEAPON_RAPID_LASER_CANNON(false),
 		WEAPON_GLOCK,
 		PICKUP,

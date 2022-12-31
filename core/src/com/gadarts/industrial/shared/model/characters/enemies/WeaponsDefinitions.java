@@ -2,6 +2,7 @@ package com.gadarts.industrial.shared.model.characters.enemies;
 
 import com.badlogic.gdx.graphics.Color;
 import com.gadarts.industrial.shared.assets.Assets;
+import com.gadarts.industrial.shared.assets.definitions.SoundDefinition;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +19,8 @@ public enum WeaponsDefinitions {
 			2,
 			1,
 			true,
-			0.4F),
+			0.4F,
+			Assets.Sounds.WEAPON_CUTTER),
 	RAPID_LASER_CANNON(
 			0.1F,
 			2,
@@ -75,11 +77,12 @@ public enum WeaponsDefinitions {
 					   int damage,
 					   int engineConsumption,
 					   boolean melee,
-					   float duration) {
+					   float duration,
+					   Assets.Sounds engageSound) {
 		this(
 				frameDuration,
 				damage,
-				null, null, null,
+				null, engageSound, null,
 				0, 0,
 				engineConsumption,
 				null, 0,
