@@ -245,8 +245,8 @@ public final class Assets {
 		UI_CLICK(false),
 		UI_ITEM_SELECT(false),
 		UI_ITEM_PLACED(false),
-		DOOR_OPEN("door_open_0", "door_open_1"),
-		DOOR_CLOSED,
+		DOOR_OPEN("door_open_0", "door_open_1", "door_open_2", "door_open_3", "door_open_4"),
+		DOOR_CLOSED("door_closed_0", "door_closed_1", "door_closed_2"),
 		AUTO_DOOR_OPEN(false),
 		AUTO_DOOR_CLOSE(false);
 
