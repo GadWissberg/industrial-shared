@@ -15,7 +15,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
-import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
@@ -48,6 +47,8 @@ public class GameAssetsManager extends AssetManager {
 		setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
 		FreetypeFontLoader loader = new FreetypeFontLoader(resolver);
 		setLoader(BitmapFont.class, FontDefinition.FORMAT, loader);
+		DataLoader dataLoader = new DataLoader(resolver);
+		setLoader(Data.class, DataDefinition.FORMAT, dataLoader);
 	}
 
 	public void loadParticleEffects(ParticleBatch<?> pointSpriteParticleBatch) {
@@ -151,8 +152,8 @@ public class GameAssetsManager extends AssetManager {
 	@Override
 	public <T> void addAsset(final String fileName, final Class<T> type, final T asset) {
 		super.addAsset(fileName, type, asset);
-		if (type == Model.class) {
-			Model model = (Model) asset;
+		if (type == com.badlogic.gdx.graphics.g3d.Model.class) {
+			com.badlogic.gdx.graphics.g3d.Model model = (com.badlogic.gdx.graphics.g3d.Model) asset;
 			model.materials.forEach(material -> material.remove(ColorAttribute.Specular));
 		}
 	}
@@ -165,8 +166,8 @@ public class GameAssetsManager extends AssetManager {
 		return get(assetsLocation + particle.getFilePath(), ParticleEffect.class);
 	}
 
-	public Model getModel(final ModelDefinition model) {
-		return get(assetsLocation + model.getFilePath(), Model.class);
+	public com.badlogic.gdx.graphics.g3d.Model getModel(final ModelDefinition model) {
+		return get(assetsLocation + model.getFilePath(), com.badlogic.gdx.graphics.g3d.Model.class);
 	}
 
 	public Texture getModelExplicitTexture(final ModelDefinition model) {
@@ -187,6 +188,10 @@ public class GameAssetsManager extends AssetManager {
 
 	public Sound getSound(String filePath) {
 		return get(assetsLocation + filePath, Sound.class);
+	}
+
+	public <T extends Data> T getModel(String name, Class<T> clazz) {
+		return get(assetsLocation + name, clazz);
 	}
 
 	public String getShader(final Assets.Shaders shaders) {

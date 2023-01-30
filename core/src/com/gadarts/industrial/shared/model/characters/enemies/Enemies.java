@@ -25,7 +25,6 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds.WEAPON_FIST,
 			Assets.Sounds.GUARD_BOT_PAIN,
 			Assets.Sounds.GUARD_BOT_DEATH,
-			Assets.Sounds.STEP_CONCRETE,
 			Assets.ParticleEffects.SMALL_EXP,
 			0.45F),
 	GUARD_BOT("Guard Bot",
@@ -175,7 +174,6 @@ public enum Enemies implements CharacterDefinition {
 			Assets.Sounds meleeSound,
 			Assets.Sounds painSound,
 			Assets.Sounds deathSound,
-			Assets.Sounds stepSound,
 			Assets.ParticleEffects explosionEffectOnDestroy,
 			float shadowRadius) {
 		this(displayName,
@@ -187,14 +185,16 @@ public enum Enemies implements CharacterDefinition {
 				engine,
 				primaryAttack,
 				primaryAttackHitFrameIndex,
+				false,
 				height,
 				awakeSound,
 				meleeSound,
 				painSound,
 				deathSound,
-				stepSound,
+				null,
 				explosionEffectOnDestroy,
 				shadowRadius,
+				false,
 				height / 2F);
 	}
 
