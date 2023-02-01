@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.gadarts.industrial.shared.assets.definitions.*;
+import com.gadarts.industrial.shared.assets.loaders.DataLoader;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -38,7 +39,8 @@ public final class Assets {
 		SHADER(Shaders.values()),
 		TEXTURE(TexturesTypes.getAllDefinitionsInSingleArray()),
 		PARTICLES(ParticleEffects.values(), true),
-		FONT(Fonts.values());
+		FONT(Fonts.values()),
+		DATA(Declarations.values());
 
 		private final AssetDefinition[] assetDefinitions;
 		private final boolean manualLoad;
@@ -554,6 +556,38 @@ public final class Assets {
 		@Override
 		public AssetLoaderParameters<Texture> getParameters( ) {
 			return null;
+		}
+	}
+
+
+	/**
+	 * Image files of UI components.
+	 */
+	@Getter
+	public enum Declarations implements DeclarationDefinition {
+		ENEMIES;
+
+
+		@Override
+		public String getSubFolderName( ) {
+			return null;
+		}
+
+		@Override
+		public String getName( ) {
+			return name();
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public AssetLoaderParameters<Declaration> getParameters( ) {
+			try {
+				String clazz = name().charAt(0) + name().substring(1).toLowerCase();
+				String format = String.format("com.gadarts.industrial.shared.assets.declarations.%s", clazz);
+				return new DataLoader.DataLoaderParameter((Class<? extends Declaration>) Class.forName(format));
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 

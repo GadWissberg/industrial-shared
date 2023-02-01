@@ -1,4 +1,4 @@
 package com.gadarts.industrial.shared.assets;
 
-public abstract class Data {
+public abstract class Declaration {
 }

@@ -22,6 +22,7 @@ import com.badlogic.gdx.graphics.g3d.particles.batches.ParticleBatch;
 import com.badlogic.gdx.utils.Array;
 import com.gadarts.industrial.shared.assets.Assets.AssetsTypes;
 import com.gadarts.industrial.shared.assets.definitions.*;
+import com.gadarts.industrial.shared.assets.loaders.DataLoader;
 import com.gadarts.industrial.shared.assets.loaders.ShaderLoader;
 
 import java.util.Arrays;
@@ -48,7 +49,7 @@ public class GameAssetsManager extends AssetManager {
 		FreetypeFontLoader loader = new FreetypeFontLoader(resolver);
 		setLoader(BitmapFont.class, FontDefinition.FORMAT, loader);
 		DataLoader dataLoader = new DataLoader(resolver);
-		setLoader(Data.class, DataDefinition.FORMAT, dataLoader);
+		setLoader(Declaration.class, DeclarationDefinition.FORMAT, dataLoader);
 	}
 
 	public void loadParticleEffects(ParticleBatch<?> pointSpriteParticleBatch) {
@@ -190,7 +191,7 @@ public class GameAssetsManager extends AssetManager {
 		return get(assetsLocation + filePath, Sound.class);
 	}
 
-	public <T extends Data> T getModel(String name, Class<T> clazz) {
+	public <T extends Declaration> T getModel(String name, Class<T> clazz) {
 		return get(assetsLocation + name, clazz);
 	}
 
@@ -202,5 +203,9 @@ public class GameAssetsManager extends AssetManager {
 		int size = font.getParams().fontParameters.size;
 		String fileName = assetsLocation + font.getFilename() + "_" + size + "." + FontDefinition.FORMAT;
 		return get(fileName, BitmapFont.class);
+	}
+
+	public Declaration getData(final Assets.Declarations definition) {
+		return get(assetsLocation + definition.getFilePath(), Declaration.class);
 	}
 }
