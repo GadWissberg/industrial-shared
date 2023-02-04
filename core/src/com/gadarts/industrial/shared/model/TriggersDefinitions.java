@@ -5,10 +5,14 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public enum TriggersDefinitions implements ElementDefinition {
+public enum TriggersDefinitions implements ElementDeclaration {
 	EXIT_MAP("Exit Map");
 
 	private final String displayName;
 
 
+	@Override
+	public String displayName( ) {
+		return displayName;
+	}
 }

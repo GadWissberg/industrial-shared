@@ -19,33 +19,33 @@ import java.io.Reader;
 
 import static java.lang.String.format;
 
-public class DataLoader extends AsynchronousAssetLoader<Declaration, DataLoader.DataLoaderParameter> {
+public class DeclarationsLoader extends AsynchronousAssetLoader<Declaration, DeclarationsLoader.DeclarationsLoaderParameter> {
 	private final Gson gson = new GsonBuilder()
 			.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
 			.create();
 
 	@Getter
 	@RequiredArgsConstructor
-	public static class DataLoaderParameter extends AssetLoaderParameters<Declaration> {
+	public static class DeclarationsLoaderParameter extends AssetLoaderParameters<Declaration> {
 		private final Class<? extends Declaration> typeClass;
 	}
 
-	public DataLoader(FileHandleResolver resolver) {
+	public DeclarationsLoader(FileHandleResolver resolver) {
 		super(resolver);
 	}
 
 	@Override
-	public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, DataLoaderParameter parameter) {
+	public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, DeclarationsLoaderParameter parameter) {
 		return null;
 	}
 
 	@Override
-	public void loadAsync(AssetManager manager, String fileName, FileHandle file, DataLoaderParameter parameter) {
+	public void loadAsync(AssetManager manager, String fileName, FileHandle file, DeclarationsLoaderParameter parameter) {
 
 	}
 
 	@Override
-	public Declaration loadSync(AssetManager manager, String fileName, FileHandle file, DataLoaderParameter parameter) {
+	public Declaration loadSync(AssetManager manager, String fileName, FileHandle file, DeclarationsLoaderParameter parameter) {
 		String path = format("%s", fileName);
 		Reader reader = Gdx.files.internal(path).reader();
 		return gson.fromJson(reader, parameter.getTypeClass());

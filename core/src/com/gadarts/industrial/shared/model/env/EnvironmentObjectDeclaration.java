@@ -1,11 +1,11 @@
 package com.gadarts.industrial.shared.model.env;
 
 import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
-import com.gadarts.industrial.shared.model.ModelElementDefinition;
+import com.gadarts.industrial.shared.model.ModelElementDeclaration;
 import com.gadarts.industrial.shared.model.RelativeBillboard;
 import com.gadarts.industrial.shared.model.map.MapNodesTypes;
 
-public interface EnvironmentObjectDefinition extends ModelElementDefinition {
+public interface EnvironmentObjectDeclaration extends ModelElementDeclaration {
 	EnvironmentObjectType getEnvironmentObjectType( );
 
 	default RelativeBillboard getRelativeBillboard( ) {

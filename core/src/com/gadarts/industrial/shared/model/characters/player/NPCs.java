@@ -1,14 +1,14 @@
 package com.gadarts.industrial.shared.model.characters.player;
 
 import com.gadarts.industrial.shared.assets.Assets;
-import com.gadarts.industrial.shared.model.characters.CharacterDefinition;
+import com.gadarts.industrial.shared.model.characters.CharacterDeclaration;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 
-public enum NPCs implements CharacterDefinition {
+public enum NPCs implements CharacterDeclaration {
 	;
 
 	@Override
-	public String getDisplayName( ) {
+	public String displayName( ) {
 		return "NPC";
 	}
 
@@ -38,7 +38,7 @@ public enum NPCs implements CharacterDefinition {
 	}
 
 	@Override
-	public Assets.Sounds getMeleeSound( ) {
+	public Assets.Sounds getSoundMelee( ) {
 		return null;
 	}
 }

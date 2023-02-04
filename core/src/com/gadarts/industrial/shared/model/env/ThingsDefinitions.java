@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor
-public enum ThingsDefinitions implements EnvironmentObjectDefinition {
+public enum ThingsDefinitions implements EnvironmentObjectDeclaration {
 	WALL_SUPPORTER_1(new Vector3(-0.5F, 0F, 0.5F), Models.WALL_SUPPORTER_1, 1, 1, "Wall Supporter #1", MapNodesTypes.PASSABLE_NODE),
 	WALL_SUPPORTER_2(new Vector3(-0.5F, 0F, 0.5F), Models.WALL_SUPPORTER_2, 1, 1, "Wall Supporter #2", MapNodesTypes.PASSABLE_NODE),
 	WALL_SUPPORTER_3(new Vector3(-0.5F, 0F, 0.5F), Models.WALL_SUPPORTER_3, 1, 1, "Wall Supporter #3", MapNodesTypes.PASSABLE_NODE),
@@ -142,7 +142,7 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	/**
 	 * When objects have even width or depth, this method will correct their position.
 	 *
-	 * @param definition      The definition of the misc object.
+	 * @param definition      The declaration of the misc object.
 	 * @param modelInstance   The model of the misc object.
 	 * @param facingDirection The facing direction of the misc object.
 	 */
@@ -163,7 +163,7 @@ public enum ThingsDefinitions implements EnvironmentObjectDefinition {
 	}
 
 	@Override
-	public String getDisplayName( ) {
+	public String displayName( ) {
 		return displayName;
 	}
 

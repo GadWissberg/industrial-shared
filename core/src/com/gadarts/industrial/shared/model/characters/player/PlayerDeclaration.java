@@ -2,19 +2,18 @@ package com.gadarts.industrial.shared.model.characters.player;
 
 
 import com.gadarts.industrial.shared.assets.Assets;
-import com.gadarts.industrial.shared.assets.definitions.SoundDefinition;
-import com.gadarts.industrial.shared.model.characters.CharacterDefinition;
+import com.gadarts.industrial.shared.model.characters.CharacterDeclaration;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 
-public class PlayerDefinition implements CharacterDefinition {
+public class PlayerDeclaration implements CharacterDeclaration {
 	@Override
-	public String getDisplayName( ) {
+	public String displayName( ) {
 		return "Player";
 	}
 
 	@Override
 	public String toString( ) {
-		return getDisplayName();
+		return displayName();
 	}
 
 	@Override
@@ -38,11 +37,6 @@ public class PlayerDefinition implements CharacterDefinition {
 	}
 
 	@Override
-	public int ordinal( ) {
-		return 0;
-	}
-
-	@Override
 	public Assets.Atlases getAtlasDefinition( ) {
 		return Assets.Atlases.PLAYER_COLT;
 	}
@@ -53,7 +47,7 @@ public class PlayerDefinition implements CharacterDefinition {
 	}
 
 	@Override
-	public Assets.Sounds getMeleeSound( ) {
+	public Assets.Sounds getSoundMelee( ) {
 		return Assets.Sounds.WEAPON_FIST;
 	}
 }

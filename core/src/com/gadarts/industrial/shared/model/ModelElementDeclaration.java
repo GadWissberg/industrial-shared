@@ -3,7 +3,7 @@ package com.gadarts.industrial.shared.model;
 import com.badlogic.gdx.math.Vector3;
 import com.gadarts.industrial.shared.assets.Assets;
 
-public interface ModelElementDefinition extends ElementDefinition {
+public interface ModelElementDeclaration extends ElementDeclaration {
 	Assets.Models getModelDefinition( );
 
 	default int getWidth( ) {

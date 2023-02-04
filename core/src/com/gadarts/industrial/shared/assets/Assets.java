@@ -10,8 +10,10 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
+import com.gadarts.industrial.shared.assets.declarations.enemies.EnemiesDeclarations;
+import com.gadarts.industrial.shared.assets.declarations.weapons.WeaponsDeclarations;
 import com.gadarts.industrial.shared.assets.definitions.*;
-import com.gadarts.industrial.shared.assets.loaders.DataLoader;
+import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -40,7 +42,7 @@ public final class Assets {
 		TEXTURE(TexturesTypes.getAllDefinitionsInSingleArray()),
 		PARTICLES(ParticleEffects.values(), true),
 		FONT(Fonts.values()),
-		DATA(Declarations.values());
+		DECLARATIONS(Declarations.values());
 
 		private final AssetDefinition[] assetDefinitions;
 		private final boolean manualLoad;
@@ -561,11 +563,16 @@ public final class Assets {
 
 
 	/**
-	 * Image files of UI components.
+	 * Declaration files of the game data model.
 	 */
 	@Getter
+	@RequiredArgsConstructor
 	public enum Declarations implements DeclarationDefinition {
-		ENEMIES;
+		ENEMIES(EnemiesDeclarations.class),
+		WEAPONS(WeaponsDeclarations.class);
+
+
+		private final Class<? extends Declaration> clazz;
 
 
 		@Override
@@ -583,8 +590,9 @@ public final class Assets {
 		public AssetLoaderParameters<Declaration> getParameters( ) {
 			try {
 				String clazz = name().charAt(0) + name().substring(1).toLowerCase();
-				String format = String.format("com.gadarts.industrial.shared.assets.declarations.%s", clazz);
-				return new DataLoader.DataLoaderParameter((Class<? extends Declaration>) Class.forName(format));
+				String address = "com.gadarts.industrial.shared.assets.declarations.%s.%sDeclarations";
+				String format = String.format(address, name().toLowerCase(), clazz);
+				return new DeclarationsLoader.DeclarationsLoaderParameter((Class<? extends Declaration>) Class.forName(format));
 			} catch (ClassNotFoundException e) {
 				throw new RuntimeException(e);
 			}

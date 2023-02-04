@@ -22,7 +22,7 @@ import com.badlogic.gdx.graphics.g3d.particles.batches.ParticleBatch;
 import com.badlogic.gdx.utils.Array;
 import com.gadarts.industrial.shared.assets.Assets.AssetsTypes;
 import com.gadarts.industrial.shared.assets.definitions.*;
-import com.gadarts.industrial.shared.assets.loaders.DataLoader;
+import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
 import com.gadarts.industrial.shared.assets.loaders.ShaderLoader;
 
 import java.util.Arrays;
@@ -48,8 +48,8 @@ public class GameAssetsManager extends AssetManager {
 		setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
 		FreetypeFontLoader loader = new FreetypeFontLoader(resolver);
 		setLoader(BitmapFont.class, FontDefinition.FORMAT, loader);
-		DataLoader dataLoader = new DataLoader(resolver);
-		setLoader(Declaration.class, DeclarationDefinition.FORMAT, dataLoader);
+		DeclarationsLoader declarationsLoader = new DeclarationsLoader(resolver);
+		setLoader(Declaration.class, DeclarationDefinition.FORMAT, declarationsLoader);
 	}
 
 	public void loadParticleEffects(ParticleBatch<?> pointSpriteParticleBatch) {
@@ -205,7 +205,7 @@ public class GameAssetsManager extends AssetManager {
 		return get(fileName, BitmapFont.class);
 	}
 
-	public Declaration getData(final Assets.Declarations definition) {
-		return get(assetsLocation + definition.getFilePath(), Declaration.class);
+	public Declaration getDeclaration(Assets.Declarations declaration) {
+		return get(assetsLocation + declaration.getFilePath(), declaration.getClazz());
 	}
 }

@@ -12,10 +12,10 @@ import java.util.List;
 public enum EnvironmentObjectType {
 	THING(ThingsDefinitions.values()), DOOR(DoorsDefinitions.values());
 
-	private final EnvironmentObjectDefinition[] definitions;
+	private final EnvironmentObjectDeclaration[] definitions;
 
-	public static List<EnvironmentObjectDefinition> collectAndGetAllDefinitions( ) {
-		List<EnvironmentObjectDefinition> result = new ArrayList<>();
+	public static List<EnvironmentObjectDeclaration> collectAndGetAllDefinitions( ) {
+		List<EnvironmentObjectDeclaration> result = new ArrayList<>();
 		Arrays.stream(values()).forEach(t -> result.addAll(List.of(t.getDefinitions())));
 		return result;
 	}

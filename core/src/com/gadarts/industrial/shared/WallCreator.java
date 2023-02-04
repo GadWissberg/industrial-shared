@@ -46,7 +46,7 @@ public class WallCreator implements Disposable {
 	 * @param n             The target node.
 	 * @param wallModel     The wall model used for creating the model instance.
 	 * @param assetsManager Used to get the texture.
-	 * @param definition    The texture definition for the wall.
+	 * @param definition    The texture declaration for the wall.
 	 */
 	public static Wall createWall(final MapNodeData n,
 								  final Model wallModel,
