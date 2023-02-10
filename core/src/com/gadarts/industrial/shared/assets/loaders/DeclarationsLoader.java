@@ -39,17 +39,8 @@ public class DeclarationsLoader extends AsynchronousAssetLoader<Declaration, Dec
 	public DeclarationsLoader(FileHandleResolver resolver,
 							  JsonDeserializer<WeaponDeclaration> weaponDeclarationDeserializer) {
 		super(resolver);
-		this.gson = new GsonBuilder()
-				.registerTypeAdapter(Color.class, (JsonDeserializer<Color>) (j, t, c) -> Color.valueOf(j.getAsString().toUpperCase()))
-				.registerTypeAdapter(Atlases.class, (JsonDeserializer<Atlases>) (j, t, c) -> Atlases.valueOf(j.getAsString().toUpperCase()))
-				.registerTypeAdapter(Accuracy.class, (JsonDeserializer<Accuracy>) (j, t, c) -> Accuracy.valueOf(j.getAsString().toUpperCase()))
-				.registerTypeAdapter(Sight.class, (JsonDeserializer<Sight>) (j, t, c) -> Sight.valueOf(j.getAsString().toUpperCase()))
+		this.gson = Assets.generateDefinedGsonBuilder()
 				.registerTypeAdapter(WeaponDeclaration.class, weaponDeclarationDeserializer)
-				.registerTypeAdapter(Sounds.class, (JsonDeserializer<Sounds>) (j, t, c) -> Sounds.valueOf(j.getAsString().toUpperCase()))
-				.registerTypeAdapter(Models.class, (JsonDeserializer<Models>) (j, t, c) -> Models.valueOf(j.getAsString().toUpperCase()))
-				.registerTypeAdapter(UiTextures.class, (JsonDeserializer<UiTextures>) (j, t, c) -> UiTextures.valueOf(j.getAsString().toUpperCase()))
-				.registerTypeAdapter(ParticleEffects.class, (JsonDeserializer<ParticleEffects>) (j, t, c) -> ParticleEffects.valueOf(j.getAsString().toUpperCase()))
-				.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
 				.create();
 	}
 

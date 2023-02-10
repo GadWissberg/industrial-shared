@@ -15,6 +15,11 @@ import com.gadarts.industrial.shared.assets.declarations.weapons.PlayerWeaponsDe
 import com.gadarts.industrial.shared.assets.declarations.weapons.WeaponsDeclarations;
 import com.gadarts.industrial.shared.assets.definitions.*;
 import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
+import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
+import com.gadarts.industrial.shared.model.characters.attributes.Sight;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -32,6 +37,19 @@ public final class Assets {
 	private Assets( ) {
 	}
 
+	public static GsonBuilder generateDefinedGsonBuilder( ) {
+		return new GsonBuilder()
+				.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+				.registerTypeAdapter(Color.class, (JsonDeserializer<Color>) (j, t, c) -> Color.valueOf(j.getAsString().toUpperCase()))
+				.registerTypeAdapter(Atlases.class, (JsonDeserializer<Atlases>) (j, t, c) -> Atlases.valueOf(j.getAsString().toUpperCase()))
+				.registerTypeAdapter(Accuracy.class, (JsonDeserializer<Accuracy>) (j, t, c) -> Accuracy.valueOf(j.getAsString().toUpperCase()))
+				.registerTypeAdapter(Sight.class, (JsonDeserializer<Sight>) (j, t, c) -> Sight.valueOf(j.getAsString().toUpperCase()))
+				.registerTypeAdapter(Sounds.class, (JsonDeserializer<Sounds>) (j, t, c) -> Sounds.valueOf(j.getAsString().toUpperCase()))
+				.registerTypeAdapter(Models.class, (JsonDeserializer<Models>) (j, t, c) -> Models.valueOf(j.getAsString().toUpperCase()))
+				.registerTypeAdapter(UiTextures.class, (JsonDeserializer<UiTextures>) (j, t, c) -> UiTextures.valueOf(j.getAsString().toUpperCase()))
+				.registerTypeAdapter(ParticleEffects.class, (JsonDeserializer<ParticleEffects>) (j, t, c) -> ParticleEffects.valueOf(j.getAsString().toUpperCase()));
+	}
+
 	@Getter
 	@RequiredArgsConstructor
 	public enum AssetsTypes {
@@ -43,13 +61,18 @@ public final class Assets {
 		TEXTURE(TexturesTypes.getAllDefinitionsInSingleArray()),
 		PARTICLES(ParticleEffects.values(), true),
 		FONT(Fonts.values()),
-		DECLARATIONS(Declarations.values());
+		DECLARATIONS(Declarations.values(), false, true);
 
 		private final AssetDefinition[] assetDefinitions;
 		private final boolean manualLoad;
+		private final boolean block;
 
 		AssetsTypes(final AssetDefinition[] assetDefinitions) {
-			this(assetDefinitions, false);
+			this(assetDefinitions, false, false);
+		}
+
+		AssetsTypes(final AssetDefinition[] assetDefinitions, boolean manualLoad) {
+			this(assetDefinitions, manualLoad, false);
 		}
 
 	}

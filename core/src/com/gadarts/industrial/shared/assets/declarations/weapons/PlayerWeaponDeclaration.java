@@ -12,7 +12,7 @@ public record PlayerWeaponDeclaration(String id,
 									  WeaponDeclaration declaration,
 									  Assets.Atlases relatedAtlas,
 									  int[] mask,
-									  Assets.Models modelDefinition) implements ItemDeclaration {
+									  Assets.Models modelDeclaration) implements ItemDeclaration {
 
 	@Override
 	public String displayName( ) {
@@ -51,6 +51,6 @@ public record PlayerWeaponDeclaration(String id,
 
 	@Override
 	public Assets.Models getModelDefinition( ) {
-		return modelDefinition;
+		return modelDeclaration;
 	}
 }

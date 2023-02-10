@@ -27,10 +27,7 @@ import com.gadarts.industrial.shared.assets.definitions.*;
 import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
 import com.gadarts.industrial.shared.assets.loaders.ShaderLoader;
 import com.gadarts.industrial.shared.assets.loaders.WeaponDeclarationDeserializer;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
 
 import java.lang.reflect.Type;
 import java.util.Arrays;
@@ -44,6 +41,7 @@ import static com.gadarts.industrial.shared.assets.definitions.ModelDefinition.F
 public class GameAssetManager extends AssetManager {
 	private final String assetsLocation;
 	private boolean loadedParticleEffects;
+	private final Gson gson = Assets.generateDefinedGsonBuilder().create();
 
 	public GameAssetManager( ) {
 		this("");
@@ -57,8 +55,14 @@ public class GameAssetManager extends AssetManager {
 		FreetypeFontLoader loader = new FreetypeFontLoader(resolver);
 		setLoader(BitmapFont.class, FontDefinition.FORMAT, loader);
 		setLoader(Declaration.class, DeclarationDefinition.FORMAT, new DeclarationsLoader(resolver, (json, t, c) -> {
-			WeaponsDeclarations declaration = (WeaponsDeclarations) getDeclaration(Assets.Declarations.WEAPONS);
-			return declaration.parse(json.getAsString());
+			WeaponDeclaration result;
+			if (json.isJsonPrimitive()) {
+				WeaponsDeclarations declaration = (WeaponsDeclarations) getDeclaration(Assets.Declarations.WEAPONS);
+				result = declaration.parse(json.getAsString());
+			} else {
+				result = gson.fromJson(json, t);
+			}
+			return result;
 		}));
 	}
 
@@ -90,9 +94,9 @@ public class GameAssetManager extends AssetManager {
 				.forEach(type -> Arrays.stream(type.getAssetDefinitions()).forEach(def -> {
 					String[] filesList = def.getFilesList();
 					if (filesList.length == 0) {
-						loadFile(def);
+						loadFile(def, def.getFilePath(), type.isBlock());
 					} else {
-						Arrays.stream(filesList).forEach(file -> loadFile(def, file));
+						Arrays.stream(filesList).forEach(file -> loadFile(def, file, type.isBlock()));
 					}
 				}));
 		finishLoading();
@@ -104,18 +108,16 @@ public class GameAssetManager extends AssetManager {
 		super.dispose();
 	}
 
-	private void loadFile(AssetDefinition def) {
-		loadFile(def, def.getFilePath());
-	}
-
-	private void loadFile(AssetDefinition def, String fileName) {
+	private void loadFile(AssetDefinition def, String fileName, boolean block) {
 		String path = Gdx.files.getFileHandle(assetsLocation + fileName, FileType.Internal).path();
 		Class<?> typeClass = def.getTypeClass();
-		if (Optional.ofNullable(def.getParameters()).isPresent()) {
-			String assetManagerKey = def.getAssetManagerKey();
-			load(assetManagerKey != null ? assetManagerKey : path, typeClass, def.getParameters());
+		if (def.getParameters() != null) {
+			load(def.getAssetManagerKey() != null ? def.getAssetManagerKey() : path, typeClass, def.getParameters());
 		} else {
 			load(path, typeClass);
+		}
+		if (block) {
+			finishLoadingAsset(path);
 		}
 		loadModelExplicitTexture(def);
 	}
@@ -216,6 +218,6 @@ public class GameAssetManager extends AssetManager {
 	}
 
 	public Declaration getDeclaration(Assets.Declarations declaration) {
-		return get(assetsLocation + declaration.getFilePath(), declaration.getClazz());
+		return get(assetsLocation + declaration.getFilePath(), Declaration.class);
 	}
 }
