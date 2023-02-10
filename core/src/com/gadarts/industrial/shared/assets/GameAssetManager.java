@@ -21,10 +21,18 @@ import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
 import com.badlogic.gdx.graphics.g3d.particles.batches.ParticleBatch;
 import com.badlogic.gdx.utils.Array;
 import com.gadarts.industrial.shared.assets.Assets.AssetsTypes;
+import com.gadarts.industrial.shared.assets.declarations.weapons.WeaponDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.weapons.WeaponsDeclarations;
 import com.gadarts.industrial.shared.assets.definitions.*;
 import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
 import com.gadarts.industrial.shared.assets.loaders.ShaderLoader;
+import com.gadarts.industrial.shared.assets.loaders.WeaponDeclarationDeserializer;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -33,23 +41,25 @@ import static com.gadarts.industrial.shared.assets.definitions.ModelDefinition.F
 /**
  * Assets loader and manager.
  */
-public class GameAssetsManager extends AssetManager {
+public class GameAssetManager extends AssetManager {
 	private final String assetsLocation;
 	private boolean loadedParticleEffects;
 
-	public GameAssetsManager( ) {
+	public GameAssetManager( ) {
 		this("");
 	}
 
-	public GameAssetsManager(final String assetsLocation) {
+	public GameAssetManager(final String assetsLocation) {
 		this.assetsLocation = assetsLocation;
 		setLoader(String.class, new ShaderLoader(getFileHandleResolver()));
 		FileHandleResolver resolver = new InternalFileHandleResolver();
 		setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
 		FreetypeFontLoader loader = new FreetypeFontLoader(resolver);
 		setLoader(BitmapFont.class, FontDefinition.FORMAT, loader);
-		DeclarationsLoader declarationsLoader = new DeclarationsLoader(resolver);
-		setLoader(Declaration.class, DeclarationDefinition.FORMAT, declarationsLoader);
+		setLoader(Declaration.class, DeclarationDefinition.FORMAT, new DeclarationsLoader(resolver, (json, t, c) -> {
+			WeaponsDeclarations declaration = (WeaponsDeclarations) getDeclaration(Assets.Declarations.WEAPONS);
+			return declaration.parse(json.getAsString());
+		}));
 	}
 
 	public void loadParticleEffects(ParticleBatch<?> pointSpriteParticleBatch) {

@@ -4,28 +4,27 @@ import com.badlogic.gdx.graphics.Color;
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.model.ItemDeclaration;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 
-@Getter
-@Setter
-public class WeaponDeclaration implements ItemDeclaration {
-	private String id;
-	private float frameDuration;
-	private String displayName;
-	private Integer damage;
-	private Assets.ParticleEffects bulletExplosion;
-	private Assets.Sounds soundEngage;
-	private Assets.Sounds soundImpact;
-	private int numberOfBulletsMin;
-	private int numberOfBulletsMax;
-	private int engineConsumption;
-	private Assets.Models bulletModel;
-	private float bulletSpeed;
-	private Color bulletLightColor;
-	private boolean lightOnCreation;
-	private Assets.Models bulletJacket;
-	private boolean melee;
-	private float duration;
+public record WeaponDeclaration(
+		String id,
+		float frameDuration,
+		String displayName,
+		Integer damage,
+		Assets.ParticleEffects bulletExplosion,
+		Assets.Sounds soundEngage,
+		Assets.Sounds soundImpact,
+		int numberOfBulletsMin,
+		int numberOfBulletsMax,
+		int engineConsumption,
+		Assets.Models bulletModel,
+		float bulletSpeed,
+		Color bulletLightColor,
+		boolean lightOnCreation,
+		Assets.Models bulletJacket,
+		boolean melee,
+		float duration
+) implements ItemDeclaration {
 
 	@Override
 	public String displayName( ) {

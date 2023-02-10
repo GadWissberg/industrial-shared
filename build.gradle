@@ -31,11 +31,13 @@ allprojects {
     }
 
     repositories {
-        mavenLocal()
         mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url 'https://s01.oss.sonatype.org' }
+        mavenLocal()
         google()
+        gradlePluginPortal()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
 
 }
@@ -51,7 +53,7 @@ project(":core") {
         compileOnly 'org.projectlombok:lombok:1.18.22'
         annotationProcessor 'org.projectlombok:lombok:1.18.22'
         implementation group: 'com.badlogicgames.gdx', name: 'gdx-ai', version: '1.8.1'
-        implementation 'com.google.code.gson:gson:2.9.0'
+        implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
     }
 
     publishing {

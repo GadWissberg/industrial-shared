@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
 import com.gadarts.industrial.shared.assets.Assets.SurfaceTextures;
-import com.gadarts.industrial.shared.assets.GameAssetsManager;
+import com.gadarts.industrial.shared.assets.GameAssetManager;
 import com.gadarts.industrial.shared.model.Coords;
 import com.gadarts.industrial.shared.model.map.MapNodeData;
 import com.gadarts.industrial.shared.model.map.NodeWalls;
@@ -26,12 +26,12 @@ public class WallCreator implements Disposable {
 	public static final int WORLD_UNIT_SIZE = 64;
 	private static final Vector3 auxVector3_1 = new Vector3();
 	private static final Vector3 auxVector3_2 = new Vector3();
-	private final GameAssetsManager assetsManager;
+	private final GameAssetManager assetsManager;
 
 	@Getter
 	private Model eastWallModel, southWallModel, northWallModel, westWallModel;
 
-	public WallCreator(final GameAssetsManager assetsManager) {
+	public WallCreator(final GameAssetManager assetsManager) {
 		this.assetsManager = assetsManager;
 		createWestWallModel();
 		createSouthWallModel();
@@ -50,7 +50,7 @@ public class WallCreator implements Disposable {
 	 */
 	public static Wall createWall(final MapNodeData n,
 								  final Model wallModel,
-								  final GameAssetsManager assetsManager,
+								  final GameAssetManager assetsManager,
 								  final SurfaceTextures definition) {
 		ModelInstance modelInstance = new ModelInstance(wallModel);
 		TextureAttribute textureAttr = (TextureAttribute) modelInstance.materials.get(0).get(TextureAttribute.Diffuse);

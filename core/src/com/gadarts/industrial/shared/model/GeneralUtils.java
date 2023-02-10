@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Plane;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
-import com.gadarts.industrial.shared.assets.GameAssetsManager;
+import com.gadarts.industrial.shared.assets.GameAssetManager;
 import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
 
 import java.util.Optional;
@@ -30,7 +30,7 @@ public final class GeneralUtils {
 
 	public static void applyExplicitModelTexture(ModelDefinition modelDefinition,
 												 ModelInstance modelInstance,
-												 GameAssetsManager assetsManager) {
+												 GameAssetManager assetsManager) {
 		Optional.ofNullable(modelDefinition.getTextureFileName()).ifPresent(t -> {
 			for (Material material : modelInstance.materials) {
 				if (material.has(TextureAttribute.Diffuse)) {
