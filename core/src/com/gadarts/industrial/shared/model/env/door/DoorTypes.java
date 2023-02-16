@@ -1,4 +1,4 @@
-package com.gadarts.industrial.shared.model.env;
+package com.gadarts.industrial.shared.model.env.door;
 
 import com.gadarts.industrial.shared.assets.Assets;
 import lombok.Getter;

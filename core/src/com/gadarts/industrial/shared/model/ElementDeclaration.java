@@ -4,6 +4,7 @@ import com.gadarts.industrial.shared.assets.Declaration;
 
 public interface ElementDeclaration extends Declaration {
 	String displayName( );
+	String id( );
 
 	String name( );
 

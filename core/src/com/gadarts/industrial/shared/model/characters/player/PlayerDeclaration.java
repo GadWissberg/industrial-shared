@@ -12,6 +12,11 @@ public class PlayerDeclaration implements CharacterDeclaration {
 	}
 
 	@Override
+	public String id( ) {
+		return name();
+	}
+
+	@Override
 	public String toString( ) {
 		return displayName();
 	}

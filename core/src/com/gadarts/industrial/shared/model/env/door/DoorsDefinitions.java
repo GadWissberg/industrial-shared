@@ -1,8 +1,10 @@
-package com.gadarts.industrial.shared.model.env;
+package com.gadarts.industrial.shared.model.env.door;
 
 import com.badlogic.gdx.math.Vector3;
 import com.gadarts.industrial.shared.assets.Assets.Models;
 import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
+import com.gadarts.industrial.shared.model.env.EnvironmentObjectDeclaration;
+import com.gadarts.industrial.shared.model.env.EnvironmentObjectType;
 import com.gadarts.industrial.shared.model.map.MapNodesTypes;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +32,11 @@ public enum DoorsDefinitions implements EnvironmentObjectDeclaration {
 	@Override
 	public String displayName( ) {
 		return displayName;
+	}
+
+	@Override
+	public String id( ) {
+		return name();
 	}
 
 	public Models getModelDefinition( ) {

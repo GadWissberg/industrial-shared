@@ -15,4 +15,9 @@ public enum TriggersDefinitions implements ElementDeclaration {
 	public String displayName( ) {
 		return displayName;
 	}
+
+	@Override
+	public String id( ) {
+		return name();
+	}
 }

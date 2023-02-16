@@ -13,6 +13,11 @@ public enum NPCs implements CharacterDeclaration {
 	}
 
 	@Override
+	public String id( ) {
+		return null;
+	}
+
+	@Override
 	public CharacterTypes getCharacterType( ) {
 		return CharacterTypes.NPC;
 	}

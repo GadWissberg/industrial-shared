@@ -1,5 +1,7 @@
 package com.gadarts.industrial.shared.model.env;
 
+import com.gadarts.industrial.shared.model.ElementType;
+import com.gadarts.industrial.shared.model.env.door.DoorsDefinitions;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -9,7 +11,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Getter
-public enum EnvironmentObjectType {
+public enum EnvironmentObjectType implements ElementType {
 	THING(ThingsDefinitions.values()), DOOR(DoorsDefinitions.values());
 
 	private final EnvironmentObjectDeclaration[] definitions;

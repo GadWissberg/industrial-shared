@@ -3,6 +3,7 @@ package com.gadarts.industrial.shared.model.env;
 import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
 import com.gadarts.industrial.shared.model.ModelElementDeclaration;
 import com.gadarts.industrial.shared.model.RelativeBillboard;
+import com.gadarts.industrial.shared.model.env.light.LightEmission;
 import com.gadarts.industrial.shared.model.map.MapNodesTypes;
 
 public interface EnvironmentObjectDeclaration extends ModelElementDeclaration {

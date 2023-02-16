@@ -7,6 +7,7 @@ import com.gadarts.industrial.shared.assets.Assets.Models;
 import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
 import com.gadarts.industrial.shared.model.RelativeBillboard;
 import com.gadarts.industrial.shared.model.characters.Direction;
+import com.gadarts.industrial.shared.model.env.light.LightEmission;
 import com.gadarts.industrial.shared.model.map.MapNodesTypes;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -165,6 +166,11 @@ public enum ThingsDefinitions implements EnvironmentObjectDeclaration {
 	@Override
 	public String displayName( ) {
 		return displayName;
+	}
+
+	@Override
+	public String id( ) {
+		return name();
 	}
 
 	@Override

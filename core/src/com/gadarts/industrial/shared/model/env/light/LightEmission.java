@@ -1,4 +1,4 @@
-package com.gadarts.industrial.shared.model.env;
+package com.gadarts.industrial.shared.model.env.light;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;

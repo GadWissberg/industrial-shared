@@ -3,8 +3,6 @@ package com.gadarts.industrial.shared.assets.declarations.weapons;
 import com.badlogic.gdx.graphics.Color;
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.model.ItemDeclaration;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 public record WeaponDeclaration(
 		String id,
