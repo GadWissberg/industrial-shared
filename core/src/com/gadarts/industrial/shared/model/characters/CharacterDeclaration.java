@@ -1,5 +1,6 @@
 package com.gadarts.industrial.shared.model.characters;
 
+import com.badlogic.gdx.math.Vector3;
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.model.ElementDeclaration;
 
@@ -20,8 +21,8 @@ public interface CharacterDeclaration extends ElementDeclaration {
 
 	float getHeight( );
 
-	default float getBulletCreationHeight( ) {
-		return getHeight() / 2F;
+	default Vector3 getBulletCreationOffset(Vector3 output) {
+		return output.set(output.x, getHeight() / 2F, output.z);
 	}
 
 	Assets.Sounds getSoundMelee( );

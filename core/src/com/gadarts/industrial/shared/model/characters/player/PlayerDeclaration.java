@@ -6,6 +6,15 @@ import com.gadarts.industrial.shared.model.characters.CharacterDeclaration;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 
 public class PlayerDeclaration implements CharacterDeclaration {
+	private static final PlayerDeclaration instance = new PlayerDeclaration();
+
+	private PlayerDeclaration( ) {
+	}
+
+	public static PlayerDeclaration getInstance( ) {
+		return instance;
+	}
+
 	@Override
 	public String displayName( ) {
 		return "Player";

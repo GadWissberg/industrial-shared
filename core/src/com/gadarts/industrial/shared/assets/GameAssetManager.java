@@ -26,10 +26,8 @@ import com.gadarts.industrial.shared.assets.declarations.weapons.WeaponsDeclarat
 import com.gadarts.industrial.shared.assets.definitions.*;
 import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
 import com.gadarts.industrial.shared.assets.loaders.ShaderLoader;
-import com.gadarts.industrial.shared.assets.loaders.WeaponDeclarationDeserializer;
-import com.google.gson.*;
+import com.google.gson.Gson;
 
-import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Optional;
 
