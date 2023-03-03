@@ -1,4 +1,4 @@
-package com.gadarts.industrial.shared.model;
+package com.gadarts.industrial.shared.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;

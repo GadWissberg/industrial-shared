@@ -1,4 +1,4 @@
-package com.gadarts.industrial.shared.model.characters;
+package com.gadarts.industrial.shared.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Plane;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
+import com.gadarts.industrial.shared.model.characters.Direction;
 
 public class CharacterUtils {
 	private final static Vector2 auxVector2_1 = new Vector2();

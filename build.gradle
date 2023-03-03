@@ -51,6 +51,7 @@ project(":core") {
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         compileOnly 'org.projectlombok:lombok:1.18.22'
+        api 'com.squidpony:squidlib-util:3.0.6'
         annotationProcessor 'org.projectlombok:lombok:1.18.22'
         implementation group: 'com.badlogicgames.gdx', name: 'gdx-ai', version: '1.8.1'
         implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'

@@ -57,7 +57,7 @@ public class MapNodeData {
 		Material material = modelInstance.materials.get(0);
 		material.remove(ColorAttribute.Diffuse);
 		material.set(TextureAttribute.createDiffuse((Texture) null));
-		modelInstance.transform.setTranslation(coords.getCol(), 0, coords.getRow());
+		modelInstance.transform.setTranslation(coords.col(), 0, coords.row());
 	}
 
 	public void lift(final float delta) {
