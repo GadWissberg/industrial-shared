@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 public enum SpriteType {
 	IDLE(0.15f, Animation.PlayMode.NORMAL, 2),
 	RUN(0.06f),
-	ATTACK_PRIMARY(0.06f, Animation.PlayMode.NORMAL, false),
+	ATTACK_PRIMARY(0.06f, Animation.PlayMode.NORMAL, false, 2),
 	PAIN(0.1F, Animation.PlayMode.NORMAL, false, true),
 	PICKUP(0.1f, Animation.PlayMode.NORMAL, false, true),
 	LIGHT_DEATH(0.06f, Animation.PlayMode.NORMAL, true, false, true, 3);
@@ -20,7 +20,6 @@ public enum SpriteType {
 	private final boolean singleDirection;
 	private final boolean addReverse;
 	private final boolean death;
-	private final String regionName;
 	private final int variations;
 	private final boolean commandDoneOnReverseEnd;
 
@@ -28,15 +27,14 @@ public enum SpriteType {
 		this(frameDuration, Animation.PlayMode.LOOP, 1);
 	}
 
-	SpriteType(float frameDuration, Animation.PlayMode playMode, boolean commandDoneOnReverseEnd) {
+	SpriteType(float frameDuration, Animation.PlayMode playMode, boolean commandDoneOnReverseEnd, int variations) {
 		this(
 				frameDuration,
 				playMode,
 				false,
 				false,
 				false,
-				null,
-				1,
+				variations,
 				commandDoneOnReverseEnd);
 	}
 
@@ -47,7 +45,6 @@ public enum SpriteType {
 				false,
 				false,
 				false,
-				null,
 				variations,
 				true);
 	}
@@ -61,7 +58,6 @@ public enum SpriteType {
 				singleDirection,
 				addReverse,
 				false,
-				null,
 				1,
 				true);
 	}
@@ -78,7 +74,6 @@ public enum SpriteType {
 				singleDirection,
 				addReverse,
 				death,
-				null,
 				variations,
 				true);
 	}
