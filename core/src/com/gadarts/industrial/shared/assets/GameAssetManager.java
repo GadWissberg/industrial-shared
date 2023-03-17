@@ -33,9 +33,6 @@ import java.util.Optional;
 
 import static com.gadarts.industrial.shared.assets.definitions.ModelDefinition.FOLDER;
 
-/**
- * Assets loader and manager.
- */
 public class GameAssetManager extends AssetManager {
 	private final String assetsLocation;
 	private boolean loadedParticleEffects;
@@ -77,14 +74,11 @@ public class GameAssetManager extends AssetManager {
 	public void unloadParticleEffects( ) {
 		if (!loadedParticleEffects) return;
 
-		Arrays.stream(AssetsTypes.PARTICLES.getAssetDefinitions()).forEach(def -> unloadFileWithManualParameters(def));
+		Arrays.stream(AssetsTypes.PARTICLES.getAssetDefinitions()).forEach(this::unloadFileWithManualParameters);
 		finishLoading();
 		loadedParticleEffects = false;
 	}
 
-	/**
-	 * Loads all defined assets and inflating animations.
-	 */
 	public void loadGameFiles(final AssetsTypes... assetsTypesToExclude) {
 		Arrays.stream(AssetsTypes.values())
 				.filter(type -> Arrays.stream(assetsTypesToExclude).noneMatch(toExclude -> toExclude == type))
@@ -100,56 +94,6 @@ public class GameAssetManager extends AssetManager {
 		finishLoading();
 	}
 
-	@Override
-	public void dispose( ) {
-		unloadParticleEffects();
-		super.dispose();
-	}
-
-	private void loadFile(AssetDefinition def, String fileName, boolean block) {
-		String path = Gdx.files.getFileHandle(assetsLocation + fileName, FileType.Internal).path();
-		Class<?> typeClass = def.getTypeClass();
-		if (def.getParameters() != null) {
-			load(def.getAssetManagerKey() != null ? def.getAssetManagerKey() : path, typeClass, def.getParameters());
-		} else {
-			load(path, typeClass);
-		}
-		if (block) {
-			finishLoadingAsset(path);
-		}
-		loadModelExplicitTexture(def);
-	}
-
-	private void loadModelExplicitTexture(AssetDefinition def) {
-		if (def instanceof ModelDefinition) {
-			ModelDefinition modelDef = (ModelDefinition) def;
-			Optional.ofNullable(modelDef.getTextureFileName()).ifPresent(t -> {
-				String fileName = assetsLocation + FOLDER + "/" + t + ".png";
-				load(fileName, Texture.class);
-			});
-		}
-	}
-
-	private void loadFileWithManualParameters(AssetDefinition def,
-											  String fileName,
-											  AssetLoaderParameters parameters) {
-		String filePath = assetsLocation + fileName;
-		String path = Gdx.files.getFileHandle(filePath, FileType.Internal).path();
-		Class<?> typeClass = def.getTypeClass();
-		String assetManagerKey = def.getAssetManagerKey();
-		load(assetManagerKey != null ? assetManagerKey : path, typeClass, parameters);
-	}
-
-	private void unloadFileWithManualParameters(AssetDefinition def) {
-		String filePath = assetsLocation + def.getFilePath();
-		String path = Gdx.files.getFileHandle(filePath, FileType.Internal).path();
-		String assetManagerKey = def.getAssetManagerKey();
-		unload(assetManagerKey != null ? assetManagerKey : path);
-	}
-
-	/**
-	 * Sets repeat value wrap for all loaded textures.
-	 */
 	public void applyRepeatWrapOnAllTextures( ) {
 		Array<Texture> textures = new Array<>();
 		getAll(Texture.class, textures);
@@ -217,5 +161,50 @@ public class GameAssetManager extends AssetManager {
 
 	public Declaration getDeclaration(Assets.Declarations declaration) {
 		return get(assetsLocation + declaration.getFilePath(), Declaration.class);
+	}
+
+	@Override
+	public void dispose( ) {
+		unloadParticleEffects();
+		super.dispose();
+	}
+
+	private void loadFile(AssetDefinition def, String fileName, boolean block) {
+		String path = Gdx.files.getFileHandle(assetsLocation + fileName, FileType.Internal).path();
+		if (def.getParameters() != null) {
+			load(def.getAssetManagerKey() != null ? def.getAssetManagerKey() : path, def.getTypeClass(), def.getParameters());
+		} else {
+			load(path, def.getTypeClass());
+		}
+		if (block) {
+			finishLoadingAsset(path);
+		}
+		loadModelExplicitTexture(def);
+	}
+
+	private void loadModelExplicitTexture(AssetDefinition def) {
+		if (def instanceof ModelDefinition modelDef) {
+			Optional.ofNullable(modelDef.getTextureFileName()).ifPresent(t -> {
+				String fileName = assetsLocation + FOLDER + "/" + t + ".png";
+				load(fileName, Texture.class);
+			});
+		}
+	}
+
+	private void loadFileWithManualParameters(AssetDefinition def,
+											  String fileName,
+											  AssetLoaderParameters parameters) {
+		String filePath = assetsLocation + fileName;
+		String path = Gdx.files.getFileHandle(filePath, FileType.Internal).path();
+		Class<?> typeClass = def.getTypeClass();
+		String assetManagerKey = def.getAssetManagerKey();
+		load(assetManagerKey != null ? assetManagerKey : path, typeClass, parameters);
+	}
+
+	private void unloadFileWithManualParameters(AssetDefinition def) {
+		String filePath = assetsLocation + def.getFilePath();
+		String path = Gdx.files.getFileHandle(filePath, FileType.Internal).path();
+		String assetManagerKey = def.getAssetManagerKey();
+		unload(assetManagerKey != null ? assetManagerKey : path);
 	}
 }

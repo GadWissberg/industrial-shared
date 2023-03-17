@@ -147,9 +147,7 @@ public final class Assets {
 		DEPTHMAP_VERTEX,
 		DEPTHMAP_FRAGMENT,
 		SHADOW_VERTEX,
-		SHADOW_FRAGMENT,
-		BLUR_VERTEX,
-		BLUR_FRAGMENT;
+		SHADOW_FRAGMENT;
 
 		private final String filePath;
 
