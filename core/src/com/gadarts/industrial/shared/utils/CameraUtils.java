@@ -11,6 +11,7 @@ import squidpony.squidmath.Coord3D;
 
 import java.util.ArrayDeque;
 
+@SuppressWarnings("ALL")
 public final class CameraUtils {
 	public static final int CAMERA_ROTATION_AROUND_X = -55;
 	public static final float START_OFFSET_X = 9;
@@ -27,10 +28,10 @@ public final class CameraUtils {
 
 	public static ArrayDeque<Coord3D> findAllCoordsOnRay(int screenX, int screenY, Camera camera) {
 		Ray ray = camera.getPickRay(screenX, screenY);
-		Intersector.intersectRayPlane(ray, floorPlane, auxVector3);
-		Vector3 pos = camera.position;
+		Vector3 intersection = auxVector3;
+		Intersector.intersectRayPlane(ray, floorPlane, intersection);
 		return (ArrayDeque<Coord3D>) Bresenham.line3D(
-				(int) Math.round((double) pos.x), (int) Math.round((double) pos.y), (int) Math.round((double) pos.z),
-				(int) Math.floor(auxVector3.x), 0, (int) Math.floor(auxVector3.z));
+				(int) ray.origin.x, (int) ray.origin.y, (int) ray.origin.z,
+				(int) intersection.x, 0, (int) intersection.z);
 	}
 }
