@@ -191,11 +191,6 @@ public final class Assets {
 		}
 
 		@Override
-		public Class<ParticleEffect> getTypeClass( ) {
-			return ParticleEffect.class;
-		}
-
-		@Override
 		public String getName( ) {
 			return name();
 		}
@@ -396,10 +391,6 @@ public final class Assets {
 			this(1.0F, fileName, textureFileName);
 		}
 
-		Models(String fileName) {
-			this(fileName, null);
-		}
-
 		@Override
 		public AssetLoaderParameters<Model> getParameters( ) {
 			return null;
@@ -586,9 +577,6 @@ public final class Assets {
 	}
 
 
-	/**
-	 * Declaration files of the game data model.
-	 */
 	@Getter
 	@RequiredArgsConstructor
 	public enum Declarations implements DeclarationDefinition {

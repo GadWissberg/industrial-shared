@@ -19,9 +19,6 @@ import lombok.Getter;
 
 import static com.gadarts.industrial.shared.assets.Assets.SurfaceTextures.MISSING;
 
-/**
- * A tool to generate walls for nodes.
- */
 public class WallCreator implements Disposable {
 	public static final int WORLD_UNIT_SIZE = 64;
 	private static final Vector3 auxVector3_1 = new Vector3();
@@ -39,15 +36,6 @@ public class WallCreator implements Disposable {
 		createEastWallModel();
 	}
 
-
-	/**
-	 * Creates a wall model instance for a given node.
-	 *
-	 * @param n             The target node.
-	 * @param wallModel     The wall model used for creating the model instance.
-	 * @param assetsManager Used to get the texture.
-	 * @param definition    The texture declaration for the wall.
-	 */
 	public static Wall createWall(final MapNodeData n,
 								  final Model wallModel,
 								  final GameAssetManager assetsManager,
@@ -68,13 +56,7 @@ public class WallCreator implements Disposable {
 		textureAtt.offsetV = (1F - textureAtt.scaleV);
 	}
 
-	/**
-	 * Creates a wall between the two nodes if missing and adjusts it.
-	 *
-	 * @param southernNode
-	 * @param northernNode
-	 */
-	@SuppressWarnings("JavaDoc")
+	@SuppressWarnings("unused")
 	public void adjustNorthWall(final MapNodeData southernNode,
 								final MapNodeData northernNode) {
 		if (northernNode.getHeight() != southernNode.getHeight()) {
@@ -88,12 +70,7 @@ public class WallCreator implements Disposable {
 		}
 	}
 
-	/**
-	 * Creates a wall between the two nodes if missing and adjusts it.
-	 *
-	 * @param southernNode
-	 * @param northernNode
-	 */
+	@SuppressWarnings("unused")
 	public void adjustSouthWall(final MapNodeData southernNode,
 								final MapNodeData northernNode) {
 		if (northernNode.getHeight() != southernNode.getHeight()) {
@@ -107,12 +84,7 @@ public class WallCreator implements Disposable {
 		}
 	}
 
-	/**
-	 * Creates a wall between the two nodes if missing and adjusts it.
-	 *
-	 * @param westernNode
-	 * @param easternNode
-	 */
+	@SuppressWarnings("unused")
 	public void adjustWestWall(final MapNodeData westernNode,
 							   final MapNodeData easternNode) {
 		if (easternNode.getHeight() != westernNode.getHeight()) {
@@ -126,12 +98,7 @@ public class WallCreator implements Disposable {
 		}
 	}
 
-	/**
-	 * Creates a wall between the two nodes if missing and adjusts it.
-	 *
-	 * @param westernNode
-	 * @param easternNode
-	 */
+	@SuppressWarnings("unused")
 	public void adjustEastWall(final MapNodeData westernNode,
 							   final MapNodeData easternNode) {
 		if (easternNode.getHeight() != westernNode.getHeight()) {

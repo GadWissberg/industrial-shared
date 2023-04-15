@@ -13,9 +13,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-/**
- * Definitions of misc objects.
- */
 @Getter
 @RequiredArgsConstructor
 public enum ThingsDefinitions implements EnvironmentObjectDeclaration {
@@ -140,13 +137,7 @@ public enum ThingsDefinitions implements EnvironmentObjectDeclaration {
 				0F);
 	}
 
-	/**
-	 * When objects have even width or depth, this method will correct their position.
-	 *
-	 * @param definition      The declaration of the misc object.
-	 * @param modelInstance   The model of the misc object.
-	 * @param facingDirection The facing direction of the misc object.
-	 */
+	@SuppressWarnings("unused")
 	public static void handleEvenSize(final ThingsDefinitions definition,
 									  final ModelInstance modelInstance,
 									  final Direction facingDirection) {
