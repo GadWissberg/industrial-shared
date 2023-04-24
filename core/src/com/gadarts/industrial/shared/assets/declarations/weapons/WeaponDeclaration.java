@@ -15,6 +15,7 @@ public record WeaponDeclaration(
 		int numberOfBulletsMin,
 		int numberOfBulletsMax,
 		int engineConsumption,
+		int actionPointsConsumption,
 		Assets.Models bulletModel,
 		float bulletSpeed,
 		Color bulletLightColor,
