@@ -66,4 +66,9 @@ public record WeaponDeclaration(
 	public Assets.Models getModelDefinition( ) {
 		return bulletModel;
 	}
+
+	@Override
+	public String toString( ) {
+		return displayName;
+	}
 }
