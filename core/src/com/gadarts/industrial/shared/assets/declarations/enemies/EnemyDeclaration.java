@@ -1,6 +1,5 @@
 package com.gadarts.industrial.shared.assets.declarations.enemies;
 
-import com.badlogic.gdx.math.Vector3;
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.assets.declarations.Agility;
 import com.gadarts.industrial.shared.assets.declarations.weapons.WeaponDeclaration;
@@ -8,6 +7,7 @@ import com.gadarts.industrial.shared.model.characters.CharacterDeclaration;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
 import com.gadarts.industrial.shared.model.characters.attributes.Sight;
+import com.gadarts.industrial.shared.utils.ImmutableVector3;
 
 public record EnemyDeclaration(String id,
 							   String displayName,
@@ -29,7 +29,7 @@ public record EnemyDeclaration(String id,
 							   Assets.Sounds explosionEffectOnDestroy,
 							   float shadowRadius,
 							   boolean human,
-							   Vector3 bulletCreationOffset) implements CharacterDeclaration {
+							   ImmutableVector3 bulletCreationOffset) implements CharacterDeclaration {
 	@Override
 	public CharacterTypes getCharacterType( ) {
 		return CharacterTypes.ENEMY;
