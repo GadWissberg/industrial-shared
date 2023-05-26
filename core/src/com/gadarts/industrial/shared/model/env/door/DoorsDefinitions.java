@@ -44,16 +44,6 @@ public enum DoorsDefinitions implements EnvironmentObjectDeclaration {
 	}
 
 	@Override
-	public int getWidth( ) {
-		return 1;
-	}
-
-	@Override
-	public int getDepth( ) {
-		return 1;
-	}
-
-	@Override
 	public Vector3 getOffset(Vector3 output) {
 		return output.set(offset);
 	}
