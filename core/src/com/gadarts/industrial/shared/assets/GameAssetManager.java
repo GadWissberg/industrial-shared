@@ -48,7 +48,7 @@ public class GameAssetManager extends AssetManager {
 		FileHandleResolver resolver = new InternalFileHandleResolver();
 		setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
 		FreetypeFontLoader loader = new FreetypeFontLoader(resolver);
-		setLoader(BitmapFont.class, FontDefinition.FORMAT, loader);
+		setLoader(BitmapFont.class, FontDefinition.FORMAT_TTF, loader);
 		setLoader(Declaration.class, DeclarationDefinition.FORMAT, new DeclarationsLoader(resolver, (json, t, c) -> {
 			WeaponDeclaration result;
 			if (json.isJsonPrimitive()) {
@@ -154,9 +154,7 @@ public class GameAssetManager extends AssetManager {
 	}
 
 	public BitmapFont getFont(final Assets.Fonts font) {
-		int size = font.getParams().fontParameters.size;
-		String fileName = assetsLocation + font.getFilename() + "_" + size + "." + FontDefinition.FORMAT;
-		return get(fileName, BitmapFont.class);
+		return get(assetsLocation + font.getAssetManagerKey(), BitmapFont.class);
 	}
 
 	public Declaration getDeclaration(Assets.Declarations declaration) {

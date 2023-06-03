@@ -1,13 +1,14 @@
 package com.gadarts.industrial.shared.assets;
 
 import com.badlogic.gdx.assets.AssetLoaderParameters;
+import com.badlogic.gdx.assets.loaders.BitmapFontLoader;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
+import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader.FreeTypeFontLoaderParameter;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.gadarts.industrial.shared.assets.declarations.enemies.EnemiesDeclarations;
@@ -196,43 +197,56 @@ public final class Assets {
 		}
 	}
 
-	/**
-	 * Fonts files.
-	 */
 	@Getter
 	public enum Fonts implements FontDefinition {
 		CONSOLA(15),
 		CHUBGOTHIC_SMALL("chubgothic", 40, true),
-		CHUBGOTHIC_LARGE("chubgothic", 72, true);
+		CHUBGOTHIC_LARGE("chubgothic", 72, true),
+		HUD;
 
 		private final String filePath;
-		private final FreetypeFontLoader.FreeTypeFontLoaderParameter params;
+		private final AssetLoaderParameters params;
 		private final String filename;
+		private final String format;
 
-		Fonts(final int size) {
-			this(null, size, false);
+		Fonts( ) {
+			this(null, 0, false, FORMAT_FNT);
 		}
 
-		Fonts(final String filename, final int size, final boolean outline) {
-			params = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
+		Fonts(final int size) {
+			this(null, size, false, FORMAT_TTF);
+		}
+
+		Fonts(String filename, int size, boolean outline) {
+			this(filename, size, outline, FORMAT_TTF);
+		}
+
+		Fonts(String filename, int size, boolean outline, String format) {
+			params = format.equals(FORMAT_TTF) ? new FreeTypeFontLoaderParameter() : new BitmapFontLoader.BitmapFontParameter();
 			this.filename = filename != null ? filename : name().toLowerCase();
 			String name = filename == null ? name().toLowerCase() : filename;
-			filePath = FontDefinition.FOLDER + PATH_SEPARATOR + name + "." + FontDefinition.FORMAT;
+			filePath = FontDefinition.FOLDER + PATH_SEPARATOR + name + "." + format;
+			this.format = format;
 			defineParams(size, outline);
 		}
 
 		private void defineParams(final int size, final boolean outline) {
-			params.fontParameters.size = size;
-			params.fontFileName = filePath;
-			if (outline) {
-				params.fontParameters.borderWidth = 1f;
-				params.fontParameters.borderColor = Color.RED;
+			if (format.equals(FORMAT_TTF)) {
+				FreeTypeFontLoaderParameter ttfParams = (FreeTypeFontLoaderParameter) params;
+				ttfParams.fontParameters.size = size;
+				ttfParams.fontFileName = filePath;
+				if (outline) {
+					ttfParams.fontParameters.borderWidth = 1f;
+					ttfParams.fontParameters.borderColor = Color.RED;
+				}
 			}
 		}
 
 		@Override
 		public String getAssetManagerKey( ) {
-			return filename + "_" + params.fontParameters.size + "." + FontDefinition.FORMAT;
+			boolean isTtf = format.equals(FORMAT_TTF);
+			String size = isTtf ? "_" + ((FreeTypeFontLoaderParameter) params).fontParameters.size : "";
+			return (isTtf ? "" : String.format("assets/%s/", Fonts.FOLDER)) + filename + size + "." + format;
 		}
 
 		@Override
@@ -246,9 +260,6 @@ public final class Assets {
 		}
 	}
 
-	/**
-	 * Wave files.
-	 */
 	@Getter
 	public enum Sounds implements SoundDefinition {
 		STEP_CONCRETE("step_0", "step_1", "step_2", "step_3"),
@@ -523,12 +534,8 @@ public final class Assets {
 		}
 	}
 
-	/**
-	 * Image files of UI components.
-	 */
 	@Getter
 	public enum UiTextures implements TextureDefinition {
-		PATH_ARROW,
 		BULB,
 		TRIGGER,
 		BUTTON_STORAGE(null, "buttons"),
@@ -541,7 +548,8 @@ public final class Assets {
 		WEAPON_HAMMER(null, "weapons"),
 		WEAPON_COLT(null, "weapons"),
 		PLAYER_LAYOUT,
-		LOGO(null);
+		LOGO(null),
+		HUD_HP(null);
 
 		public static final String SUB_FOLDER_NAME = "ui";
 		private final String specialFileName;
