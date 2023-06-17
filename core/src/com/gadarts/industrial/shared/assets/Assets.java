@@ -548,8 +548,13 @@ public final class Assets {
 		WEAPON_HAMMER(null, "weapons"),
 		WEAPON_COLT(null, "weapons"),
 		PLAYER_LAYOUT,
-		LOGO(null),
-		HUD_HP(null);
+		LOGO,
+		HUD_HP_BORDER,
+		HUD_HP_HEART,
+		HUD_INVENTORY_BUTTON,
+		HUD_INVENTORY_BUTTON_HOVER,
+		HUD_INVENTORY_BUTTON_CLICKED,
+		DAMAGE_INDICATOR;
 
 		public static final String SUB_FOLDER_NAME = "ui";
 		private final String specialFileName;
