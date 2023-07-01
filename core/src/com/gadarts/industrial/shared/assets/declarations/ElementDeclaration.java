@@ -1,4 +1,4 @@
-package com.gadarts.industrial.shared.model;
+package com.gadarts.industrial.shared.assets.declarations;
 
 import com.gadarts.industrial.shared.assets.Declaration;
 

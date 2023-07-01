@@ -1,8 +1,9 @@
-package com.gadarts.industrial.shared.model.env;
+package com.gadarts.industrial.shared.assets.declarations;
 
 import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
-import com.gadarts.industrial.shared.model.ModelElementDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.ModelElementDeclaration;
 import com.gadarts.industrial.shared.model.RelativeBillboard;
+import com.gadarts.industrial.shared.model.env.EnvironmentObjectType;
 import com.gadarts.industrial.shared.model.env.light.LightEmission;
 import com.gadarts.industrial.shared.model.map.MapNodesTypes;
 

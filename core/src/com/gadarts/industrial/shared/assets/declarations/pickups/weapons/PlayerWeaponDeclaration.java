@@ -1,8 +1,9 @@
-package com.gadarts.industrial.shared.assets.declarations.weapons;
+package com.gadarts.industrial.shared.assets.declarations.pickups.weapons;
 
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.assets.definitions.TextureDefinition;
-import com.gadarts.industrial.shared.model.ItemDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.pickups.ItemDeclaration;
+import com.gadarts.industrial.shared.model.pickups.BulletTypes;
 
 public record PlayerWeaponDeclaration(String id,
 									  int hitFrameIndex,
@@ -12,7 +13,9 @@ public record PlayerWeaponDeclaration(String id,
 									  WeaponDeclaration declaration,
 									  Assets.Atlases relatedAtlas,
 									  int[] mask,
-									  Assets.Models modelDeclaration) implements ItemDeclaration {
+									  Assets.Models modelDeclaration,
+									  Assets.UiTextures hudIcon,
+									  BulletTypes bulletType) implements ItemDeclaration {
 
 	@Override
 	public String displayName( ) {

@@ -1,4 +1,4 @@
-package com.gadarts.industrial.shared.assets.declarations.weapons;
+package com.gadarts.industrial.shared.assets.declarations.pickups.weapons;
 
 import com.gadarts.industrial.shared.assets.Declaration;
 

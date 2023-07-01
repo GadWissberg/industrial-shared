@@ -1,8 +1,8 @@
-package com.gadarts.industrial.shared.assets.declarations.weapons;
+package com.gadarts.industrial.shared.assets.declarations.pickups.weapons;
 
 import com.badlogic.gdx.graphics.Color;
 import com.gadarts.industrial.shared.assets.Assets;
-import com.gadarts.industrial.shared.model.ItemDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.pickups.ItemDeclaration;
 
 public record WeaponDeclaration(
 		String id,

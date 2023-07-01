@@ -2,7 +2,7 @@ package com.gadarts.industrial.shared.model.characters.player;
 
 
 import com.gadarts.industrial.shared.assets.Assets;
-import com.gadarts.industrial.shared.model.characters.CharacterDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.characters.CharacterDeclaration;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 
 public class PlayerDeclaration implements CharacterDeclaration {

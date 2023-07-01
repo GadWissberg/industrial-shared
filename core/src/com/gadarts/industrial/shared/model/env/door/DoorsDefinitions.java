@@ -3,7 +3,7 @@ package com.gadarts.industrial.shared.model.env.door;
 import com.badlogic.gdx.math.Vector3;
 import com.gadarts.industrial.shared.assets.Assets.Models;
 import com.gadarts.industrial.shared.assets.definitions.ModelDefinition;
-import com.gadarts.industrial.shared.model.env.EnvironmentObjectDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.EnvironmentObjectDeclaration;
 import com.gadarts.industrial.shared.model.env.EnvironmentObjectType;
 import com.gadarts.industrial.shared.model.map.MapNodesTypes;
 import lombok.Getter;

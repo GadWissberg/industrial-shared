@@ -1,4 +1,4 @@
-package com.gadarts.industrial.shared.assets.declarations.enemies;
+package com.gadarts.industrial.shared.assets.declarations.characters.enemies;
 
 import com.gadarts.industrial.shared.assets.Declaration;
 

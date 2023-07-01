@@ -1,5 +1,6 @@
 package com.gadarts.industrial.shared.model.env;
 
+import com.gadarts.industrial.shared.assets.declarations.EnvironmentObjectDeclaration;
 import com.gadarts.industrial.shared.model.ElementType;
 import com.gadarts.industrial.shared.model.env.door.DoorsDefinitions;
 import lombok.Getter;

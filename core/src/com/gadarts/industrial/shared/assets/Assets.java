@@ -11,9 +11,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader.FreeTypeFontLoaderParameter;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
-import com.gadarts.industrial.shared.assets.declarations.enemies.EnemiesDeclarations;
-import com.gadarts.industrial.shared.assets.declarations.weapons.PlayerWeaponsDeclarations;
-import com.gadarts.industrial.shared.assets.declarations.weapons.WeaponsDeclarations;
+import com.gadarts.industrial.shared.assets.declarations.characters.enemies.EnemiesDeclarations;
+import com.gadarts.industrial.shared.assets.declarations.pickups.weapons.PlayerWeaponsDeclarations;
+import com.gadarts.industrial.shared.assets.declarations.pickups.weapons.WeaponsDeclarations;
 import com.gadarts.industrial.shared.assets.definitions.*;
 import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
 import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
@@ -549,7 +549,9 @@ public final class Assets {
 		WEAPON_COLT(null, "weapons"),
 		PLAYER_LAYOUT,
 		LOGO,
-		HUD_HP_BORDER,
+		HUD_WEAPON_ICON_FIST,
+		HUD_WEAPON_ICON_GLOCK,
+		HUD_BORDER,
 		HUD_HP_HEART,
 		HUD_INVENTORY_BUTTON,
 		HUD_INVENTORY_BUTTON_HOVER,

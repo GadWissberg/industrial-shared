@@ -1,5 +1,6 @@
 package com.gadarts.industrial.shared.model;
 
+import com.gadarts.industrial.shared.assets.declarations.ElementDeclaration;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

@@ -1,5 +1,6 @@
-package com.gadarts.industrial.shared.model;
+package com.gadarts.industrial.shared.assets.declarations.pickups;
 
+import com.gadarts.industrial.shared.assets.declarations.ModelElementDeclaration;
 import com.gadarts.industrial.shared.assets.definitions.TextureDefinition;
 
 public interface ItemDeclaration extends ModelElementDeclaration {

@@ -1,9 +1,9 @@
-package com.gadarts.industrial.shared.assets.declarations.enemies;
+package com.gadarts.industrial.shared.assets.declarations.characters.enemies;
 
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.assets.declarations.Agility;
-import com.gadarts.industrial.shared.assets.declarations.weapons.WeaponDeclaration;
-import com.gadarts.industrial.shared.model.characters.CharacterDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.pickups.weapons.WeaponDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.characters.CharacterDeclaration;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
 import com.gadarts.industrial.shared.model.characters.attributes.Sight;

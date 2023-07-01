@@ -1,4 +1,4 @@
-package com.gadarts.industrial.shared.model;
+package com.gadarts.industrial.shared.assets.declarations;
 
 import com.badlogic.gdx.math.Vector3;
 import com.gadarts.industrial.shared.assets.Assets;
