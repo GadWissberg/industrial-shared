@@ -18,6 +18,7 @@ import com.gadarts.industrial.shared.assets.definitions.*;
 import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
 import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
 import com.gadarts.industrial.shared.model.characters.attributes.Sight;
+import com.gadarts.industrial.shared.model.pickups.BulletTypes;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
@@ -28,9 +29,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-/**
- * Definitions of the game content.
- */
 public final class Assets {
 
 	public static final String PATH_SEPARATOR = "/";
@@ -48,7 +46,8 @@ public final class Assets {
 				.registerTypeAdapter(Sounds.class, (JsonDeserializer<Sounds>) (j, t, c) -> Sounds.valueOf(j.getAsString().toUpperCase()))
 				.registerTypeAdapter(Models.class, (JsonDeserializer<Models>) (j, t, c) -> Models.valueOf(j.getAsString().toUpperCase()))
 				.registerTypeAdapter(UiTextures.class, (JsonDeserializer<UiTextures>) (j, t, c) -> UiTextures.valueOf(j.getAsString().toUpperCase()))
-				.registerTypeAdapter(ParticleEffects.class, (JsonDeserializer<ParticleEffects>) (j, t, c) -> ParticleEffects.valueOf(j.getAsString().toUpperCase()));
+				.registerTypeAdapter(ParticleEffects.class, (JsonDeserializer<ParticleEffects>) (j, t, c) -> ParticleEffects.valueOf(j.getAsString().toUpperCase()))
+				.registerTypeAdapter(BulletTypes.class, (JsonDeserializer<BulletTypes>) (j, t, c) -> BulletTypes.valueOf(j.getAsString().toUpperCase()));
 	}
 
 	@Getter
@@ -595,9 +594,9 @@ public final class Assets {
 	@Getter
 	@RequiredArgsConstructor
 	public enum Declarations implements DeclarationDefinition {
-		WEAPONS(WeaponsDeclarations.class),
-		PLAYER_WEAPONS(PlayerWeaponsDeclarations.class, "weapons"),
-		ENEMIES(EnemiesDeclarations.class);
+		WEAPONS(WeaponsDeclarations.class, "pickups.weapons"),
+		PLAYER_WEAPONS(PlayerWeaponsDeclarations.class, "pickups.weapons"),
+		ENEMIES(EnemiesDeclarations.class, "characters.enemies");
 
 		private final Class<? extends Declaration> clazz;
 		private final String packageName;
@@ -631,5 +630,4 @@ public final class Assets {
 			}
 		}
 	}
-
 }

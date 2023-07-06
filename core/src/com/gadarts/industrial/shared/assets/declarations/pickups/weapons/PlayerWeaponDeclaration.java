@@ -15,7 +15,7 @@ public record PlayerWeaponDeclaration(String id,
 									  int[] mask,
 									  Assets.Models modelDeclaration,
 									  Assets.UiTextures hudIcon,
-									  BulletTypes bulletType) implements ItemDeclaration {
+									  BulletTypes ammoType) implements ItemDeclaration {
 
 	@Override
 	public String displayName( ) {
