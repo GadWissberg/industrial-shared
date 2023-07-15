@@ -1,8 +1,8 @@
 package com.gadarts.industrial.shared.assets.declarations.pickups.weapons;
 
 import com.gadarts.industrial.shared.assets.Assets;
-import com.gadarts.industrial.shared.assets.definitions.TextureDefinition;
 import com.gadarts.industrial.shared.assets.declarations.pickups.ItemDeclaration;
+import com.gadarts.industrial.shared.assets.definitions.TextureDefinition;
 import com.gadarts.industrial.shared.model.pickups.BulletTypes;
 
 public record PlayerWeaponDeclaration(String id,
@@ -15,7 +15,8 @@ public record PlayerWeaponDeclaration(String id,
 									  int[] mask,
 									  Assets.Models modelDeclaration,
 									  Assets.UiTextures hudIcon,
-									  BulletTypes ammoType) implements ItemDeclaration {
+									  BulletTypes ammoType,
+									  int magazineSize) implements ItemDeclaration {
 
 	@Override
 	public String displayName( ) {
