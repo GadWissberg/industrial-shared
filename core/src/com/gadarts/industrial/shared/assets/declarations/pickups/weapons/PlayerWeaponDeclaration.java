@@ -3,7 +3,7 @@ package com.gadarts.industrial.shared.assets.declarations.pickups.weapons;
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.assets.declarations.pickups.ItemDeclaration;
 import com.gadarts.industrial.shared.assets.definitions.TextureDefinition;
-import com.gadarts.industrial.shared.model.pickups.BulletTypes;
+import com.gadarts.industrial.shared.model.pickups.AmmoTypes;
 
 public record PlayerWeaponDeclaration(String id,
 									  int hitFrameIndex,
@@ -15,7 +15,7 @@ public record PlayerWeaponDeclaration(String id,
 									  int[] mask,
 									  Assets.Models modelDeclaration,
 									  Assets.UiTextures hudIcon,
-									  BulletTypes ammoType,
+									  AmmoTypes ammoType,
 									  int magazineSize) implements ItemDeclaration {
 
 	@Override

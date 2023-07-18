@@ -18,7 +18,7 @@ import com.gadarts.industrial.shared.assets.definitions.*;
 import com.gadarts.industrial.shared.assets.loaders.DeclarationsLoader;
 import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
 import com.gadarts.industrial.shared.model.characters.attributes.Sight;
-import com.gadarts.industrial.shared.model.pickups.BulletTypes;
+import com.gadarts.industrial.shared.model.pickups.AmmoTypes;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
@@ -47,7 +47,7 @@ public final class Assets {
 				.registerTypeAdapter(Models.class, (JsonDeserializer<Models>) (j, t, c) -> Models.valueOf(j.getAsString().toUpperCase()))
 				.registerTypeAdapter(UiTextures.class, (JsonDeserializer<UiTextures>) (j, t, c) -> UiTextures.valueOf(j.getAsString().toUpperCase()))
 				.registerTypeAdapter(ParticleEffects.class, (JsonDeserializer<ParticleEffects>) (j, t, c) -> ParticleEffects.valueOf(j.getAsString().toUpperCase()))
-				.registerTypeAdapter(BulletTypes.class, (JsonDeserializer<BulletTypes>) (j, t, c) -> BulletTypes.valueOf(j.getAsString().toUpperCase()));
+				.registerTypeAdapter(AmmoTypes.class, (JsonDeserializer<AmmoTypes>) (j, t, c) -> AmmoTypes.valueOf(j.getAsString().toUpperCase()));
 	}
 
 	@Getter
@@ -555,6 +555,7 @@ public final class Assets {
 		HUD_INVENTORY_BUTTON,
 		HUD_INVENTORY_BUTTON_HOVER,
 		HUD_INVENTORY_BUTTON_CLICKED,
+		HUD_AMMO_BULLET_ICON,
 		DAMAGE_INDICATOR;
 
 		public static final String SUB_FOLDER_NAME = "ui";
@@ -600,10 +601,6 @@ public final class Assets {
 
 		private final Class<? extends Declaration> clazz;
 		private final String packageName;
-
-		Declarations(Class<? extends Declaration> clazz) {
-			this(clazz, null);
-		}
 
 
 		@Override
