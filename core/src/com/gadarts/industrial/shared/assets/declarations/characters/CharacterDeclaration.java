@@ -27,4 +27,6 @@ public interface CharacterDeclaration extends ElementDeclaration {
 	}
 
 	Assets.Sounds getSoundMelee( );
+
+	String getHudIcon( );
 }

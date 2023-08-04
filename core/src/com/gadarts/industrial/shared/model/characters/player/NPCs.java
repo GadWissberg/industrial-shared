@@ -46,4 +46,9 @@ public enum NPCs implements CharacterDeclaration {
 	public Assets.Sounds getSoundMelee( ) {
 		return null;
 	}
+
+	@Override
+	public String getHudIcon( ) {
+		return null;
+	}
 }

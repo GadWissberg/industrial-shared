@@ -31,6 +31,7 @@ import com.google.gson.Gson;
 import java.util.Arrays;
 import java.util.Optional;
 
+import static com.gadarts.industrial.shared.assets.Assets.UiTextures.*;
 import static com.gadarts.industrial.shared.assets.definitions.ModelDefinition.FOLDER;
 
 public class GameAssetManager extends AssetManager {
@@ -131,6 +132,11 @@ public class GameAssetManager extends AssetManager {
 
 	public Texture getTexture(final TextureDefinition definition) {
 		return get(assetsLocation + definition.getFilePath(), Texture.class);
+	}
+
+	public Texture getTexture(String fileName) {
+		String path = assetsLocation + TEXTURES_FOLDER + "/" + SUB_FOLDER_NAME + "/" + fileName + "." + TEXTURE_FORMAT;
+		return get(path, Texture.class);
 	}
 
 	public Music getMelody(final Assets.Melody definition) {

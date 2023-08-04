@@ -11,6 +11,7 @@ public class PlayerDeclaration implements CharacterDeclaration {
 	private PlayerDeclaration( ) {
 	}
 
+	@SuppressWarnings({"LombokGetterMayBeUsed", "RedundantSuppression"})
 	public static PlayerDeclaration getInstance( ) {
 		return instance;
 	}
@@ -63,5 +64,10 @@ public class PlayerDeclaration implements CharacterDeclaration {
 	@Override
 	public Assets.Sounds getSoundMelee( ) {
 		return Assets.Sounds.WEAPON_FIST;
+	}
+
+	@Override
+	public String getHudIcon( ) {
+		return "hud_icon_player";
 	}
 }

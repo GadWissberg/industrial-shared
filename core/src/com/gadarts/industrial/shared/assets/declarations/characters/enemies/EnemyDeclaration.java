@@ -2,8 +2,8 @@ package com.gadarts.industrial.shared.assets.declarations.characters.enemies;
 
 import com.gadarts.industrial.shared.assets.Assets;
 import com.gadarts.industrial.shared.assets.declarations.Agility;
-import com.gadarts.industrial.shared.assets.declarations.pickups.weapons.WeaponDeclaration;
 import com.gadarts.industrial.shared.assets.declarations.characters.CharacterDeclaration;
+import com.gadarts.industrial.shared.assets.declarations.pickups.weapons.WeaponDeclaration;
 import com.gadarts.industrial.shared.model.characters.CharacterTypes;
 import com.gadarts.industrial.shared.model.characters.attributes.Accuracy;
 import com.gadarts.industrial.shared.model.characters.attributes.Sight;
@@ -29,7 +29,8 @@ public record EnemyDeclaration(String id,
 							   Assets.Sounds explosionEffectOnDestroy,
 							   float shadowRadius,
 							   boolean human,
-							   ImmutableVector3 bulletCreationOffset) implements CharacterDeclaration {
+							   ImmutableVector3 bulletCreationOffset,
+							   String hudIcon) implements CharacterDeclaration {
 	@Override
 	public CharacterTypes getCharacterType( ) {
 		return CharacterTypes.ENEMY;
@@ -63,5 +64,10 @@ public record EnemyDeclaration(String id,
 	@Override
 	public Assets.Sounds getSoundMelee( ) {
 		return soundMelee;
+	}
+
+	@Override
+	public String getHudIcon( ) {
+		return hudIcon;
 	}
 }
