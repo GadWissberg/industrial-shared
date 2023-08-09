@@ -30,7 +30,7 @@ public record EnemyDeclaration(String id,
 							   float shadowRadius,
 							   boolean human,
 							   ImmutableVector3 bulletCreationOffset,
-							   String hudIcon) implements CharacterDeclaration {
+							   Assets.UiTextures hudIcon) implements CharacterDeclaration {
 	@Override
 	public CharacterTypes getCharacterType( ) {
 		return CharacterTypes.ENEMY;
@@ -67,7 +67,7 @@ public record EnemyDeclaration(String id,
 	}
 
 	@Override
-	public String getHudIcon( ) {
+	public Assets.UiTextures getHudIcon( ) {
 		return hudIcon;
 	}
 }

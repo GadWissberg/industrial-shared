@@ -48,7 +48,7 @@ public enum NPCs implements CharacterDeclaration {
 	}
 
 	@Override
-	public String getHudIcon( ) {
+	public Assets.UiTextures getHudIcon( ) {
 		return null;
 	}
 }

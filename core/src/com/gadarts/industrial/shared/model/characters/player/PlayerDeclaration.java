@@ -67,7 +67,7 @@ public class PlayerDeclaration implements CharacterDeclaration {
 	}
 
 	@Override
-	public String getHudIcon( ) {
-		return "hud_icon_player";
+	public Assets.UiTextures getHudIcon( ) {
+		return Assets.UiTextures.HUD_ICON_PLAYER;
 	}
 }
