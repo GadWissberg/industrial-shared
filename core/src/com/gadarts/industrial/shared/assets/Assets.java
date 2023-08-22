@@ -201,7 +201,8 @@ public final class Assets {
 		CONSOLA(15),
 		CHUBGOTHIC_SMALL("chubgothic", 40, true),
 		CHUBGOTHIC_LARGE("chubgothic", 72, true),
-		HUD;
+		HUD,
+		HUD_SMALL;
 
 		private final String filePath;
 		private final AssetLoaderParameters params;
@@ -562,9 +563,11 @@ public final class Assets {
 		HUD_ICON_CIRCLE_GREEN,
 		HUD_ICON_CIRCLE_RED,
 		HUD_ICON_CIRCLE_BORDER,
+		HUD_ACTION_POINTS_INDICATOR,
 		HUD_ICON_PLAYER,
 		HUD_ICON_MAINT_BOT,
 		HUD_ICON_GUARD_BOT,
+		HUD_LOGGER,
 		DAMAGE_INDICATOR;
 
 		public static final String SUB_FOLDER_NAME = "ui";
