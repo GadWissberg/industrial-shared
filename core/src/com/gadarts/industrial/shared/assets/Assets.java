@@ -139,6 +139,7 @@ public final class Assets {
 	 */
 	@Getter
 	public enum Shaders implements ShaderDefinition {
+		BASIC_VERTEX,
 		MODEL_VERTEX,
 		MODEL_FRAGMENT,
 		DECAL_VERTEX,
@@ -147,7 +148,8 @@ public final class Assets {
 		DEPTHMAP_VERTEX,
 		DEPTHMAP_FRAGMENT,
 		SHADOW_VERTEX,
-		SHADOW_FRAGMENT;
+		SHADOW_FRAGMENT,
+		NOISE_FRAGMENT;
 
 		private final String filePath;
 
@@ -567,7 +569,6 @@ public final class Assets {
 		HUD_ICON_PLAYER,
 		HUD_ICON_MAINT_BOT,
 		HUD_ICON_GUARD_BOT,
-		HUD_LOGGER,
 		DAMAGE_INDICATOR;
 
 		public static final String SUB_FOLDER_NAME = "ui";
