@@ -248,7 +248,7 @@ public final class Assets {
 		public String getAssetManagerKey( ) {
 			boolean isTtf = format.equals(FORMAT_TTF);
 			String size = isTtf ? "_" + ((FreeTypeFontLoaderParameter) params).fontParameters.size : "";
-			return (isTtf ? "" : String.format("assets/%s/", Fonts.FOLDER)) + filename + size + "." + format;
+			return (isTtf ? "" : String.format("%s/", Fonts.FOLDER)) + filename + size + "." + format;
 		}
 
 		@Override
@@ -275,6 +275,8 @@ public final class Assets {
 		WEAPON_CUTTER(true),
 		WEAPON_RAPID_LASER_CANNON(false),
 		WEAPON_GLOCK,
+		WEAPON_GLOCK_RELOAD,
+		WEAPON_GLOCK_NO_AMMO,
 		PICKUP,
 		PLAYER_PAIN("player_pain_0", "player_pain_1", "player_pain_2"),
 		PLAYER_DEATH,
