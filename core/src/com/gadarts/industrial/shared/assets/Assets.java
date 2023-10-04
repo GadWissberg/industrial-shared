@@ -77,14 +77,11 @@ public final class Assets {
 
 	}
 
-	/**
-	 * Texture atlases.
-	 */
 	@Getter
 	public enum Atlases implements AtlasDefinition {
 		PLAYER_GENERIC,
 		PLAYER_MELEE,
-		PLAYER_COLT,
+		PLAYER_GLOCK,
 		MAINT_BOT,
 		GUARD_BOT,
 		TERRORIST_GLOCK;

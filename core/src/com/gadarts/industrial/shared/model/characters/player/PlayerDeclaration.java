@@ -53,7 +53,7 @@ public class PlayerDeclaration implements CharacterDeclaration {
 
 	@Override
 	public Assets.Atlases getAtlasDefinition( ) {
-		return Assets.Atlases.PLAYER_COLT;
+		return Assets.Atlases.PLAYER_GLOCK;
 	}
 
 	@Override
