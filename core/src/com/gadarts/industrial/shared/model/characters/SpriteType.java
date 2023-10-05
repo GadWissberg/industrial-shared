@@ -13,6 +13,7 @@ public enum SpriteType {
 	ATTACK_PRIMARY(0.06f, Animation.PlayMode.NORMAL, false, 2),
 	PAIN(0.1F, Animation.PlayMode.NORMAL, false, true),
 	PICKUP(0.1f, Animation.PlayMode.NORMAL, false, true),
+	RELOAD(0.1f, Animation.PlayMode.NORMAL, false, false),
 	LIGHT_DEATH(0.06f, Animation.PlayMode.NORMAL, true, false, true, 3);
 
 	private final float frameDuration;
