@@ -198,8 +198,8 @@ public final class Assets {
 	@Getter
 	public enum Fonts implements FontDefinition {
 		CONSOLA(15),
-		CHUBGOTHIC_SMALL("chubgothic", 40, true),
-		CHUBGOTHIC_LARGE("chubgothic", 72, true),
+		ARIAL_MT_BOLD_SMALL("arial_mt_bold", 40, true),
+		ARIAL_MT_BOLD_LARGE("arial_mt_bold", 72, true),
 		HUD,
 		HUD_SMALL;
 

@@ -18,7 +18,9 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
+import com.badlogic.gdx.graphics.g3d.particles.batches.BillboardParticleBatch;
 import com.badlogic.gdx.graphics.g3d.particles.batches.ParticleBatch;
+import com.badlogic.gdx.graphics.g3d.particles.batches.PointSpriteParticleBatch;
 import com.badlogic.gdx.utils.Array;
 import com.gadarts.industrial.shared.assets.Assets.AssetsTypes;
 import com.gadarts.industrial.shared.assets.declarations.pickups.weapons.WeaponDeclaration;
@@ -61,12 +63,21 @@ public class GameAssetManager extends AssetManager {
 		}));
 	}
 
-	public void loadParticleEffects(ParticleBatch<?> pointSpriteParticleBatch) {
+	public void loadParticleEffects(PointSpriteParticleBatch pointSpriteParticleBatch,
+									BillboardParticleBatch billboardParticleBatch) {
 		Arrays.stream(AssetsTypes.PARTICLES.getAssetDefinitions())
-				.forEach(def -> loadFileWithManualParameters(
-						def,
-						def.getFilePath(),
-						new ParticleEffectLoader.ParticleEffectLoadParameter(Array.with(pointSpriteParticleBatch))));
+				.forEach(def -> {
+					ParticleBatch<?> batch;
+					if (def != Assets.ParticleEffects.BLOOD_SPLATTER) {
+						batch = pointSpriteParticleBatch;
+					} else {
+						batch = billboardParticleBatch;
+					}
+					loadFileWithManualParameters(
+							def,
+							def.getFilePath(),
+							new ParticleEffectLoader.ParticleEffectLoadParameter(Array.with(batch)));
+				});
 		finishLoading();
 		loadedParticleEffects = true;
 	}
