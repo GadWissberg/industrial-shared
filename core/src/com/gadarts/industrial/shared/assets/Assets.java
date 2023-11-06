@@ -567,7 +567,8 @@ public final class Assets {
 		HUD_ICON_PLAYER,
 		HUD_ICON_MAINT_BOT,
 		HUD_ICON_GUARD_BOT,
-		DAMAGE_INDICATOR;
+		DAMAGE_INDICATOR,
+		MENU_BACKGROUND;
 
 		public static final String SUB_FOLDER_NAME = "ui";
 		private final String specialFileName;
