@@ -131,9 +131,6 @@ public final class Assets {
 		}
 	}
 
-	/**
-	 * Shader files.
-	 */
 	@Getter
 	public enum Shaders implements ShaderDefinition {
 		BASIC_VERTEX,
@@ -146,7 +143,8 @@ public final class Assets {
 		DEPTHMAP_FRAGMENT,
 		SHADOW_VERTEX,
 		SHADOW_FRAGMENT,
-		NOISE_FRAGMENT;
+		NOISE_FRAGMENT,
+		MENU_CRT_FRAGMENT;
 
 		private final String filePath;
 
@@ -277,13 +275,16 @@ public final class Assets {
 		PICKUP,
 		PLAYER_PAIN("player_pain_0", "player_pain_1", "player_pain_2"),
 		PLAYER_DEATH,
-		UI_CLICK(false),
 		UI_ITEM_SELECT(false),
 		UI_ITEM_PLACED(false),
 		DOOR_OPEN("door_open_0", "door_open_1", "door_open_2", "door_open_3", "door_open_4"),
 		DOOR_CLOSED("door_closed_0", "door_closed_1", "door_closed_2"),
 		AUTO_DOOR_OPEN(false),
-		AUTO_DOOR_CLOSE(false);
+		AUTO_DOOR_CLOSE(false),
+		INTRO_WHITE_NOISE(false),
+		MENU_LOOP(false, true),
+		MENU_HOVER(false),
+		MENU_CLICK(false);
 
 		private final String filePath;
 		private final boolean randomPitch;
@@ -568,7 +569,8 @@ public final class Assets {
 		HUD_ICON_MAINT_BOT,
 		HUD_ICON_GUARD_BOT,
 		DAMAGE_INDICATOR,
-		MENU_BACKGROUND;
+		MENU_BACKGROUND,
+		CURSOR;
 
 		public static final String SUB_FOLDER_NAME = "ui";
 		private final String specialFileName;
