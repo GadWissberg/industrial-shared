@@ -199,7 +199,8 @@ public final class Assets {
 		ARIAL_MT_BOLD_SMALL("arial_mt_bold", 40, true),
 		ARIAL_MT_BOLD_LARGE("arial_mt_bold", 72, true),
 		HUD,
-		HUD_SMALL;
+		HUD_SMALL,
+		MENU;
 
 		private final String filePath;
 		private final AssetLoaderParameters params;
